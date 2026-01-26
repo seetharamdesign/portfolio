@@ -1,0 +1,101 @@
+/* ===== PORTFOLIO SCROLLER ===== */
+#portfolio {
+  padding-top: 80px;
+}
+
+#portfolio h3 {
+  width: 200px;
+  text-align: center;
+}
+.portfolio-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.portfolio-scroller {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+  /* background-color: red; */
+  margin: 20px;
+}
+
+.portfolio-scroller:active {
+  cursor: grabbing;
+}
+
+.portfolio-container {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+}
+
+.portfolio-container img {
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  height: 200px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-container img:hover {
+  transform: scale(1.08);
+}
+
+/* ===== ARROW BUTTONS ===== */
+
+.arrow {
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  padding: 10px 14px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  margin-right: 10px;
+}
+
+.arrow.right {
+  margin-left: 10px;
+}
+
+/* ===== LIGHTBOX ===== */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 9999;
+}
+
+#lightbox.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  cursor: grab;
+}
+
+#lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}

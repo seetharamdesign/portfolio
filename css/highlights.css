@@ -1,0 +1,109 @@
+/* Highlights Section */
+#highlights {
+  padding-top: 100px;
+  display: none;
+}
+#highlights h4 {
+  text-align: left;
+}
+.highlights-grid {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.highlights-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 250px;
+  height: 180px;
+  aspect-ratio: 16/9;
+  background: var(--bg-card);
+  /* border: 1px solid var(--glass-border); */
+  filter: brightness(70%) contrast(110%) saturate(90%);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.highlights-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.highlights-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+  border-color: var(--accent-cyan);
+  z-index: 2;
+  color: aqua;
+  cursor: pointer;
+}
+
+.highlights-item:hover img {
+  transform: scale(1.1);
+}
+
+.highlights-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.highlights-item:hover .highlights-overlay {
+  opacity: 1;
+}
+
+/* Stylish Cards for Text Content */
+.highlights-item {
+  position: relative;
+  background: rgba(17, 24, 39, 0.6);
+  /* border: 1px solid rgba(255, 255, 255, 0.05); */
+  overflow: hidden;
+  z-index: 1;
+  /* background-color: #25d366; */
+}
+
+.highlights-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(0, 243, 255, 0.03),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.highlights-item:hover::before {
+  transform: translateX(100%);
+}
+
+.highlights-item:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.highlights-item h3 {
+  background: linear-gradient(to right, var(--accent-cyan), #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}

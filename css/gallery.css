@@ -1,7 +1,7 @@
 #gallery {
   margin-top: 50px;
   background-color: var(--bg-dark);
-  display: none;
+  display: block;
   /* border: 1px solid var(--glass-border); */
 }
 
@@ -23,14 +23,14 @@
   align-items: center;
   justify-content: center;
 
-  animation: slide 20s infinite linear;
+  animation: slide 50s infinite linear;
 }
 
 .images-item img {
   flex: 0 0 5em;
   padding: 0.2rem;
-  max-width: 200px;
-  height: auto;
+  /* max-width: 300px; */
+  height: 350px;
   object-fit: cover;
   transition: transform 0.5s ease;
   align-content: center;

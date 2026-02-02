@@ -712,8 +712,8 @@ section.visible {
 
 .social-links img:hover {
   transform: scale(1.1);
-  background-color: var(--accent-purple);
-  box-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .social-links a {

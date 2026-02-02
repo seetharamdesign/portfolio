@@ -1,35 +1,57 @@
+:root {
+  --bg-dark: #030712;
+  --bg-card: rgba(17, 24, 39, 0.7);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-cyan: #00f3ff;
+  --accent-purple: #bc13fe;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(155, 148, 148, 0.03);
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
 /* ===== PORTFOLIO SCROLLER ===== */
 #portfolio {
   padding-top: 80px;
 }
 
-#portfolio h3 {
-  width: 200px;
-  text-align: center;
-}
+
 .portfolio-wrapper {
   position: relative;
   display: flex;
   align-items: center;
+  flex-direction: column;
   width: 100%;
+  /* gap: 10%; */
+}
+
+#portfolio h3 {
+  color: var(--accent-cyan) ;
+  text-align: center;
+  margin: 10px;
 }
 
 .portfolio-scroller {
   overflow: hidden;
-  width: 100%;
+  width: 90%;
   cursor: grab;
-  /* background-color: red; */
-  margin: 20px;
+  margin: 2% 5%;
 }
 
 .portfolio-scroller:active {
   cursor: grabbing;
 }
 
+.portfolio-wrapper > .portfolio-scroller {
+  align-self: stretch;
+}
+
 .portfolio-container {
   display: flex;
   gap: 20px;
   will-change: transform;
+  
 }
 
 .portfolio-container img {
@@ -48,22 +70,32 @@
 /* ===== ARROW BUTTONS ===== */
 
 .arrow {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.65);
   color: #fff;
   border: none;
   font-size: 28px;
-  padding: 10px 14px;
+  padding: 5px 10px;
   cursor: pointer;
   z-index: 10;
+  border-radius: 10px;
+
 }
 
 .arrow.left {
-  margin-right: 10px;
+  left: 0;
 }
 
 .arrow.right {
-  margin-left: 10px;
+  right: 0;
 }
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 
 /* ===== LIGHTBOX ===== */
 

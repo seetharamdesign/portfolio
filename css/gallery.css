@@ -1,7 +1,7 @@
 #gallery {
   margin-top: 50px;
   background-color: var(--bg-dark);
-  display: block;
+  display: none;
   /* border: 1px solid var(--glass-border); */
 }
 

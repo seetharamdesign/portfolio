@@ -404,7 +404,7 @@ section.visible .skill-fill {
 
 .experience-right p {
   font-size: 1.1rem;
-  color: var(--accent-cyan);
+  color: var(--text-primary);
   text-align: left;
 }
 

@@ -1,27 +1,7 @@
-:root {
-  --bg-dark: #030712;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-cyan: #00f3ff;
-  --accent-purple: #bc13fe;
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-bg: rgba(155, 148, 148, 0.03);
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
-}
-
-/* Typography */
-h1,
-h2,
-h3 {
-  font-family: var(--font-heading);
-  letter-spacing: -0.02em;
-}
-
 #education,
 #certificates {
-  padding-top: 100px;
+  padding: 10px 0;
+  margin-top: 40px;
 }
 
 #education h3,
@@ -42,15 +22,11 @@ h4 {
   /* background-color: red; */
 }
 
-
-
-@media (max-width:600px){
+@media (max-width: 600px) {
   #education {
     flex-direction: column;
   }
 }
-
-
 
 .education-item {
   display: flex;
@@ -65,7 +41,7 @@ h4 {
   width: auto;
   height: 80px;
   object-fit: contain;
-  }
+}
 
 .education-item h3 {
   margin: 0;
@@ -77,14 +53,12 @@ h4 {
 }
 
 .cert-grid {
-   display: flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   gap: 20px;
-  
-
 }
 
 .cert-card {
@@ -146,5 +120,5 @@ h4 {
 }
 
 .hidden {
-  display: block;
+  display: none;
 }

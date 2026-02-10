@@ -2,129 +2,257 @@
    PORTFOLIO CONTINUOUS SCROLL
 ================================ */
 
-document.querySelectorAll(".portfolio-wrapper").forEach((wrapper) => {
-  const track = wrapper.querySelector(".portfolio-container");
-  const scroller = wrapper.querySelector(".portfolio-scroller");
-  const left = wrapper.querySelector(".arrow.left");
-  const right = wrapper.querySelector(".arrow.right");
+let globalPaused = false;
+let activePlayers = new Set();
 
-  // Duplicate images (infinite scroll)
-  track.innerHTML += track.innerHTML;
+function initScrollers() {
+  document.querySelectorAll(".portfolio-wrapper").forEach((wrapper) => {
+    const track = wrapper.querySelector(".portfolio-container");
+    const scroller = wrapper.querySelector(".portfolio-scroller");
+    const left = wrapper.querySelector(".arrow.left");
+    const right = wrapper.querySelector(".arrow.right");
 
-  let scrollX = 0;
-  let paused = false;
-  let dragging = false;
-  let startX = 0;
+    if (!track || !scroller) return;
 
-  function loop() {
-    if (!paused && !dragging) {
-      scrollX += 0.8;
-      if (scrollX >= track.scrollWidth / 2) scrollX = 0;
-      track.style.transform = `translateX(${-scrollX}px)`;
+    // 1. Double the content for seamless looping - only once
+    if (!wrapper.dataset.initialized) {
+      track.innerHTML += track.innerHTML;
+      wrapper.dataset.initialized = "true";
     }
+
+    let scrollX = 0;
+    let localPaused = false;
+    let dragging = false;
+    let startX = 0;
+
+    function loop() {
+      if (!globalPaused && !localPaused && !dragging) {
+        scrollX += 0.8;
+        if (scrollX >= track.scrollWidth / 2) {
+          scrollX = 0;
+        }
+        track.style.transform = `translateX(${-scrollX}px)`;
+      }
+      requestAnimationFrame(loop);
+    }
+
     requestAnimationFrame(loop);
-  }
-  loop();
 
-  // Hover pause
-  scroller.addEventListener("mouseenter", () => (paused = true));
-  scroller.addEventListener("mouseleave", () => (paused = false));
+    // Hover pause
+    scroller.addEventListener("mouseenter", () => (localPaused = true));
+    scroller.addEventListener("mouseleave", () => (localPaused = false));
 
-  // Drag scroll
-  scroller.addEventListener("mousedown", (e) => {
-    dragging = true;
-    startX = e.pageX + scrollX;
-    scroller.style.cursor = "grabbing";
+    // Drag scroll
+    scroller.addEventListener("mousedown", (e) => {
+      dragging = true;
+      startX = e.pageX + scrollX;
+      scroller.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mouseup", () => {
+      dragging = false;
+      scroller.style.cursor = "grab";
+    });
+
+    scroller.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      scrollX = startX - e.pageX;
+
+      const limit = track.scrollWidth / 2;
+      if (scrollX >= limit) scrollX -= limit;
+      if (scrollX < 0) scrollX += limit;
+
+      track.style.transform = `translateX(${-scrollX}px)`;
+    });
+
+    // Arrow controls
+    if (left) {
+      left.addEventListener("click", () => {
+        scrollX -= 300;
+        const limit = track.scrollWidth / 2;
+        if (scrollX < 0) scrollX += limit;
+        track.style.transform = `translateX(${-scrollX}px)`;
+      });
+    }
+    if (right) {
+      right.addEventListener("click", () => {
+        scrollX += 300;
+        const limit = track.scrollWidth / 2;
+        if (scrollX >= limit) scrollX -= limit;
+        track.style.transform = `translateX(${-scrollX}px)`;
+      });
+    }
+
+    scroller.addEventListener("click", (e) => {
+      const img = e.target.closest("img");
+      if (!img) return;
+      openLightbox(img, track);
+    });
   });
+}
 
-  window.addEventListener("mouseup", () => {
-    dragging = false;
-    scroller.style.cursor = "grab";
-  });
-
-  scroller.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-    scrollX = startX - e.pageX;
-    track.style.transform = `translateX(${-scrollX}px)`;
-  });
-
-  // Arrow buttons
-  left.addEventListener("click", () => (scrollX -= 300));
-  right.addEventListener("click", () => (scrollX += 300));
-
-  /* ✅ EVENT DELEGATION FOR IMAGE CLICK */
-  scroller.addEventListener("click", (e) => {
-    const img = e.target.closest("img");
-    if (!img) return;
-
-    paused = true; // stop animation
-    openLightbox(img.src);
-  });
+// Simple initialization
+window.addEventListener("load", () => {
+  initScrollers();
+  initYouTubeAPI();
 });
 
 /* ===============================
-   LIGHTBOX
+   YOUTUBE API INTEGRATION
 ================================ */
 
-const lightbox = document.createElement("div");
-lightbox.id = "lightbox";
-lightbox.innerHTML = `
-  <span class="close">&times;</span>
-  <img />
-`;
-document.body.appendChild(lightbox);
+function initYouTubeAPI() {
+  if (!window.YT) {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+}
+
+window.onYouTubeIframeAPIReady = function () {
+  const iframes = document.querySelectorAll(".portfolio-container iframe");
+  iframes.forEach((iframe, index) => {
+    if (!iframe.id) iframe.id = "yt-player-" + index;
+    new YT.Player(iframe.id, {
+      events: {
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  });
+};
+
+function onPlayerStateChange(event) {
+  // YT.PlayerState.PLAYING = 1, YT.PlayerState.BUFFERING = 3
+  if (event.data === 1 || event.data === 3) {
+    activePlayers.add(event.target);
+    globalPaused = true;
+  } else {
+    activePlayers.delete(event.target);
+    if (activePlayers.size === 0) {
+      globalPaused = false;
+    }
+  }
+}
+
+/* ===============================
+   LIGHTBOX 
+================================ */
+
+let lightbox = document.getElementById("lightbox");
+if (!lightbox) {
+  lightbox = document.createElement("div");
+  lightbox.id = "lightbox";
+  lightbox.innerHTML = `
+    <span class="close">&times;</span>
+    <span class="l-arrow prev">&#10094;</span>
+    <span class="l-arrow next">&#10095;</span>
+    <img />
+  `;
+  document.body.appendChild(lightbox);
+}
 
 const lightboxImg = lightbox.querySelector("img");
 const closeBtn = lightbox.querySelector(".close");
+const prevBtn = lightbox.querySelector(".l-arrow.prev");
+const nextBtn = lightbox.querySelector(".l-arrow.next");
 
 let scale = 1,
-  x = 0,
-  y = 0;
-let dragging = false,
-  startX = 0,
-  startY = 0;
+  lx = 0,
+  ly = 0;
+let lightboxDragging = false,
+  lstartX = 0,
+  lstartY = 0;
+let currentGallery = [];
+let currentIndex = 0;
 
-function openLightbox(src) {
+function openLightbox(imgEl, container) {
+  globalPaused = true;
   lightbox.classList.add("show");
-  lightboxImg.src = src;
+  const allImgs = Array.from(container.querySelectorAll("img"));
+  const count = allImgs.length / 2;
+  currentGallery = allImgs.slice(0, count).map((img) => img.src);
+  currentIndex = allImgs.indexOf(imgEl) % count;
+
+  updateLightboxImage();
   scale = 1;
-  x = y = 0;
+  lx = ly = 0;
   updateTransform();
 }
 
-closeBtn.onclick = () => lightbox.classList.remove("show");
+function updateLightboxImage() {
+  lightboxImg.src = currentGallery[currentIndex];
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % currentGallery.length;
+  updateLightboxImage();
+}
+
+function prevImage() {
+  currentIndex =
+    (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+  updateLightboxImage();
+}
+
+function closeLightbox() {
+  globalPaused = false;
+  lightbox.classList.remove("show");
+}
+
+if (closeBtn) closeBtn.onclick = closeLightbox;
+if (prevBtn)
+  prevBtn.onclick = (e) => {
+    e.stopPropagation();
+    prevImage();
+  };
+if (nextBtn)
+  nextBtn.onclick = (e) => {
+    e.stopPropagation();
+    nextImage();
+  };
+
 lightbox.onclick = (e) => {
-  if (e.target === lightbox) lightbox.classList.remove("show");
+  if (e.target === lightbox) closeLightbox();
 };
 
-// Zoom
-lightboxImg.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  scale += e.deltaY * -0.001;
-  scale = Math.min(Math.max(1, scale), 4);
-  updateTransform();
+window.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("show")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") nextImage();
+  if (e.key === "ArrowLeft") prevImage();
 });
 
-// Pan
+lightboxImg.addEventListener(
+  "wheel",
+  (e) => {
+    e.preventDefault();
+    scale += e.deltaY * -0.001;
+    scale = Math.min(Math.max(1, scale), 4);
+    updateTransform();
+  },
+  { passive: false },
+);
+
 lightboxImg.addEventListener("mousedown", (e) => {
-  dragging = true;
-  startX = e.clientX - x;
-  startY = e.clientY - y;
+  lightboxDragging = true;
+  lstartX = e.clientX - lx;
+  lstartY = e.clientY - ly;
   lightboxImg.style.cursor = "grabbing";
 });
 
 window.addEventListener("mouseup", () => {
-  dragging = false;
+  lightboxDragging = false;
   lightboxImg.style.cursor = "grab";
 });
 
 window.addEventListener("mousemove", (e) => {
-  if (!dragging) return;
-  x = e.clientX - startX;
-  y = e.clientY - startY;
+  if (!lightboxDragging) return;
+  lx = e.clientX - lstartX;
+  ly = e.clientY - lstartY;
   updateTransform();
 });
 
 function updateTransform() {
-  lightboxImg.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+  lightboxImg.style.transform = `translate(${lx}px, ${ly}px) scale(${scale})`;
 }

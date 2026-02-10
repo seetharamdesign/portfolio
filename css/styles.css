@@ -11,6 +11,7 @@
   --font-body: "Inter", sans-serif;
 }
 
+/* ===== 1. FOUNDATION & RESET ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -40,7 +42,14 @@ body {
     );
 }
 
-/* Typography */
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /* display: none; */
+}
+
+/* ===== 2. TYPOGRAPHY & GLOBALS ===== */
 h1,
 h2,
 h3 {
@@ -56,17 +65,6 @@ h1 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInDown 1s ease-out;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 h2 {
@@ -96,15 +94,63 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Layout Wrapper */
-.main-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  /* display: none; */
+section {
+  padding-top: 100px;
 }
 
-/* Navbar */
+/* ===== 3. ANIMATIONS & REVEAL LOGIC ===== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll reveal logic */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+section.visible,
+#introduction,
+#experience-container {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ===== 4. NAVBAR ===== */
 .navbar {
   width: 100%;
   height: 64px;
@@ -113,7 +159,7 @@ a {
   left: 0;
   z-index: 1000;
   display: flex;
-  justify-content: center; /* Center the inner container */
+  justify-content: center;
   align-items: center;
   background: transparent;
   backdrop-filter: none;
@@ -176,36 +222,37 @@ a {
   text-decoration: none;
 }
 
-/* Hero Section */
+/* ===== 5. INTRODUCTION / HERO ===== */
 #introduction {
   min-height: auto;
   display: flex;
-  flex-direction: column; /* Changed to column to stack Hero + Recent Works */
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Fix overlap: Start from top */
-  padding-top: 140px; /* Increased top padding */
-  padding-bottom: 40px;
-  gap: 80px; /* Gap between Hero and Recent Works */
-  /* background-color: red; */
+  justify-content: flex-start;
 }
 
-/* Wrapper for the original Side-by-Side Hero content */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  width: 100%;
-  /* background-color: red; */
+  /* gap: 40px; */
+  /* width: 100%; */
+  /* background-color: #00f3ff; */
 }
 
 .head-left {
   flex: 1;
-  margin-left: 8%;
+  margin: 5% 0%;
+  padding: 0.5rem;
+  /* background-color: red; */
 }
 
 .head-left h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.head-left h2 {
+  color: var(--accent-cyan);
 }
 
 .head-left p {
@@ -213,15 +260,19 @@ a {
   margin-bottom: 2rem;
   font-size: 1.1rem;
   text-align: left;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
 .head-left div {
   display: flex;
   gap: 16px;
+  opacity: 0;
+  margin-top: 40px;
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
 }
 
 .head-left a {
-  /* Buttons */
   padding: 4px 24px;
   border-radius: 2px;
   font-family: var(--font-heading);
@@ -249,90 +300,25 @@ a {
   color: var(--text-primary);
   box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
 }
+
 .head-right {
   width: 40%;
   margin-right: 0%;
 }
+
 .head-right img {
   width: 100%;
   padding: 0.5rem;
-}
-
-/* Skills Section */
-#skills {
-  padding: 100px 0;
-}
-
-.skills-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-#skills h2 {
-  margin-bottom: 60px;
-  text-align: center;
-}
-
-.skill-column h3 {
-  margin-bottom: 30px;
-  text-align: center;
-  border-bottom: 1px solid var(--glass-border);
-  padding-bottom: 10px;
-  display: inline-block;
-}
-
-.skill-item {
-  margin-bottom: 25px;
-}
-
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-}
-
-.skill-bar {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-}
-
-.skill-fill {
-  height: 100%;
-  width: 0; /* Start at 0 for animation */
-  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-  border-radius: 10px;
-  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-}
-
-/* Animate width when parental section is visible */
-section.visible .skill-fill {
-  width: var(--w);
-}
-
-@media (max-width: 768px) {
-  .skills-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+  opacity: 0;
+  animation: fadeInScale 1s ease-out 0.8s forwards;
 }
 
 .profile-photo {
   width: 100%;
-  max-width: 600px; /* Increased size */
-  /* border-radius: 20px; */ /* Removed to merge */
-  /* box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5); */ /* Removed shadow */
-  border: none; /* Removed border */
+  max-width: 600px;
+  border: none;
   filter: grayscale(20%) contrast(110%);
-  transition: all 0.5s ease;
-  /* Optional: Mask to fade bottom for better merge if it's a cutout */
+  transition: all 0.3s ease;
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
@@ -342,7 +328,6 @@ section.visible .skill-fill {
   transform: scale(1.02);
 }
 
-/* Recent Works in Intro */
 .recent-works-container {
   width: 100%;
   margin-bottom: 40px;
@@ -357,36 +342,28 @@ section.visible .skill-fill {
   display: inline-block;
 }
 
-/* Experience Section */
+/* ===== 6. EXPERIENCE ===== */
 #experience-container {
-  padding-top: 120px;
+  margin-top: 40px;
+  padding: 10px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
 
 .experience-left {
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  /* background-color: red; */
-}
-
-.experience-left h2 {
-  font-size: 6rem;
-  text-align: left;
-  font-style: italic;
-  line-height: 1;
-  /* color: var(--accent-purple); */
-  margin-bottom: 0.5rem;
-  text-align: center;
+  border-bottom: 1px solid var(--glass-border);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1s forwards;
 }
 
 .experience-left h3 {
   font-size: 1.5rem;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 400;
 }
 
@@ -394,36 +371,132 @@ section.visible .skill-fill {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* text-align: center; */
-  /* background-color: blue; */
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.2s forwards;
+  border-bottom: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border);
+}
+
+.experience-right h2 {
+  font-size: 6rem;
+  text-align: left;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--text-primary);
 }
 
 .experience-right h3 {
-  color: var(--accent-purple);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
-.experience-right p {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  text-align: left;
+/* ===== 7. PROJECTS (Behance Section) ===== */
+#Project {
+  margin-top: 40px;
+  padding: 10px 0;
 }
 
-#expertise-container {
-  padding: 20px;
+/* Specific animations for top-level sections that appear on load */
+/* Specific animations for sections triggered by scroll observer */
+#generative-ai.visible h2 {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+#generative-ai.visible .portfolio-wrapper {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+#generative-ai.visible .gen-ai-video-container {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+#Project.visible h2 {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+#Project.visible .project-embed-container {
+  flex: 1;
+  min-width: 320px;
+  max-width: 450px;
+  min-height: 220px;
+  backdrop-filter: blur(10px);
+  /* background: var(--bg-card); */
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  opacity: 0;
+  margin: 15px;
+  overflow: hidden;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.project-embed-container h4 {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 10px 5px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Stagger project embeds when grid becomes visible */
+#Project.visible .project-embed-container:nth-child(2) {
+  animation-delay: 0.4s;
+}
+#Project.visible .project-embed-container:nth-child(3) {
+  animation-delay: 0.6s;
+}
+#Project.visible .project-embed-container:nth-child(4) {
+  animation-delay: 0.8s;
+}
+#Project.visible .project-embed-container:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.project-embed-container:hover {
+  border-color: var(--accent-cyan);
+  /* box-shadow: 0 20px 60px rgba(0, 243, 255, 0.15); */
+}
+
+.project-embed-container iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+  border-radius: 0%;
+  display: block;
+  overflow: hidden;
+}
+
+/* ===== 8. EXPERTISE & SKILLS ===== */
+/* Grid Cards Section */
+.expertise-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
   gap: 20px;
-  
+  padding: 20px;
+  text-align: center;
   /* background-color: red; */
-}
-
-@media (max-width:600px){
-  #expertise-container {
-    flex-direction: column;
-  }
 }
 
 .expertise {
@@ -431,18 +504,16 @@ section.visible .skill-fill {
   min-width: 30%;
   padding: 30px;
   border-radius: 14px;
-  border: 1px solid var(--glass-border);
-  background: var(--bg-card);
+  text-align: center;
+  /* border: 1px solid var(--glass-border); */
+  /* background: var(--bg-card); */
   backdrop-filter: blur(8px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.3s ease;
-
+  box-shadow: 0 10px 15px -10px rgba(0, 243, 255, 0.3);
+  transition: all 0.5s ease;
 }
 
 .expertise:hover {
   transform: translateY(-10px);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 10px 30px -10px rgba(0, 243, 255, 0.3);
 }
 
 .expertise h3 {
@@ -472,13 +543,6 @@ section.visible .skill-fill {
   transform: scale(1.25);
 }
 
-.expertise:hover {
-  /* transform: translateY(-2.5px); */
-  /* border-color: var(--accent-cyan); */
-  /* cursor: pointer; */
-  box-shadow: 0 0 5px rgba(0, 243, 255, 0.1);
-}
-
 .expertise::before {
   content: "";
   position: absolute;
@@ -492,31 +556,82 @@ section.visible .skill-fill {
   transition: transform 0.3s ease;
 }
 
-.expertise:hover::before {
-  transform: scaleX(0);
+/* Specific Skill Bar Styles */
+#skills {
+  padding: 10px 0;
+  margin-top: 40px;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-/* Journey Section */
-#journey {
-  padding-top: 100px;
-  /* padding: 100px 0; */
-  /* border: 1px solid var(--glass-border); */
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  /* background-color: blue; */
+}
+
+.skill-column h3 {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+  display: inline-block;
   /* background-color: red; */
+}
+
+.skill-item {
+  margin-bottom: 25px;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 10px;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.skills-container.visible .skill-fill {
+  width: var(--w);
+}
+
+/* ===== 9. JOURNEY ===== */
+#journey {
+  padding: 10px 0;
+  margin-top: 40px;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .grid {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  /* margin-top: 40px; */
 }
 
 .card {
-  /* background: var(--bg-card); */
-  border: 0.5px solid var(--glass-border);
+  /* border: 0.5px solid var(--glass-border); */
   border-radius: 16px;
   padding: 24px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
@@ -524,166 +639,29 @@ section.visible .skill-fill {
   gap: 0 24px;
 }
 
-.card img {
-  max-width: 150px;
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-}
-
 .card h3 {
   color: var(--accent-cyan);
-  /* align-self: center; */
-  /* font-size: 1.2rem; */
 }
 
 .card p {
   font-size: 1rem;
-  text-align: left;
+  text-align: justify;
   padding: 0px 24px;
 }
 
 .card img {
   max-width: 150px;
   height: 50px;
+  align-self: center;
 }
 
-.card:hover {
-  /* transform: translateY(-5px); */
-  /* border-color: var(--accent-purple); */
-  /* box-shadow: 0 10px 30px -10px rgba(188, 19, 254, 0.3); */
-}
-
-/* Footer */
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid var(--glass-border);
-  margin-top: 80px;
-  color: var(--text-secondary);
-}
-
-.footer a {
-  margin: 0 10px;
-  color: var(--text-primary);
-}
-
-.footer a:hover {
-  color: var(--accent-cyan);
-}
-
-/* Sections for scroll reveal */
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease-out;
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 900px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-section {
-    flex-direction: column-reverse; /* Image on top usually better, or keeping structure but changing layout */
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* #introduction is already column, so no change needed there */
-
-  .head-left div {
-    justify-content: center; /* Center buttons */
-  }
-
-  .head-left h1,
-  .head-left p {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0 20px !important; /* Force override initial state */
-    height: 64px;
-    gap: 10px;
-  }
-
-  .nav-links {
-    display: flex; /* For simplicity in this iteration, hiding menu on mobile or could make it scrollable/hamburger if requested. I'll make it a scrolling row for now to be accessible without JS */
-  }
-
-  /* Making nav links horizontally scrollable for mobile simplicity */
-  .nav-links {
-    display: flex;
-    overflow-x: auto;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    background: var(--bg-dark);
-    padding: 10px 20px;
-    gap: 20px;
-    border-bottom: 1px solid var(--glass-border);
-    -ms-overflow-style: none; /* Hide scrollbar */
-    scrollbar-width: none;
-  }
-  .nav-links::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-
-  .head-left div {
-    flex-direction: column;
-  }
-
-  .head-left a {
-    width: 100%;
-  }
-}
-
-/* Contact Section */
+/* ===== 10. CONTACT ===== */
 #contact {
-  padding-top: 100px;
+  padding: 10px 0;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.contact-container {
-  width: 100%;
-  max-width: 600px;
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 40px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.contact-container:hover {
-  transform: scale(1.01);
 }
 
 .social-links {
@@ -693,21 +671,21 @@ section.visible {
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  /* background-color: red; */
+}
+
+.social-links a {
+  margin-bottom: 20px;
 }
 
 .social-links img {
   width: 30px;
   height: 30px;
   object-fit: cover;
-  /* container-type: inline-size; */
   background-color: var(--text-secondary);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   padding: 1px;
+  transition: all 0.3s ease;
 }
 
 .social-links img:hover {
@@ -716,15 +694,20 @@ section.visible {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.social-links a {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px; */
-  margin-bottom: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  /* background-color: red; */
+.contact-container {
+  width: 100%;
+  max-width: 600px;
+  /* background: var(--bg-card); */
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+}
+
+.contact-container:hover {
+  transform: scale(1.01);
 }
 
 .contact-form {
@@ -812,4 +795,120 @@ section.visible {
   width: 24px;
   height: 24px;
   fill: currentColor;
+}
+
+/* ===== 11. FOOTER ===== */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--glass-border);
+  margin-top: 80px;
+  color: var(--text-secondary);
+}
+
+.footer a {
+  margin: 0 10px;
+  color: var(--text-primary);
+}
+
+.footer a:hover {
+  color: var(--accent-cyan);
+}
+
+/* ===== 12. RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .head-left div {
+    justify-content: center;
+  }
+
+  .head-left h1,
+  .head-left p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px !important;
+    height: 64px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    overflow-x: auto;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-dark);
+    padding: 10px 20px;
+    gap: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-embed-container {
+    min-width: 280px;
+  }
+
+  .project-embed-container iframe {
+    height: 400px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .expertise-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+
+  .head-left div {
+    flex-direction: column;
+  }
+
+  .head-left a {
+    width: 100%;
+  }
+
+  .project-embed-container {
+    min-width: 100%;
+  }
+
+  .project-embed-container iframe {
+    height: 300px;
+  }
 }

@@ -500,7 +500,7 @@ section.visible,
 }
 
 .expertise {
-  max-width: 300px;
+  max-width: auto;
   min-width: 30%;
   padding: 30px;
   border-radius: 14px;

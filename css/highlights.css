@@ -16,7 +16,7 @@
 
 .highlights-item {
   position: relative;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   max-width: 250px;
   height: 180px;
@@ -36,7 +36,7 @@
 
 .highlights-item:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+  box-shadow: 0 10px 30px var(--cyan-glow-mid);
   border-color: var(--accent-cyan);
   z-index: 2;
   color: aqua;
@@ -50,7 +50,7 @@
 .highlights-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(3, 7, 18, 0.8);
+  background: var(--bg-dark-alpha-80);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
 /* Stylish Cards for Text Content */
 .highlights-item {
   position: relative;
-  background: rgba(17, 24, 39, 0.6);
+  background: var(--bg-card-alpha-60);
   /* border: 1px solid rgba(255, 255, 255, 0.05); */
   overflow: hidden;
   z-index: 1;
@@ -82,7 +82,7 @@
   background: linear-gradient(
     45deg,
     transparent,
-    rgba(0, 243, 255, 0.03),
+    var(--cyan-glow-very-low),
     transparent
   );
   transform: translateX(-100%);
@@ -96,12 +96,16 @@
 
 .highlights-item:hover {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.15);
+  box-shadow: 0 0 10px var(--cyan-glow-low);
   transform: translateY(-5px);
 }
 
 .highlights-item h3 {
-  background: linear-gradient(to right, var(--accent-cyan), #94a3b8);
+  background: linear-gradient(
+    to right,
+    var(--accent-cyan),
+    var(--text-secondary)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

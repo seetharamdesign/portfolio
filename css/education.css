@@ -65,7 +65,7 @@ h4 {
   /* max-width: 300px; */
   display: flex;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 0;
   border: 1px solid var(--glass-border);
   transition: all 0.3s ease;
   text-align: center;
@@ -83,7 +83,7 @@ h4 {
 .cert-card:hover {
   transform: scale(1.05);
   border-color: var(--accent-cyan);
-  box-shadow: 0 10px 20px -10px rgba(0, 243, 255, 0.3);
+  box-shadow: 0 10px 20px -10px var(--cyan-glow-mid);
 }
 
 .cert-card img {
@@ -104,19 +104,19 @@ h4 {
   text-align: center;
   font-size: 12px;
   padding: 4px 24px;
-  border-radius: 2px;
+  border-radius: 0;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px solid var(--accent-cyan);
-  background: rgba(0, 243, 255, 0.1);
+  background: var(--cyan-glow-low);
   transition: all 0.3s ease;
 }
 
 .cert-card:hover h4 {
   background: var(--accent-cyan);
   color: var(--bg-dark);
-  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+  box-shadow: 0 0 20px var(--cyan-glow-strong);
 }
 
 .hidden {

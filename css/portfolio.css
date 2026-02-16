@@ -1,16 +1,4 @@
 /* ===== PORTFOLIO SCROLLER ===== */
-:root {
-  --bg-dark: #030712;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-cyan: #00f3ff;
-  --accent-purple: #bc13fe;
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-bg: rgba(155, 148, 148, 0.03);
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
-}
 
 .portfolio-wrapper {
   position: relative; /* Keep as fallback/context */
@@ -52,7 +40,7 @@
 
 #generative-ai {
   padding: 10px 0;
-  /* margin-top: 40px; */
+  margin-top: 40px;
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -62,15 +50,15 @@
   padding: 15px;
   /* background: var(--bg-card); */
   /* border: 1px solid var(--glass-border); */
-  border-radius: 20px;
+  border-radius: 0;
   backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 50px var(--shadow-strong);
   overflow: hidden;
 }
 
 .gen-ai-video-container video {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 0;
   display: block;
 }
 
@@ -82,7 +70,7 @@
 #portfolio {
   /* background-color: red; */
   padding: 10px 0;
-  /* margin-top: 40px; */
+  margin-top: 40px;
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -118,7 +106,7 @@
   cursor: pointer;
   user-select: none;
   height: 200px;
-  border-radius: 12px;
+  border-radius: 0;
   transition: transform 0.3s ease;
 }
 
@@ -131,7 +119,7 @@
   cursor: pointer;
   user-select: none;
   height: 200px;
-  border-radius: 12px;
+  border-radius: 0;
   transition: transform 0.3s ease;
 }
 
@@ -145,14 +133,14 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.65);
+  background: var(--black-alpha-65);
   color: #fff;
   border: none;
   font-size: 28px;
   padding: 8px 12px;
   cursor: pointer;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 0;
   transition: all 0.2s ease;
 }
 
@@ -165,8 +153,8 @@
 }
 
 .arrow:hover {
-  background: rgba(0, 243, 255, 0.8);
-  color: #000;
+  background: var(--cyan-alpha-80);
+  color: var(--black);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -175,7 +163,7 @@
 #lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--black-alpha-90);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,7 +216,7 @@
 
 #lightbox .l-arrow:hover {
   opacity: 1;
-  text-shadow: 0 0 15px rgba(0, 243, 255, 0.8);
+  text-shadow: 0 0 15px var(--cyan-alpha-80);
 }
 
 #lightbox .l-arrow.prev {

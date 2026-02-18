@@ -202,10 +202,20 @@ let currentIndex = 0;
 function openLightbox(imgEl, container) {
   globalPaused = true;
   lightbox.classList.add("show");
+
   const allImgs = Array.from(container.querySelectorAll("img"));
-  const count = allImgs.length / 2;
-  currentGallery = allImgs.slice(0, count).map((img) => img.src);
-  currentIndex = allImgs.indexOf(imgEl) % count;
+  const clones = allImgs.filter((img) => img.classList.contains("clone"));
+
+  if (clones.length > 0) {
+    // This is a scrolling gallery with clones
+    const count = allImgs.length / 2;
+    currentGallery = allImgs.slice(0, count).map((img) => img.src);
+    currentIndex = allImgs.indexOf(imgEl) % count;
+  } else {
+    // This is a static gallery (like GenAI section)
+    currentGallery = allImgs.map((img) => img.src);
+    currentIndex = allImgs.indexOf(imgEl);
+  }
 
   updateLightboxImage();
   scale = 1;

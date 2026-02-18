@@ -122,6 +122,7 @@
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: scrollbar-color 0.3s ease;
+  /* background-color: red; */
 }
 
 .tab-content-container:hover,
@@ -176,8 +177,10 @@
 
 .works-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 120px; /* Increased from 100px */
+  grid-auto-flow: dense;
+  gap: 4px; /* Reduced from 15px */
   margin-top: 20px;
   width: 100%;
 }
@@ -188,8 +191,76 @@
   cursor: pointer;
   border: 1px solid var(--glass-border);
   background: var(--bg-dark-accent);
-  border-radius: 4px;
-  height: 240px; /* Fixed height for consistency */
+  border-radius: 0; /* Removed border-radius */
+  grid-row: span 2; /* 240px */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.work-item.vertical {
+  grid-row: span 5; /* 600px - taller for full view */
+}
+
+.work-item.horizontal {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.work-item-audio {
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Use flex to center */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-dark-accent);
+  border-radius: 0;
+  grid-row: span 2;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.work-item-audio audio {
+  width: 100%;
+  max-width: 250px; /* Prevent it from being too wide */
+  display: block;
+  z-index: 1;
+}
+
+.work-item-audio span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 5px; /* Added padding */
+  background: rgba(0, 0, 0, 0.9);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  font-family: var(--font-body);
+  transform: translateY(100%); /* Start completely hidden */
+  transition: transform 0.3s ease;
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.work-item-audio:hover span {
+  transform: translateY(0);
+}
+
+/* On larger screens, horizontal could span more or stay as is */
+@media (min-width: 992px) {
+  .work-item.horizontal {
+    grid-column: span 2;
+  }
 }
 
 .work-item img,
@@ -244,10 +315,19 @@
 @media (max-width: 480px) {
   .works-gallery {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
+    grid-auto-rows: 100px;
+    gap: 2px;
   }
   .work-item {
-    height: 160px; /* Adjusted height for mobile */
+    grid-row: span 2; /* 200px */
+    border-radius: 0;
+  }
+  .work-item.vertical {
+    grid-row: span 4; /* 400px */
+  }
+  .work-item.horizontal {
+    grid-column: span 2;
+    grid-row: span 2;
   }
   .work-overlay span {
     font-size: 0.8rem;

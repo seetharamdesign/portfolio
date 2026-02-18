@@ -42,17 +42,3 @@ revealableElements.forEach((el) => {
     observer.observe(el);
   }
 });
-
-// click-image to scroll to id
-
-document.addEventListener("click", (e) => {
-  const img = e.target.closest(".logo");
-  if (!img) return;
-
-  const targetId = img.dataset.target;
-  const target = document.getElementById(targetId);
-
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth" });
-  }
-});

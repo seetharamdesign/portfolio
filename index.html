@@ -8,31 +8,6 @@
       name="description"
       content="Portfolio of Seetha Rama Swamy - Multimedia Specialist and Subject Matter Expert at Amazon, leading creative teams and Generative AI workflows."
     />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://seetharamdesign.github.io/" />
-    <meta
-      property="og:title"
-      content="Seetha Ram | Multimedia Specialist & SME"
-    />
-    <meta
-      property="og:description"
-      content="Multimedia Specialist and SME at Amazon. Transforming creative workflows through Generative AI and automation."
-    />
-    <meta property="og:image" content="images/profile_ai.png" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://seetharamdesign.github.io/" />
-    <meta
-      property="twitter:title"
-      content="Seetha Ram | Multimedia Specialist & SME"
-    />
-    <meta
-      property="twitter:description"
-      content="Multimedia Specialist and SME at Amazon. Transforming creative workflows through Generative AI and automation."
-    />
-    <meta property="twitter:image" content="images/profile_ai.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,86 +18,236 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/portfolio.css" />
     <link rel="stylesheet" href="css/education.css" />
+    <link rel="stylesheet" href="css/genaiworks.css" />
   </head>
   <body>
     <!-- Navigation menu-->
-    <div id="navbar">
-      <nav class="navbar">
-        <div class="navbar-container">
-          <a href="#introduction" class="logo">
-            <img style="height: 40px" src="images/sr-logo.png" />
-          </a>
-          <ul class="nav-links">
-            <li><a href="#introduction">Home</a></li>
-            <li><a href="#generative-ai">GenAI</a></li>
-            <li><a href="#Project">Projects</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#introduction" class="logo">
+          <img src="images/sr-logo.png" alt="Seetha Ram Logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#introduction">Home</a></li>
+          <li><a href="#generative-ai-works">GenAI</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Design</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <div class="main-wrapper" id="main-wrapper">
       <main>
+
         <section id="introduction">
           <div class="hero-section">
-            <div class="head-left">
-              <h1>
-                Hello, I'm <br />
-                Seetha Ram
-              </h1>
+            <div class="hero-section-left">
+              <h1>Hello I'm Seetha Ram</h1>
+              <h2>Multimedia Specialist</h2>
               <p>
-                Subject Matter Expert transforming creative workflows through
-                Generative AI and automation, turning technical expertise into
-                proven business impact.
+                Designing technical systems that free creativity to scale.
+                <br />
+                10 Years of Content Innovation | Specialized in Gen AI & Automation
               </p>
-              <div>
-                <a href="https://www.behance.net/seetharamaswamy" target="blank"
-                  >View Projects</a
-                >
-                <a
-                  href="https://drive.google.com/file/d/17i6athbXvuKqQ2kMb1Sy5gG9vGjWvdIB/view?usp=drive_link"
-                  target="blank"
-                  >View CV</a
-                >
+              <div class="hero-links">
+                <a href="https://github.com/seetharamdesign/myComfyUI" target="_blank">[Github]</a>
+                <a href="https://drive.google.com/" target="_blank">[View CV]</a>
               </div>
             </div>
 
-            <div class="head-right">
-              <img
-                src="images/profile_ai.png"
-                class="profile-photo"
-                alt="Profile photo"
-              />
+            <div class="hero-section-right">
+              <img src="images/profile_ai.png" alt="Profile photo" />
             </div>
           </div>
         </section>
 
-        <section id="experience-container">
-          <div class="experience-left">
-           <h3>SPECIALIZED IN</h3>
-            <p>
-              Generative AI Content Creation and Automation, </br> 
-              Full Stack Web Development, Project Management, </br> Quality Assurance and Data Analysis.
-            </p>
+        <section id="myExpertise">
+          <h2>My Expertise</h2>
+          <div class="myExpertise-container">
+            <div class="myExpertise-item">
+              <h4>Turning Latent Space to Pixels</h4>
+              <p>Expertly navigating AI models to generate high-fidelity 2D, 3D, and Video assets.</p>
+            </div>
+
+            <div class="myExpertise-item">
+              <h4>Generative AI & Automation</h4>
+              <p>Building Python-driven workflows and ComfyUI pipelines to scale creativity.</p>
+            </div>
+
+            <div class="myExpertise-item">
+              <h4>Proven Business Impact</h4>
+              <p>Turning technical SME expertise into optimized, high-volume production.</p>
+            </div>
+
+            <div class="myExpertise-item">  
+              <h4>Leadership & Quality Assurance</h4>
+              <p>Leading and mentoring teams to deliver high-quality creative solutions.</p>
+            </div>
           </div>
-          <div class="experience-right">
-             <h2>10+</h2>
-            <h3>Years of working experience.</h3>
-            
+        </section>
+       
+        <section id="generative-ai-works">
+          <h2>Generative AI Content Creation</h2>
+
+          <div class="gen-ai-works-container">
+            <div class="tab-button-group">
+              <button class="tab-btn active" data-tab="works-2d-content">2D </button>
+              <button class="tab-btn" data-tab="works-video-content">Video  </button>
+              <button class="tab-btn" data-tab="works-3d-content">3D </button>
+            </div>
+
+            <div class="tab-content-container">
+              <div id="works-2d-content" class="tab-panel active">
+                <div class="works-gallery">
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/background-removal-basic.png" alt="background-removal-basic" />
+                    <div class="work-overlay"><span>Background Removal</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Live potrait - expression editor.png" alt="Live potrait - expression editor" />
+                    <div class="work-overlay"><span>Expression Editor</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-image.png" alt="Live-potrait-image" />
+                    <div class="work-overlay"><span>Live Portrait Image</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-video.png" alt="Live-potrait-video" />
+                    <div class="work-overlay"><span>Live Portrait Video</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Pose control-comfydoc.png" alt="pose-control" />
+                    <div class="work-overlay"><span>Pose Control</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/subject multiple angles.png" alt="subject multiple angles" />
+                    <div class="work-overlay"><span>Multi-Angle Subject</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Text to Audio.png" alt="text to audio" />
+                    <div class="work-overlay"><span>Text to Audio</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/comfyui-workflow-snaps/general-workflows/Upscale-basic-workflow.png" alt="Upscale-basic-workflow" />
+                    <div class="work-overlay"><span>Upscale Workflow</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/2d-outputs/2loras_test__00006_.png" alt="2loras_test__00006_" />
+                    <div class="work-overlay"><span>2Lora Test Output</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/2d-outputs/AnimateDiff_00001.png" alt="AnimateDiff_00001" />
+                    <div class="work-overlay"><span>AnimateDiff Output</span></div>
+                  </div>
+                  <div class="work-item">
+                    <img src="images/2d-outputs/ComfyUI_00001_ (2).png" alt="ComfyUI_00001_ (2)" />
+                    <div class="work-overlay"><span>ComfyUI Output</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="works-video-content" class="tab-panel">
+                <div class="works-gallery">
+                  <div class="work-item">
+                    <video width="auto" controls autoplay muted playsinline loop>
+                      <source src="videos/SR_pose_output_1.mp4" type="video/mp4">
+                    </video>
+                    <div class="work-overlay"><span>Pose Generation</span></div>
+                  </div>
+                  <div class="work-item">
+                    <video width="auto" controls autoplay muted playsinline loop>
+                      <source src="videos/Banderas flowergeneration.mp4" type="video/mp4">
+                    </video>
+                    <div class="work-overlay"><span>Flower Generation</span></div>
+                  </div>
+                  <div class="work-item">
+                    <video width="auto" controls autoplay muted playsinline loop>
+                      <source src="videos/Wan_Fashion model1.mp4" type="video/mp4">
+                    </video>
+                    <div class="work-overlay"><span>Fashion Model</span></div>
+                  </div>
+                  <div class="work-item">
+                    <video width="auto" controls autoplay muted playsinline loop>
+                      <source src="videos/ComfyUI_00001_ (1).mp4" type="video/mp4">
+                    </video>
+                    <div class="work-overlay"><span>Video Workflow Output</span></div>
+                  </div>
+                  <div class="work-item">
+                    <video width="auto" controls autoplay muted playsinline loop>
+                      <source src="videos/ComfyUI_00001_ (2).mp4" type="video/mp4">
+                    </video>
+                    <div class="work-overlay"><span>Animated Workflow Output</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="works-3d-content" class="tab-panel">
+                <div class="works-gallery">
+                  <!-- 3D content will go here -->
+                </div>
+              </div>
+
+              
+            </div>
           </div>
         </section>
 
-        <section id="generative-ai">
-          <h2>Generative AI Content Creation</h2>
+        <section id="journey">
+          <h2>My Journey</h2>
+          <div class="grid">
+            
+            <div class="card">
+              <img src="images/amazon-logo.png" alt="amazon-logo" />
+              <h3>Subject Matter Expert | Global Quality & Automation</h3>
+              <p>
+                 • As a global lead, I transformed manual QA workflows into scalable, automated ecosystems. I architected the Self-Service QA Tool (SQT), partnering with SDEs to move from manual reviews to an 80% automated publication model, resulting in $1MM annual OPEX savings and a 75% reduction in QA costs.<br />
+                 • Designed and deployed global training frameworks and standardized SOPs that achieved a 35% defect reduction and delivered $18M in annual cost avoidance.<br />
+                 • Directed the pre and post-publication quality for high-visibility platforms including 3D/AR/VR, Virtual Try-On, and Amazon Beyond, resolving complex latency and visual compression issues across iOS, Android, and Web.<br />
+                 • Led cross-functional initiatives with SDE and CX teams to ensure technical feasibility matched creative excellence at a global scale.
+              </p>
+              <h3>Quality Assurance Lead | Global Operations</h3>
+              <p>
+                 • I provided operational leadership and quality oversight for a global workforce of 300+ professionals across India and the Philippines. My focus was on scaling the production of immersive assets while maintaining rigorous Amazon standards.<br />
+                 • Orchestrated the onboarding and technical readiness of 50+ new associates, ensuring a 100% production-ready pipeline.<br />
+                 • Identified inefficiencies in manual review cycles and spearheaded a Productivity Optimization Program. By directing a UI/UX redesign of internal tools and integrating workflow automation, I increased QA productivity by 10% and cut review times by 30%.<br />
+                 • Owned global SIM ticketing and defect reporting, managing high-volume triage and resource allocation to maintain strict SLA adherence for Amazon’s 3D shopping experiences.
+              </p>
+              <h3>3D Content Creator</h3>
+              <p>
+                • In this role, I balanced high-fidelity 3D production with technical tool development. I was responsible for delivering production-ready assets for View in 3D and Virtual Try On while simultaneously optimizing the pipelines they lived in.<br />
+                • Leveraged PyMEL (Python) to build custom integrations between Maya, Substance Painter, and Photoshop, increasing team efficiency by 10% and eliminating recurring manual errors.<br />
+                • Partnered with Engineering and CX teams to establish the technical "North Star" for asset guidelines, ensuring high-performance rendering across all customer-facing mobile and web platforms.
+              </p>
 
-          <div class="portfolio-wrapper">
-            <!-- <h3>Generative AI works</h3> -->
-            <h4>
-              TOOLS:
+              <h3>2D & Video Content Creator</h3>
+              <p>
+                •Recognized as a top performer, I moved beyond content creation to focus on the scalability of Amazon’s global product detail pages.</br>
+                •Automation Engineering: Developed and implemented Adobe After Effects (AE scripts) and Photoshop action scripts, achieving a 2x increase in workflow efficiency.</br>
+                •Global Standardization: Built and standardized production pipelines for teams in India, Romania, and China, ensuring that creative output remained consistent and scalable across diverse international marketplaces.
+              </p>
+            </div>
+
+            <div class="card">
+              <img src="images/sr-logo.png" alt="amazon-logo" />
+              <h3>Independent Designer</h3>
+              <p>
+                • Created branding, UI/UX systems, and motion design campaigns
+                for diverse clients in e-commerce and gaming.<br />
+                • Produced and directed visually compelling advertisements and
+                short-films, focusing on digital storytelling and user
+                engagement.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills">
+          <h2>Expertise & Skills</h2>
+
+          <h4>
+              Gen AI Tools:
               <a href="https://cloud.comfy.org/" target="_blank">ComfyUI</a> -
               <a href="https://n8n.io/" target="_blank">n8n</a> -
               <a href="https://ollama.com/" target="_blank">Ollama</a> -
@@ -135,225 +260,452 @@
               <a href="https://lumalabs.ai/" target="_blank">Luma</a> -
               <a href="https://runwayml.com/" target="_blank">Runway</a>
               <br />
-              MODELS: Stable diffusion, Flux, Qwen, Zimage, Wan, Ltxv, Kling, Gork, Veo, Sora, Ray
+              AI Practice models: Stable diffusion, Flux, Qwen, Zimage, Wan, Ltxv, Kling, Gork, Veo, Sora
             </h4>
+<!-- Skills Bars -->
+          <div class="skills-container reveal-trigger" style="margin-top: 50px">
             
-            <div class="scroller-inner">
-              <button class="arrow left">&#10094;</button>
-              <div class="portfolio-scroller">
-                <div class="portfolio-container">
-                  <!-- general comfyui works -->
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/background-removal-basic.png"
-                    alt="background-removal-basic"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Live potrait - expression editor.png"
-                    alt="Live potrait - expression editor"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-image.png"
-                    alt="Live-potrait-image"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-video.png"
-                    alt="Live-potrait-video"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Pose control-comfydoc.png"
-                    alt="pose-control"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/subject multiple angles.png"
-                    alt="subject multiple angles"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Text to Audio.png"
-                    alt="text to audio"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/general-workflows/Upscale-basic-workflow.png"
-                    alt="Upscale-basic-workflow"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-Controlnet-Canny.png"
-                    alt="SD15-Controlnet-Canny"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-Controlnet-Depth.png"
-                    alt="SD15-Controlnet-Depth"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-Controlnet-Pose.png"
-                    alt="SD15-Controlnet-Pose"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-CSV text-input-textimg-to-img.png"
-                    alt="SD15-CSV text-input-textimg-to-img"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-Text to Image.png"
-                    alt="SD15-Text to Image"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-text-to-image.png"
-                    alt="SD15-text-to-image"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/SD15-inpainting-basic.png"
-                    alt="SD15-text-to-image"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Flux-image-edit.png"
-                    alt="Flux-image-edit"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Flux1 - inpaint.png"
-                    alt="Flux-inpaint"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/flux2 klien - texture transfer.png"
-                    alt="Flux klien"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/sr-image edit-qwen - cloud.png"
-                    alt="Qwen"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Z-image-guff-text-to-image-fashion.png"
-                    alt="Z-image-guff-text-to-image-fashion"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Z-image-Lora-only-model-text-to-image-fashion1.png"
-                    alt="Z-image-Lora-only-model-text-to-image-fashion1"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion.png"
-                    alt="Z-image-text-to-image-fashion"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion1.png"
-                    alt="Z-image-text-to-image-fashion1"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Z-image-text-to-image.png"
-                    alt="Z-image-text-to-image"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Ltxv - text to webp.png"
-                    alt="Ltxv"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Wan-text to video.png"
-                    alt="Wan-text to video"
-                  />
-                  <img
-                    src="images/comfyui-workflow-snaps/Wan2.1 -tex_img_to_video.png"
-                    alt="Wan-text-image to video"
-                  />
+            <div class="skill-column">
+              <h3>Technical Proficiency</h3>
+
+              <div class="skill-items-grid">
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/comfyui.png" alt="comfyui">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>ComfyUI - 2D, Video & 3D </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/github.png" alt="github">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>GitHub - Version Control </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/python.png" alt="python">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Python - Scripting & Automation </span>
+                      <span>96%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 96%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/js.png" alt="js">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>JavaScript - Scripting </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/html.png" alt="html">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>HTML - Scripting </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/css.png" alt="css">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>CSS - Styling </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/aws.png" alt="aws">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>AWS - Cloud Computing </span>
+                      <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 85%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/chatgpt.png" alt="chatgpt">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>ChatGPT </span>
+                      <span>98%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 98%"></div>
+                    </div>
+                  </div>
+                </div>
+                 <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/figma.png" alt="figma">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Figma </span>
+                      <span>96%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 96%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/asana.png" alt="asana">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Asana </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/tableau.png" alt="tableau">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Tableau </span>
+                      <span>97%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 97%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/ftrack.png" alt="ftrack">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Ftrack </span>
+                      <span>96%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 96%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/flameshot.png" alt="flameshot">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Flameshot </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/creative-cloud.png" alt="creative-cloud">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Creative Cloud </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+                 
+              </div>
+            </div>
+
+            <div class="skill-column">
+              <h3>Specialized Production</h3>
+
+              <div class="skill-items-grid">
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/photoshop.png" alt="photoshop">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Photoshop </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/illustrator.png" alt="illustrator">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Illustrator </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/indesign.png" alt="indesign">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe InDesign </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/photoshop-lightroom.png" alt="photoshop-lightroom">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Photoshop Lightroom </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/after-effects.png" alt="after-effects">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe After Effects </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/premiere-pro.png" alt="premiere-pro">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Premiere Pro </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/adobe-audition.png" alt="adobe-audition">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Audition </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/media-encoder.png" alt="media-encoder">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Media Encoder </span>
+                      <span>99%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 99%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/maya.png" alt="maya">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Autodesk Maya </span>
+                      <span>98%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 98%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/blender.png" alt="blender">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Blender </span>
+                      <span>92%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 92%"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/unreal.png" alt="unreal">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Unreal Engine </span>
+                      <span>93%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 93%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/ZBrush_icon.svg" alt="zbrush">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>ZBrush </span>
+                      <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 95%"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/painter.svg" alt="painter">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Substance Painter </span>
+                      <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 100%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="skill-icon">
+                    <img src="icons/adobe-express.png" alt="adobe-express">
+                  </div>
+                  <div class="skill-content">
+                    <div class="skill-info">
+                      <span>Adobe Express </span>
+                      <span>97%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-fill" style="--w: 97%"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button class="arrow right">&#10095;</button>
-            </div>
-          </div>
-          <div class="gen-ai-video-container">
-            <h3>Generative AI Pose & Motion Control Work</h3>
-            <video width="auto" controls autoplay muted playsinline>
-              <source src="videos/SR_pose_output_1.mp4" type="video/mp4">
-            </video>
-          </div>
-        </section>
-
-        <section id="Project">
-          <h2>Projects</h2>
-
-          <div class="projects-grid">
-            
-           <div class="project-embed-container">
-              <iframe
-                src="https://www.behance.net/embed/project/243953407?ilo0=1"
-                allowfullscreen
-                lazyload
-                scrolling="no"
-                frameborder="0"
-                allow="clipboard-write"
-                refererPolicy="strict-origin-when-cross-origin"
-              >
-              </iframe>
-              <h4>Gen AI - Video works</h4>
-            </div>
-
-            <div class="project-embed-container">
-              <iframe
-                src="https://www.behance.net/embed/project/57088535?ilo0=1"
-                allowfullscreen
-                lazyload
-                scrolling="no"
-                frameborder="0"
-                allow="clipboard-write"
-                refererPolicy="strict-origin-when-cross-origin"
-              >
-              </iframe>
-              <h4>Nike Ad Campaign</h4>
-            </div>
-            <div class="project-embed-container">
-              <iframe src="https://www.behance.net/embed/project/243863371?ilo0=1" 
-               allowfullscreen 
-               lazyload 
-               scrolling="no"
-               frameborder="0" 
-               allow="clipboard-write" 
-               refererPolicy="strict-origin-when-cross-origin">
-              </iframe>
-               <h4>Prime day Ad film</h4>
-            </div>
-             <div class="project-embed-container">
-              <iframe
-                src="https://www.behance.net/embed/project/243864495?ilo0=1"
-                allowfullscreen
-                lazyload
-                scrolling="no"
-                frameborder="0"
-                allow="clipboard-write"
-                refererPolicy="strict-origin-when-cross-origin"
-              >
-              </iframe>
-              <h4>Animation & 2D Rigging</h4>
-            </div>
-            <div class="project-embed-container">
-              <iframe
-                src="https://www.behance.net/embed/project/243863859?ilo0=1"
-                allowfullscreen
-                lazyload
-                scrolling="no"
-                frameborder="0"
-                allow="clipboard-write"
-                refererPolicy="strict-origin-when-cross-origin"
-              ></iframe>
-               <h4>Motion graphics & design</h4>
-            </div>
-            <div class="project-embed-container">
-              <iframe
-                src="https://www.behance.net/embed/project/243865571?ilo0=1"
-                allowfullscreen
-                lazyload
-                scrolling="no"
-                frameborder="0"
-                allow="clipboard-write"
-                refererPolicy="strict-origin-when-cross-origin"
-              >
-              </iframe>
-               <h4>VFX & CGI</h4>
             </div>
           </div>
         </section>
 
         <section id="portfolio">
-          <h2>Portfolio Design Works</h2>
+          <h2>Design Archive</h2>
+          <h4>A curated selection of earlier work that shaped my design approach.</h4>
 
           <div class="portfolio-wrapper">
             <h3>2D & Web Design works</h3>
             <h4>Tools: Adobe Creative suite applications & Figma</h4>
+            
 
             <div class="scroller-inner">
               <button class="arrow left">&#10094;</button>
@@ -419,7 +771,9 @@
                   <img src="images/previous-works/web-works/app-ui-design.png" />
                   <img src="images/previous-works/web-works/web-ui-coded.png" />
                   <img src="images/previous-works/web-works/web-ui-design.png" />
+                
                 </div>
+                <button class="view-all-btn">View All</button>
               </div>
               <button class="arrow right">&#10095;</button>
             </div>
@@ -441,537 +795,82 @@
                   <iframe src="https://www.youtube.com/embed/ZawZqqkNBlE?si=U3Fdn0qT-u5sxpYA&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <iframe src="https://www.youtube.com/embed/18ofs9Gq0sY?si=AmuyG6MSCc3h93Y3&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
+                <button class="view-all-btn">View All</button>
+              </div>
+              <button class="arrow right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="portfolio-wrapper">
+            <h3>Featured Projects</h3>
+            <div class="scroller-inner">
+              <button class="arrow left">&#10094;</button>
+              <div class="portfolio-scroller">
+                <div class="portfolio-container">
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/243953407?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                  </div>
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/57088535?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                   
+                  </div>
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/243863371?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                    
+                  </div>
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/243864495?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                    
+                  </div>
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/243863859?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                    
+                  </div>
+                  <div class="project-embed-container">
+                    <iframe src="https://www.behance.net/embed/project/243865571?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                    
+                  </div>
+                </div>
+                <button class="view-all-btn">View All</button>
               </div>
               <button class="arrow right">&#10095;</button>
             </div>
           </div>
         </section>
 
-        <section id="skills">
-          <h2>Expertise & Skills</h2>
-<!-- Skills Bars -->
-          <div class="skills-container reveal-trigger" style="margin-top: 50px">
-            
-            <div class="skill-column">
-              <h3>Technical Proficiency</h3>
-
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/comfyui.png" alt="comfyui">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>ComfyUI - 2D, Video & 3D </span>
-                    <span>95%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 95%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/github.png" alt="github">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>GitHub - Version Control </span>
-                    <span>95%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 95%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/python.png" alt="python">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Python - Scripting & Automation </span>
-                    <span>96%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 96%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/js.png" alt="js">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>JavaScript - Scripting </span>
-                    <span>95%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 95%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/html.png" alt="html">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>HTML - Scripting </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/css.png" alt="css">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>CSS - Styling </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/aws.png" alt="aws">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>AWS - Cloud Computing </span>
-                    <span>85%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 85%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/chatgpt.png" alt="chatgpt">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>ChatGPT </span>
-                    <span>98%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 98%"></div>
-                  </div>
-                </div>
-              </div>
-               <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/figma.png" alt="figma">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Figma </span>
-                    <span>96%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 96%"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/asana.png" alt="asana">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Asana </span>
-                    <span>95%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 95%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/tableau.png" alt="tableau">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Tableau </span>
-                    <span>97%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 97%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/ftrack.png" alt="ftrack">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Ftrack </span>
-                    <span>96%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 96%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/flameshot.png" alt="flameshot">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Flameshot </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="skill-column">
-              <h3>Specialized Production</h3>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/photoshop.png" alt="photoshop">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Photoshop </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/illustrator.png" alt="illustrator">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Illustrator </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/indesign.png" alt="indesign">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe InDesign </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/photoshop-lightroom.png" alt="photoshop-lightroom">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Photoshop Lightroom </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-          <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/after-effects.png" alt="after-effects">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe After Effects </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/premiere-pro.png" alt="premiere-pro">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Premiere Pro </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/adobe-audition.png" alt="adobe-audition">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Audition </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/media-encoder.png" alt="media-encoder">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Adobe Media Encoder </span>
-                    <span>99%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 99%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/maya.png" alt="maya">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Autodesk Maya </span>
-                    <span>98%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 98%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/blender.png" alt="blender">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Blender </span>
-                    <span>92%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 92%"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/unreal.png" alt="unreal">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Unreal Engine </span>
-                    <span>93%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 93%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/ZBrush_icon.svg" alt="zbrush">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>ZBrush </span>
-                    <span>95%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 95%"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-item">
-                <div class="skill-icon">
-                  <img src="icons/painter.svg" alt="painter">
-                </div>
-                <div class="skill-content">
-                  <div class="skill-info">
-                    <span>Substance Painter </span>
-                    <span>100%</span>
-                  </div>
-                  <div class="skill-bar">
-                    <div class="skill-fill" style="--w: 100%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>          
-        </section>
-
-        <section id="journey">
-          <h2>MY JOURNEY</h2>
-          <div class="grid">
-            <div class="card">
-              <img src="images/amazon-logo.png" alt="amazon-logo" />
-              <h3>Subject Matter Expert | Global Quality & Automation</h3>
-              <p>
-                 • As a global lead, I transformed manual QA workflows into scalable, automated ecosystems. I architected the Self-Service QA Tool (SQT), partnering with SDEs to move from manual reviews to an 80% automated publication model, resulting in $1M annual OPEX savings and a 75% reduction in QA costs.</br>
-                 • Designed and deployed global training frameworks and standardized SOPs that achieved a 35% defect reduction and delivered $18M in annual cost avoidance.</br>
-                 • Directed the pre and post-publication quality for high-visibility platforms including 3D/AR/VR, Virtual Try-On, and Amazon Beyond, resolving complex latency and visual compression issues across iOS, Android, and Web.</br>
-                 • Led cross-functional initiatives with SDE and CX teams to ensure technical feasibility matched creative excellence at a global scale.
-              </p>
-              <h3>Quality Assurance Lead | Gloabl Operations</h3>
-              <p>
-                 • I provided operational leadership and quality oversight for a global workforce of 300+ professionals across India and the Philippines. My focus was on scaling the production of immersive assets while maintaining rigorous Amazon standards.</br>
-                 • Orchestrated the onboarding and technical readiness of 50+ new associates, ensuring a 100% production-ready pipeline.</br>
-                 • Identified inefficiencies in manual review cycles and spearheaded a 3D Productivity Optimization Program. By directing a UI/UX redesign of internal tools and integrating workflow automation, I increased QA productivity by 10% and cut review times by 30%.</br>
-                 • Owned global SIM ticketing and defect reporting, managing high-volume triage and resource allocation to maintain strict SLA adherence for Amazon’s 3D shopping experiences.
-              </p>
-              <h3>3D Content Creator</h3>
-              <p>
-                • In this role, I balanced high-fidelity 3D production with technical tool development. I was responsible for delivering production-ready assets for View in 3D and Amazon Beyond while simultaneously optimizing the pipelines they lived in.</br>
-                • Leveraged PyMEL (Python) to build custom integrations between Maya, Substance Painter, and Photoshop, increasing team efficiency by 10% and eliminating recurring manual errors.</br>
-                • Partnered with Engineering and CX teams to establish the technical "North Star" for asset guidelines, ensuring high-performance rendering across all customer-facing mobile and web platforms.
-              </p>
-
-              <h3>2D & Video Content Creator</h3>
-              <p>
-                •Recognized as a top performer, I moved beyond content creation to focus on the scalability of Amazon’s global product detail pages.</br>
-                •Automation Engineering: Developed and implemented Adobe After Effects (AE scripts) and Photoshop action scripts, achieving a 2x increase in workflow efficiency.</br>
-                •Global Standardization: Built and standardized production pipelines for teams in India, Romania, and China, ensuring that creative output remained consistent and scalable across diverse international marketplaces.
-              </p>
-            </div>
-
-            <div class="card">
-              <img src="images/sr-logo.png" alt="amazon-logo" />
-              <h3>Independent Designer</h3>
-              <p>
-                • Created branding, UI/UX systems, and motion design campaigns
-                for diverse clients in e-commerce and gaming.<br />
-                • Produced and directed visually compelling advertisements and
-                short-form narratives, focusing on digital storytelling and user
-                engagement.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="education">
-          <h2>Educational Qualifications</h2>
-          <div class="education-container">
+        <section id="edu-certificates">
+          <h2>Education & Certifications</h2>
+          <div class="edu-cert-container">
             <div class="education-item">
-              <img
-                src="images/jntuk-logo.png"
-                alt="jawaharlal-nehru-technological-university-kakinada"
-              />
+              <img src="images/jntuk-logo.png" alt="jntu-logo" />
               <h3>Jawaharlal Nehru Technological University</h3>
               <h4>Kakinada, Andhra Pradesh, India</h4>
-              <p>
-                • Bachelor of Electronics and communication engineering <br />
-                • 2010 - 2014
-              </p>
+              <p>• Bachelor of Electronics and communication engineering <br /> • 2010 - 2014</p>
             </div>
             <div class="education-item">
-              <img
-                src="images/Icat_logo.png"
-                alt="jawaharlal-nehru-technological-university-kakinada"
-              />
+              <img src="images/Icat_logo.png" alt="icat-logo" />
               <h3>ICAT - Design and Media College</h3>
               <h4>Bengaluru, Karnataka, India</h4>
-              <p>
-                • Post Graduate Diploma in Multimedia technologies <br />
-                • 2014 - 2015
-              </p>
+              <p>• Post Graduate Diploma in Multimedia technologies <br /> • 2014 - 2015</p>
             </div>
-          </div>
-        </section>
-
-        <section id="certificates">
-          <h2>Certifications</h2>
-          <div class="cert-grid">
             <div class="cert-card">
-              <a
-                href="certificates/Google_UX_Design_Coursera 7BP7JEOKWLV6.pdf"
-                target="_blank"
-              >
-                <img
-                  src="certificates/google-ux-design-professional-certificate-v-3.png"
-                  alt="Google UX Design certificate"
-                />
+              <a href="certificates/Google_UX_Design_Coursera 7BP7JEOKWLV6.pdf" target="_blank">
+                <img src="certificates/google-ux-design-professional-certificate-v-3.png" alt="Google UX" />
                 <h3>UX Design Professional Certificate</h3>
                 <h4>View Certificate</h4>
               </a>
             </div>
             <div class="cert-card">
-              <a
-                href="certificates/Adobe_GenAI_Content_creation_Coursera 2G0ZU16JFPR5.pdf"
-                target="_blank"
-              >
-                <img
-                  src="certificates/adobe-genai.png"
-                  alt="Adobe Gen AI certificate"
-                />
+              <a href="certificates/Adobe_GenAI_Content_creation_Coursera 2G0ZU16JFPR5.pdf" target="_blank">
+                <img src="certificates/adobe-genai.png" alt="Adobe Gen AI" />
                 <h3>Generative AI in Adobe Creative Cloud</h3>
                 <h4>View Certificate</h4>
               </a>
             </div>
-
             <div class="cert-card">
-              <a
-                href="certificates/Google_Project_Management_Coursera ISI5YF8CP0EE.pdf"
-                target="_blank"
-              >
-                <img
-                  src="certificates/google-project-management-professional-certificate-.1.png"
-                  alt="Google Project Management certificate"
-                />
-                <h3>
-                  Project Management <br />
-                  Professional Certificate
-                </h3>
+              <a href="certificates/Google_Project_Management_Coursera ISI5YF8CP0EE.pdf" target="_blank">
+                <img src="certificates/google-project-management-professional-certificate-.1.png" alt="Google PM" />
+                <h3>Project Management Professional Certificate</h3>
                 <h4>View Certificate</h4>
               </a>
             </div>
@@ -1043,6 +942,7 @@
 
       <script src="js/script.js"></script>
       <script src="js/portfolio.js"></script>
+      <script src="js/gen-ai-tabs.js"></script>
     </div>
   </body>
 </html>

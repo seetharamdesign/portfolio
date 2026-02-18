@@ -1,124 +1,120 @@
-#education,
-#certificates {
-  padding: 10px 0;
-  margin-top: 40px;
+#edu-certificates {
+  margin: 100px 0;
 }
 
-#education h3,
-h4 {
-  text-align: left;
-  margin: 0;
-  padding: 0;
+#edu-certificates h2 {
+  margin-bottom: 50px;
 }
 
-.education-container {
-  padding: 20px;
+.edu-cert-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
   justify-content: center;
   gap: 20px;
-  /* background-color: red; */
+  width: 100%;
 }
 
-@media (max-width: 600px) {
-  #education {
-    flex-direction: column;
-  }
-}
-
-.education-item {
+.education-item,
+.cert-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 30px;
-  border: 1px solid var(--glass-border);
+  justify-content: space-between;
+  padding: 15px;
+  /* border: 1px solid var(--glass-border); */
+  background: var(--glass-bg);
+  transition: all 0.3s ease;
+  min-height: 220px;
 }
 
 .education-item img {
+  height: 35px;
   width: auto;
-  height: 80px;
   object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.education-item h3 {
-  margin: 0;
+.cert-card img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.education-item h3,
+.cert-card h3 {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin: 5px 0;
+  text-align: center;
+  line-height: 1;
+}
+
+.education-item h4 {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .education-item p {
-  margin: 0;
-  text-align: left;
-}
-
-.cert-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.cert-card {
-  /* max-width: 300px; */
-  display: flex;
-  padding: 20px;
-  border-radius: 0;
-  border: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   text-align: center;
+  line-height: 1.25;
 }
 
 .cert-card a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.cert-card:hover {
-  transform: scale(1.05);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 10px 20px -10px var(--cyan-glow-mid);
-}
-
-.cert-card img {
+  height: 100%;
   width: 100%;
-  height: 200px;
-  object-fit: contain;
-  min-width: 300px;
-}
-
-.cert-card h3 {
-  font-size: 16px;
-  color: var(--text-secondary);
+  text-decoration: none;
+  justify-content: space-between;
 }
 
 .cert-card h4 {
-  display: inline-block;
-  width: fit-content;
-  text-align: center;
-  font-size: 12px;
-  padding: 4px 24px;
-  border-radius: 0;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 6px 16px;
+  /* border: 1px solid var(--accent-cyan); */
+  /* background: var(--cyan-glow-low); */
+  color: var(--text-secondary);
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
-  border: 1px solid var(--accent-cyan);
-  background: var(--cyan-glow-low);
-  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.cert-card:hover,
+.education-item:hover {
+  transform: translateY(-5px);
 }
 
 .cert-card:hover h4 {
-  background: var(--accent-cyan);
-  color: var(--bg-dark);
-  box-shadow: 0 0 20px var(--cyan-glow-strong);
+  text-decoration: underline;
+  color: var(--accent-cyan);
 }
 
-.hidden {
-  display: none;
+@media (max-width: 1024px) {
+  .edu-cert-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .education-item,
+  .cert-card {
+    flex: none;
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-item,
+  .cert-card {
+    width: 100%;
+    max-width: none;
+  }
 }

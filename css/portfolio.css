@@ -39,8 +39,7 @@
 }
 
 #generative-ai {
-  padding: 10px 0;
-  margin-top: 40px;
+  margin-top: 100px;
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -68,16 +67,20 @@
 }
 
 #portfolio {
-  /* background-color: red; */
-  padding: 10px 0;
-  margin-top: 40px;
+  margin-top: 100px;
   border-bottom: 1px solid var(--glass-border);
 }
 
-#portfolio h3 {
-  color: var(--accent-cyan);
+#portfolio h2 {
+  margin-bottom: 10px;
+}
+
+#portfolio > h4 {
   text-align: center;
-  margin: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 0;
+  margin-bottom: 50px; /* Big gap before first wrapper */
 }
 
 .portfolio-scroller {
@@ -95,9 +98,38 @@
   align-self: stretch;
 }
 
+.portfolio-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 80px; /* Large vertical gap between scroller sections */
+}
+
+.portfolio-wrapper:last-of-type {
+  margin-bottom: 0;
+}
+
+.portfolio-wrapper h3 {
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+}
+
+.portfolio-wrapper h4 {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0;
+  margin-bottom: 25px; /* Spacing before the scroller */
+}
+
 .portfolio-container {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   will-change: transform;
 }
 
@@ -105,26 +137,50 @@
   pointer-events: auto;
   cursor: pointer;
   user-select: none;
-  height: 200px;
+  height: 220px;
   border-radius: 0;
   transition: transform 0.3s ease;
 }
 
 .portfolio-container img:hover {
-  transform: scale(1.08);
+  transform: scale(1.05); /* Reduced scale for subtler effect */
 }
 
 .portfolio-container iframe {
   pointer-events: auto;
   cursor: pointer;
   user-select: none;
-  height: 200px;
+  height: 220px;
+  width: 100%;
   border-radius: 0;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
-.portfolio-container iframe:hover {
-  transform: scale(1.08);
+.portfolio-container .project-embed-container {
+  min-width: 400px;
+  max-width: 450px;
+  height: 220px; /* Standardized height */
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-container .project-embed-container:hover {
+  background: var(--white-alpha-05);
+}
+
+.portfolio-container .project-embed-container h4 {
+  padding: 8px;
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--bg-card-alpha-60); /* Overlay style to save height */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /* ===== ARROW BUTTONS ===== */
@@ -153,8 +209,8 @@
 }
 
 .arrow:hover {
-  background: var(--cyan-alpha-80);
-  color: var(--black);
+  /* background: var(--cyan-alpha-80); */
+  color: var(--accent-cyan);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -241,11 +297,108 @@
 
   /* Scroller spacing on mobile to avoid arrow overlap */
   .portfolio-scroller {
-    width: 80% !important;
-    margin: 2% 10% !important;
+    width: 85% !important;
+    margin: 2% 7.5% !important;
   }
   .arrow {
     padding: 5px 8px !important;
     font-size: 20px !important;
+  }
+
+  .portfolio-wrapper h3 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .portfolio-wrapper h4 {
+    font-size: 0.75rem;
+  }
+
+  .portfolio-container img,
+  .portfolio-container iframe {
+    height: 160px;
+  }
+
+  .portfolio-container .project-embed-container {
+    min-width: 280px;
+    height: 160px;
+  }
+}
+
+/* ===== VIEW ALL BUTTON ===== */
+.view-all-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 20px auto;
+  padding: 8px 24px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--text-secondary);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.view-all-btn:hover {
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+}
+
+/* ===== GRID MODE STYLES ===== */
+.portfolio-wrapper.grid-mode .scroller-inner .arrow {
+  display: none;
+}
+
+.portfolio-wrapper.grid-mode .portfolio-scroller {
+  overflow: visible;
+  height: auto;
+  cursor: default;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.portfolio-wrapper.grid-mode .portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  transform: none !important;
+  width: 100%;
+}
+
+.portfolio-wrapper.grid-mode .portfolio-container img,
+.portfolio-wrapper.grid-mode .portfolio-container .project-embed-container,
+.portfolio-wrapper.grid-mode .portfolio-container iframe {
+  width: 100%;
+  height: 120px !important;
+  max-width: none;
+  min-width: 0;
+}
+
+/* Hide clones in grid mode */
+.portfolio-wrapper.grid-mode .clone {
+  display: none !important;
+}
+
+/* Adjust heading buttons */
+.portfolio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Small screens adjustments for grid */
+@media (max-width: 768px) {
+  .portfolio-wrapper.grid-mode .portfolio-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  .portfolio-wrapper.grid-mode .portfolio-container img,
+  .portfolio-wrapper.grid-mode .portfolio-container .project-embed-container,
+  .portfolio-wrapper.grid-mode .portfolio-container iframe {
+    height: 100px !important;
   }
 }

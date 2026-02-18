@@ -11,22 +11,38 @@ function initScrollers() {
     const scroller = wrapper.querySelector(".portfolio-scroller");
     const left = wrapper.querySelector(".arrow.left");
     const right = wrapper.querySelector(".arrow.right");
+    const viewAllBtn = wrapper.querySelector(".view-all-btn");
 
     if (!track || !scroller) return;
 
     // 1. Double the content for seamless looping - only once
     if (!wrapper.dataset.initialized) {
-      track.innerHTML += track.innerHTML;
+      const originalContent = track.innerHTML;
+      const cloneContainer = document.createElement("div");
+      cloneContainer.innerHTML = originalContent;
+
+      // Mark original items
+      Array.from(track.children).forEach((child) =>
+        child.classList.add("original-item"),
+      );
+
+      // Add clones and mark them
+      Array.from(cloneContainer.children).forEach((clone) => {
+        clone.classList.add("clone");
+        track.appendChild(clone);
+      });
+
       wrapper.dataset.initialized = "true";
     }
 
     let scrollX = 0;
     let localPaused = false;
+    let gridMode = false;
     let dragging = false;
     let startX = 0;
 
     function loop() {
-      if (!globalPaused && !localPaused && !dragging) {
+      if (!globalPaused && !localPaused && !dragging && !gridMode) {
         scrollX += 0.8;
         if (scrollX >= track.scrollWidth / 2) {
           scrollX = 0;
@@ -38,12 +54,27 @@ function initScrollers() {
 
     requestAnimationFrame(loop);
 
+    // View All Toggle
+    if (viewAllBtn) {
+      viewAllBtn.addEventListener("click", () => {
+        gridMode = !gridMode;
+        wrapper.classList.toggle("grid-mode");
+        viewAllBtn.textContent = gridMode ? "Close Grid" : "View All";
+
+        if (!gridMode) {
+          // Reset transform when exiting grid mode
+          track.style.transform = `translateX(${-scrollX}px)`;
+        }
+      });
+    }
+
     // Hover pause
     scroller.addEventListener("mouseenter", () => (localPaused = true));
     scroller.addEventListener("mouseleave", () => (localPaused = false));
 
     // Drag scroll
     scroller.addEventListener("mousedown", (e) => {
+      if (gridMode) return;
       dragging = true;
       startX = e.pageX + scrollX;
       scroller.style.cursor = "grabbing";
@@ -55,7 +86,7 @@ function initScrollers() {
     });
 
     scroller.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
+      if (!dragging || gridMode) return;
       scrollX = startX - e.pageX;
 
       const limit = track.scrollWidth / 2;
@@ -68,6 +99,7 @@ function initScrollers() {
     // Arrow controls
     if (left) {
       left.addEventListener("click", () => {
+        if (gridMode) return;
         scrollX -= 300;
         const limit = track.scrollWidth / 2;
         if (scrollX < 0) scrollX += limit;
@@ -76,6 +108,7 @@ function initScrollers() {
     }
     if (right) {
       right.addEventListener("click", () => {
+        if (gridMode) return;
         scrollX += 300;
         const limit = track.scrollWidth / 2;
         if (scrollX >= limit) scrollX -= limit;

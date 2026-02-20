@@ -12,26 +12,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/portfolio.css" />
-    <link rel="stylesheet" href="css/education.css" />
-    <link rel="stylesheet" href="css/genaiworks.css" />
   </head>
   <body>
     <!-- Navigation menu-->
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="#introduction" class="logo">
-          <img src="images/sr-logo.png" alt="Seetha Ram Logo" />
-        </a>
+        <div class="nav-toggle" id="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <ul class="nav-links">
           <li><a href="#introduction">Home</a></li>
           <li><a href="#generative-ai-works">GenAI</a></li>
           <li><a href="#journey">Journey</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#edu-certificates">Certifications</a></li>
           <li><a href="#portfolio">Design</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -40,20 +40,39 @@
 
     <div class="main-wrapper" id="main-wrapper">
       <main>
-
         <section id="introduction">
+          <a href="#introduction" class="intro-logo">
+            <img src="images/sr-logo.png" alt="Seetha Ram Logo" />
+          </a>
           <div class="hero-section">
             <div class="hero-section-left">
-              <h1>Hello I'm Seetha Ram</h1>
-              <h2>Multimedia Specialist</h2>
+              <h1>
+                <span class="reveal-text-mask">
+                  <span class="reveal-text-item">Hello I'm Seetha Ram</span>
+                </span>
+              </h1>
+              <h2>
+                <span class="reveal-text-mask">
+                  <span class="reveal-text-item">Multimedia Specialist</span>
+                </span>
+              </h2>
               <p>
-                Designing technical systems that free creativity to scale.
-                <br />
-                10 Years of Content Innovation | Specialized in Gen AI & Automation
+                <span class="hero-tag"
+                  >Designing technical systems that free creativity to
+                  scale.<br /></span
+                >
+                10 Years of content innovation | Specializing in Gen AI &
+                Automation
               </p>
               <div class="hero-links">
-                <a href="https://github.com/seetharamdesign/myComfyUI" target="_blank">[Github]</a>
-                <a href="https://drive.google.com/" target="_blank">[View CV]</a>
+                <a
+                  href="https://github.com/seetharamdesign/myComfyUI"
+                  target="_blank"
+                  >[Github]</a
+                >
+                <a href="https://drive.google.com/" target="_blank"
+                  >[View CV]</a
+                >
               </div>
             </div>
 
@@ -64,432 +83,1000 @@
         </section>
 
         <section id="myExpertise">
-          <h2>My Expertise</h2>
+          <h2><span class="heading-gradient">My Expertise</span></h2>
           <div class="myExpertise-container">
-            <div class="myExpertise-item">
+            <div class="myExpertise-item reveal-trigger">
               <h4>Turning Latent Space to Pixels</h4>
-              <p>Expertly navigating AI models to generate high-fidelity 2D, 3D, and Video assets.</p>
+              <p>
+                Expertly navigating AI models to generate high-fidelity 2D, 3D,
+                and Video assets.
+              </p>
             </div>
 
-            <div class="myExpertise-item">
+            <div class="myExpertise-item reveal-trigger">
               <h4>Generative AI & Automation</h4>
-              <p>Building Python-driven workflows and ComfyUI pipelines to scale creativity.</p>
+              <p>
+                Building Python-driven workflows and ComfyUI pipelines to scale
+                creativity.
+              </p>
             </div>
 
-            <div class="myExpertise-item">
+            <div class="myExpertise-item reveal-trigger">
               <h4>Proven Business Impact</h4>
-              <p>Turning technical SME expertise into optimized, high-volume production.</p>
+              <p>
+                Turning technical SME expertise into optimized, high-volume
+                production.
+              </p>
             </div>
 
-            <div class="myExpertise-item">  
+            <div class="myExpertise-item reveal-trigger">
               <h4>Leadership & Quality Assurance</h4>
-              <p>Leading and mentoring teams to deliver high-quality creative solutions.</p>
+              <p>
+                Leading and mentoring teams to deliver high-quality creative
+                solutions.
+              </p>
             </div>
           </div>
         </section>
-       
+
         <section id="generative-ai-works">
-          <h2>Generative AI Content Creation</h2>
+          <h2><span class="heading-gradient">Generative AI Content Creation</span></h2>
 
-          <div class="gen-ai-works-container">
+          <div class="gen-ai-sticky-tabs">
             <div class="tab-button-group">
-              <button class="tab-btn active" data-tab="works-2d-content">2D </button>
-              <button class="tab-btn" data-tab="works-video-content">Video  </button>
-              <button class="tab-btn" data-tab="works-3d-content">3D </button>
-              <button class="tab-btn" data-tab="works-audio-content">Audio </button>
-            </div>
-
-            <div class="tab-content-container">
-              <div id="works-2d-content" class="tab-panel active">
-                <div class="works-gallery">
-
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Flux-image-edit.png" alt="Flux-image-edit" />
-                    <div class="work-overlay"><span>Flux Image Edit</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Flux-image-edit_out.png" alt="Flux-image-edit-out" />
-                    <div class="work-overlay"><span>Flux Image Edit Out</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Flux1 - inpaint.png" alt="Flux1 - inpaint" />
-                    <div class="work-overlay"><span>Flux Inpaint</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/flux2 klien - texture transfer.png" alt="flux2 klien - texture transfer" />
-                    <div class="work-overlay"><span>Flux Texture Transfer</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/qwen - cloud.png" alt="qwen - cloud" />
-                    <div class="work-overlay"><span>Qwen Cloud</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Qwen-image edit workflow.png" alt="qwen-image-edit-workflow" />
-                    <div class="work-overlay"><span>Qwen Image Edit Workflow</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Qwen-imageEdit.png" alt="qwen-image-edit" />
-                    <div class="work-overlay"><span>Qwen Image Edit</span></div>
-                  </div>
-                  
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Z-image-text-to-image.png" alt="Z-image-text-to-image" />
-                    <div class="work-overlay"><span>Z Image Text to Image</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion1.png" alt="Z-image-text-to-image-fashion1" />
-                    <div class="work-overlay"><span>Z Image Text to Image Fashion</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion.png" alt="Z-image-text-to-image-fashion" />
-                    <div class="work-overlay"><span>Z Image Text to Image Fashion</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Z-image-Lora-only-model-text-to-image-fashion1.png" alt="Z-image-Lora-only-model-text-to-image-fashion1" />
-                    <div class="work-overlay"><span>Z Image Lora Only Model Text to Image Fashion</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/Z-image-guff-text-to-image-fashion.png" alt="Z-image-guff-text-to-image-fashion" />
-                    <div class="work-overlay"><span>Z Image Guff Text to Image Fashion</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-Controlnet-Canny.png" alt="SD15-Controlnet-Canny" />
-                    <div class="work-overlay"><span>SD15 Controlnet Canny</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-Controlnet-Depth.png" alt="SD15-Controlnet-Depth" />
-                    <div class="work-overlay"><span>SD15 Controlnet Depth</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-Controlnet-Pose.png" alt="SD15-Controlnet-Pose" />
-                    <div class="work-overlay"><span>SD15 Controlnet Pose</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-CSV text-input-textimg-to-img.png" alt="SD15-CSV text-input-textimg-to-img" />
-                    <div class="work-overlay"><span>SD15 CSV Text Input Textimg to Img</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-inpainting-basic.png" alt="SD15-inpainting-basic" />
-                    <div class="work-overlay"><span>SD15 Inpainting Basic</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-Text to Image.png" alt="SD15-Text to Image" />
-                    <div class="work-overlay"><span>SD15 Text to Image</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/SD15-text-to-image.png" alt="SD15-text-to-image" />
-                    <div class="work-overlay"><span>SD15 Text to Image</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/background-removal-basic.png" alt="background-removal-basic" />
-                    <div class="work-overlay"><span>Background Removal</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/Live potrait - expression editor.png" alt="Live potrait - expression editor" />
-                    <div class="work-overlay"><span>Expression Editor</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-image.png" alt="Live-potrait-image" />
-                    <div class="work-overlay"><span>Live Portrait Image</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/Live-potrait-video.png" alt="Live-potrait-video" />
-                    <div class="work-overlay"><span>Live Portrait Video</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/Pose-control-comfydoc.png" alt="pose-control" />
-                    <div class="work-overlay"><span>Pose Control</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/subject-multiple-angles.png" alt="subject multiple angles" />
-                    <div class="work-overlay"><span>Multi-Angle Subject</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-workflow-snaps/general-workflows/Upscale-basic-workflow.png" alt="Upscale-basic-workflow" />
-                    <div class="work-overlay"><span>Upscale Workflow</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/bag.png" alt="bag" />
-                    <div class="work-overlay"><span>bag</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/bottle.png" alt="bottle" />
-                    <div class="work-overlay"><span>bottle</span></div>
-                  </div>
-                <div class="work-item">
-                    <img src="images/comfyui-outputs/Flux_klien.png" alt="Flux_klien" />
-                    <div class="work-overlay"><span>Flux_klien</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/Flux_klien2.png" alt="Flux_klien2" />
-                    <div class="work-overlay"><span>Flux_klien2</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/box.png" alt="box" />
-                    <div class="work-overlay"><span>box</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/lora_t2i.png" alt="lora_t2i" />
-                    <div class="work-overlay"><span>lora_t2i</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i.png" alt="t2i" />
-                    <div class="work-overlay"><span>t2i</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_0.png" alt="t2i_0" />
-                    <div class="work-overlay"><span>t2i_0</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_1.png" alt="t2i_1" />
-                    <div class="work-overlay"><span>t2i_1</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_2.png" alt="t2i_2" />
-                    <div class="work-overlay"><span>t2i_2</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_3.png" alt="t2i_3" />
-                    <div class="work-overlay"><span>t2i_3</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_4.png" alt="t2i_4" />
-                    <div class="work-overlay"><span>t2i_4</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_5.png" alt="t2i_5" />
-                    <div class="work-overlay"><span>t2i_5</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/t2i_6.png" alt="t2i_6" />
-                    <div class="work-overlay"><span>t2i_6</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/object-transfer.png" alt="object-transfer" />
-                    <div class="work-overlay"><span>object-transfer</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/Apparel-transfer.png" alt="Apparel-transfer" />
-                    <div class="work-overlay"><span>Apparel-transfer</span></div>
-                  </div>
-                  <div class="work-item">
-                    <img src="images/comfyui-outputs/object-transfer2.png" alt="object-transfer2" />
-                    <div class="work-overlay"><span>object-transfer2</span></div>
-                  </div>
-
-                </div>
-              </div>
-
-              <div id="works-video-content" class="tab-panel">
-                <div class="works-gallery">
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Banderas flowergeneration.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Flower Generation</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/SR_pose_output_1.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Pose Generation</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/image to video1.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Image to Video</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Kling3.0_Drink water stay present.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Kling 3.0</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Kling3_drinkingWater.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Kling 3.0</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Kling3_drinkingWater2.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Kling 3.0</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Kling_3_image-to-video.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Kling 3.0</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/text to video.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Text to Video</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/text to video2.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Text to Video</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Wan_03.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Wan_03</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Wan_Fashion model.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Wan_Fashion model</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/Wan_Fashion model1.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Wan_Fashion model1</span></div>
-                  </div>
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="videos/LTX_2.0_i2v_00044_.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>LTX_2.0_i2v_00044_</span></div>
-                  </div>
-                </div>
-              </div>
-
-              <div id="works-3d-content" class="tab-panel">
-                <div class="works-gallery">
-                  <div class="work-item">
-                    <video width="auto" controls autoplay muted playsinline loop>
-                      <source src="3d/hunyuan3d.mp4" type="video/mp4">
-                    </video>
-                    <div class="work-overlay"><span>Hunyuan3D - Image to 3D</span></div>
-                  </div>
-                  
-
-                  <!-- 3D content will go here -->
-                </div>
-              </div>
-
-              <div id="works-audio-content" class="tab-panel">
-                <div class="works-gallery">
-                  <div class="work-item-audio">
-                    <audio controls>
-                      <source src="audio/Voice_assistant.mp3" type="audio/mpeg"> 
-                    </audio>
-                    <span>Voice_assistant</span>
-                  </div>
-                  <div class="work-item-audio">
-                    <audio controls>
-                      <source src="audio/cloud ace_test_find your day_.mp3" type="audio/mpeg">
-                    </audio>
-                    <span>cloud ace_test_find your day_</span>
-                  </div>
-                  <div class="work-item-audio">
-                    <audio controls>
-                      <source src="audio/offline ace_test_find your day_.mp3" type="audio/mpeg">
-                    </audio>
-                    <span>offline ace_test_find your day_</span>
-                  </div>
-                  <div class="work-item-audio">
-                    <audio controls>
-                      <source src="audio/clipfly-ai-20260129222245.wav" type="audio/mpeg">
-                    </audio>
-                    <span>Third-party-ai</span>
-                  </div>
-                  <!-- 3D content will go here -->
-                </div>
-              </div>
-
-              
+              <button class="tab-btn active" data-tab="works-2d-content">
+                2D
+              </button>
+              <button class="tab-btn" data-tab="works-video-content">
+                Video
+              </button>
+              <button class="tab-btn" data-tab="works-3d-content">3D</button>
+              <button class="tab-btn" data-tab="works-audio-content">
+                Audio
+              </button>
             </div>
           </div>
+
+          <div class="gen-ai-works-container">
+            <div class="tab-content-container" id="gen-ai-parallax-scroll">
+              <!-- 2D Section -->
+              <div id="works-2d-content" class="parallax-section">
+                <h3>2D Image Generation and Editing</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flux Image Edit</h3>
+                      <p>
+                        High-fidelity image editing using the Flux model,
+                        focusing on realistic lighting and texture preservation.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Flux-image-edit.png"
+                        alt="Flux-image-edit"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flux Image Edit Out</h3>
+                      <p>
+                        Expanding the canvas and generating contextual
+                        surroundings while maintaining original subject
+                        integrity.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Flux-image-edit_out.png"
+                        alt="Flux-image-edit-out"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flux Inpaint</h3>
+                      <p>
+                        Precision object replacement and area modification using
+                        advanced masking and inpainting techniques.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Flux1 - inpaint.png"
+                        alt="Flux1 - inpaint"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flux Texture Transfer</h3>
+                      <p>
+                        Sophisticated texture and material style transfer
+                        between diverse subjects using latent space
+                        manipulation.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/flux2 klien - texture transfer.png"
+                        alt="flux2 klien - texture transfer"
+                      />
+                    </div>
+                  </div>
+
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Qwen Cloud</h3>
+                      <p>
+                        Integration of Qwen vision-language models for
+                        intelligent image understanding and automated
+                        modification.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/qwen - cloud.png"
+                        alt="qwen - cloud"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Qwen Image Edit Workflow</h3>
+                      <p>
+                        Custom ComfyUI workflow utilizing Qwen vision models for
+                        high-precision image manipulation and contextual edits.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Qwen-image edit workflow.png"
+                        alt="qwen-image-edit-workflow"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Qwen Image Edit</h3>
+                      <p>
+                        Direct image modification using multimodal AI, allowing
+                        for intuitive text-guided visual transformations.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Qwen-imageEdit.png"
+                        alt="qwen-image-edit"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Z Image Text to Image</h3>
+                      <p>
+                        State-of-the-art text-to-image generation focusing on
+                        high aesthetic quality and prompt adherence.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Z-image-text-to-image.png"
+                        alt="Z-image-text-to-image"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Fashion Generation (Z Image)</h3>
+                      <p>
+                        Specialized fashion design and apparel generation with
+                        high-quality fabric simulation and garment structure.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion1.png"
+                        alt="Z-image-text-to-image-fashion1"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Lora Fashion Model</h3>
+                      <p>
+                        Utilizing custom LoRA models to achieve consistent
+                        fashion styles and brand-specific aesthetic signatures.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/Z-image-Lora-only-model-text-to-image-fashion1.png"
+                        alt="Z-image-Lora-only-model-text-to-image-fashion1"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>SD15 Controlnet Canny</h3>
+                      <p>
+                        Mastering structural control with Canny edge detection
+                        in Stable Diffusion 1.5 pipelines.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/SD15-Controlnet-Canny.png"
+                        alt="SD15-Controlnet-Canny"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>SD15 Controlnet Depth</h3>
+                      <p>
+                        Using depth maps for precise spatial control and
+                        3D-aware image generation.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/SD15-Controlnet-Depth.png"
+                        alt="SD15-Controlnet-Depth"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>SD15 Controlnet Pose</h3>
+                      <p>
+                        Human pose estimation and control for consistent
+                        character generation across multiple scenes.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/SD15-Controlnet-Pose.png"
+                        alt="SD15-Controlnet-Pose"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>CSV Batch Processing</h3>
+                      <p>
+                        Automated batch image generation using CSV datasets for
+                        large-scale content creation.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/SD15-CSV text-input-textimg-to-img.png"
+                        alt="SD15-CSV text-input-textimg-to-img"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Inpainting Fundamentals</h3>
+                      <p>
+                        Core Stable Diffusion inpainting workflows for targeted
+                        retouching and object manipulation.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/SD15-inpainting-basic.png"
+                        alt="SD15-inpainting-basic"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>AI Background Removal</h3>
+                      <p>
+                        High-speed, automated background removal using
+                        specialized AI models for e-commerce and creative
+                        assets.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/general-workflows/background-removal-basic.png"
+                        alt="background-removal-basic"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Live Portrait Expression Editor</h3>
+                      <p>
+                        Real-time facial expression manipulation and animation
+                        using the Live Portrait framework.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/general-workflows/Live potrait - expression editor.png"
+                        alt="Live potrait - expression editor"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Pose Control Workflow</h3>
+                      <p>
+                        Advanced ComfyUI workflow for precise human skeletal and
+                        pose control in generative characters.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/general-workflows/Pose-control-comfydoc.png"
+                        alt="pose-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Multi-Angle Generation</h3>
+                      <p>
+                        Generating consistent 3D subjects from multiple camera
+                        angles using unified latent projection.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/general-workflows/subject-multiple-angles.png"
+                        alt="subject multiple angles"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>AI Image Upscaling</h3>
+                      <p>
+                        High-fidelity upscaling workflows that add detail while
+                        preserving the original character of the image.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-workflow-snaps/general-workflows/Upscale-basic-workflow.png"
+                        alt="Upscale-basic-workflow"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Object Transfer & Apparel</h3>
+                      <p>
+                        Seamlessly transferring product objects and apparel onto
+                        AI-generated models with realistic fit.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-outputs/Apparel-transfer.png"
+                        alt="Apparel-transfer"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flux Product Renders</h3>
+                      <p>
+                        High-end product visualization and lifestyle imagery
+                        generated using fine-tuned Flux models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/comfyui-outputs/Flux_klien.png"
+                        alt="Flux_klien"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- View All Card (Always at the end) -->
+                  <div class="gen-ai-entry view-all-card" id="card-view-all-2d">
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>View All <span class="view-all-arrow">&#8594;</span></h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Controls (Layout: Centered) -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-2d">
+                    <button id="btn-prev-2d" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-2d" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Section -->
+              <div id="works-video-content" class="parallax-section">
+                <h3>Video Generation and Editing</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Cinematic Environment Generation</h3>
+                      <p>
+                        Creating immersive floral landscapes and natural
+                        environments with high temporal consistency.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Banderas flowergeneration.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>AI Pose Animation</h3>
+                      <p>
+                        Generating realistic human motion and character
+                        animation from pose-based guidance.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/SR_pose_output_1.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Kling 3.0 Realism</h3>
+                      <p>
+                        Showcasing the incredible realism and physics-aware
+                        generation of the Kling 3.0 model.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Kling3.0_Drink water stay present.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Wan Fashion</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Wan_03.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Wan Fashion imahe to video</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Wan_Fashion model.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Wan Fashion Image to video 2</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Wan_Fashion model1.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Kling 3.0 Image to video</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Kling_3_image-to-video.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>LTX 2.0 Image to video</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/LTX_2.0_i2v_00044_.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Kling 3.0 Drinking Water</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Kling3_drinkingWater.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Kling 3.0 Drinking Water2</h3>
+                      <p>
+                        Exploring high-end fashion cinematography and garment
+                        physics using advanced AI video models.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source
+                          src="videos/Kling3_drinkingWater2.mp4"
+                          type="video/mp4"
+                        />
+                      </video>
+                    </div>
+                  </div>
+
+                  
+
+                  
+
+                  <!-- View All Card at 5th position (4 content + 1 card) -->
+                  <div class="gen-ai-entry view-all-card" id="card-view-all-video">
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>View All <span class="view-all-arrow">&#8594;</span></h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video Footer Controls -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-video">
+                    <button id="btn-prev-video" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-video" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3D Section -->
+              <div id="works-3d-content" class="parallax-section">
+                <h3>3D Assets Generation</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Hunyuan3D Generation</h3>
+                      <p>
+                        High-fidelity 3D mesh and texture generation from
+                        single-view 2D images using Hunyuan3D.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <video
+                        width="auto"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                        loop
+                      >
+                        <source src="3d/hunyuan3d.mp4" type="video/mp4" />
+                      </video>
+                    </div>
+                  </div>
+                  <!-- View All Card at 4th position -->
+                  <div class="gen-ai-entry view-all-card" id="card-view-all-3d">
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>View All <span class="view-all-arrow">&#8594;</span></h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3D Footer Controls -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-3d">
+                    <button id="btn-prev-3d" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-3d" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Audio Section -->
+              <div id="works-audio-content" class="parallax-section">
+                <h3>AI Audio Generation</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>AI Voice Assistant</h3>
+                      <p>
+                        Natural speech synthesis and intelligent response
+                        generation for interactive AI agents.
+                      </p>
+                    </div>
+                    <div
+                      class="entry-media"
+                      style="display: flex; align-items: center; padding: 20px"
+                    >
+                      <audio controls style="width: 100%">
+                        <source
+                          src="audio/Voice_assistant.mp3"
+                          type="audio/mpeg"
+                        />
+                      </audio>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Cloud Ace Audio Test</h3>
+                      <p>
+                        Experimenting with high-fidelity audio generation for
+                        cloud integration and ambient soundscapes.
+                      </p>
+                    </div>
+                    <div
+                      class="entry-media"
+                      style="display: flex; align-items: center; padding: 20px"
+                    >
+                      <audio controls style="width: 100%">
+                        <source
+                          src="audio/cloud ace_test_find your day_.mp3"
+                          type="audio/mpeg"
+                        />
+                      </audio>
+                    </div>
+                  </div>
+                  <!-- View All Card at 4th position -->
+                  <div class="gen-ai-entry view-all-card" id="card-view-all-audio">
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>View All <span class="view-all-arrow">&#8594;</span></h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Audio Footer Controls -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-audio">
+                    <button id="btn-prev-audio" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-audio" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
         </section>
 
         <section id="journey">
-          <h2>My Journey</h2>
-          <div class="grid">
-            
-            <div class="card">
-              <img src="images/amazon-logo.png" alt="amazon-logo" />
-              <h3>Subject Matter Expert | Global Quality & Automation</h3>
-              <p>
-                 • As a global lead, I transformed manual QA workflows into scalable, automated ecosystems. I architected the Self-Service QA Tool (SQT), partnering with SDEs to move from manual reviews to an 80% automated publication model, resulting in $1MM annual OPEX savings and a 75% reduction in QA costs.<br />
-                 • Designed and deployed global training frameworks and standardized SOPs that achieved a 35% defect reduction and delivered $18M in annual cost avoidance.<br />
-                 • Directed the pre and post-publication quality for high-visibility platforms including 3D/AR/VR, Virtual Try-On, and Amazon Beyond, resolving complex latency and visual compression issues across iOS, Android, and Web.<br />
-                 • Led cross-functional initiatives with SDE and CX teams to ensure technical feasibility matched creative excellence at a global scale.
-              </p>
-              <h3>Quality Assurance Lead | Global Operations</h3>
-              <p>
-                 • I provided operational leadership and quality oversight for a global workforce of 300+ professionals across India and the Philippines. My focus was on scaling the production of immersive assets while maintaining rigorous Amazon standards.<br />
-                 • Orchestrated the onboarding and technical readiness of 50+ new associates, ensuring a 100% production-ready pipeline.<br />
-                 • Identified inefficiencies in manual review cycles and spearheaded a Productivity Optimization Program. By directing a UI/UX redesign of internal tools and integrating workflow automation, I increased QA productivity by 10% and cut review times by 30%.<br />
-                 • Owned global SIM ticketing and defect reporting, managing high-volume triage and resource allocation to maintain strict SLA adherence for Amazon’s 3D shopping experiences.
-              </p>
-              <h3>3D Content Creator</h3>
-              <p>
-                • In this role, I balanced high-fidelity 3D production with technical tool development. I was responsible for delivering production-ready assets for View in 3D and Virtual Try On while simultaneously optimizing the pipelines they lived in.<br />
-                • Leveraged PyMEL (Python) to build custom integrations between Maya, Substance Painter, and Photoshop, increasing team efficiency by 10% and eliminating recurring manual errors.<br />
-                • Partnered with Engineering and CX teams to establish the technical "North Star" for asset guidelines, ensuring high-performance rendering across all customer-facing mobile and web platforms.
-              </p>
-
-              <h3>2D & Video Content Creator</h3>
-              <p>
-                •Recognized as a top performer, I moved beyond content creation to focus on the scalability of Amazon’s global product detail pages.</br>
-                •Automation Engineering: Developed and implemented Adobe After Effects (AE scripts) and Photoshop action scripts, achieving a 2x increase in workflow efficiency.</br>
-                •Global Standardization: Built and standardized production pipelines for teams in India, Romania, and China, ensuring that creative output remained consistent and scalable across diverse international marketplaces.
-              </p>
+          <h2 class="reveal-trigger"><span class="heading-gradient">My Journey</span></h2>
+          <div class="journey-list">
+            <div class="journey-entry">
+              <div class="journey-info">
+                <h3>Subject Matter Expert | Global Quality & Automation</h3>
+                <ul class="journey-details">
+                  <li>
+                    As a global lead, I transformed manual QA workflows into
+                    scalable, automated ecosystems. I architected the
+                    Self-Service QA Tool (SQT), partnering with SDEs to move
+                    from manual reviews to an 80% automated publication model,
+                    resulting in $1MM annual OPEX savings and a 75% reduction in
+                    QA costs.
+                  </li>
+                  <li>
+                    Designed and deployed global training frameworks and
+                    standardized SOPs that achieved a 35% defect reduction and
+                    delivered $18M in annual cost avoidance.
+                  </li>
+                  <li>
+                    Directed the pre and post-publication quality for
+                    high-visibility platforms including 3D/AR/VR, Virtual
+                    Try-On, and Amazon Beyond, resolving complex latency and
+                    visual compression issues across iOS, Android, and Web.
+                  </li>
+                  <li>
+                    Led cross-functional initiatives with SDE and CX teams to
+                    ensure technical feasibility matched creative excellence at
+                    a global scale.
+                  </li>
+                </ul>
+              </div>
+              <div class="journey-media">
+                <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+              </div>
             </div>
 
-            <div class="card">
-              <img src="images/sr-logo.png" alt="amazon-logo" />
-              <h3>Independent Designer</h3>
-              <p>
-                • Created branding, UI/UX systems, and motion design campaigns
-                for diverse clients in e-commerce and gaming.<br />
-                • Produced and directed visually compelling advertisements and
-                short-films, focusing on digital storytelling and user
-                engagement.
-              </p>
+            <div class="journey-entry">
+              <div class="journey-info">
+                <h3>Quality Assurance Lead | Global Operations</h3>
+                <ul class="journey-details">
+                  <li>
+                    I provided operational leadership and quality oversight for
+                    a global workforce of 300+ professionals across India and
+                    the Philippines. My focus was on scaling the production of
+                    immersive assets while maintaining rigorous Amazon
+                    standards.
+                  </li>
+                  <li>
+                    Orchestrated the onboarding and technical readiness of 50+
+                    new associates, ensuring a 100% production-ready pipeline.
+                  </li>
+                  <li>
+                    Identified inefficiencies in manual review cycles and
+                    spearheaded a Productivity Optimization Program. By
+                    directing a UI/UX redesign of internal tools and integrating
+                    workflow automation, I increased QA productivity by 10% and
+                    cut review times by 30%.
+                  </li>
+                  <li>
+                    Owned global SIM ticketing and defect reporting, managing
+                    high-volume triage and resource allocation to maintain
+                    strict SLA adherence for Amazon’s 3D shopping experiences.
+                  </li>
+                </ul>
+              </div>
+              <div class="journey-media">
+                <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+              </div>
+            </div>
+
+            <div class="journey-entry">
+              <div class="journey-info">
+                <h3>3D Content Creator</h3>
+                <ul class="journey-details">
+                  <li>
+                    In this role, I balanced high-fidelity 3D production with
+                    technical tool development. I was responsible for delivering
+                    production-ready assets for View in 3D and Virtual Try On
+                    while simultaneously optimizing the pipelines they lived in.
+                  </li>
+                  <li>
+                    Leveraged PyMEL (Python) to build custom integrations
+                    between Maya, Substance Painter, and Photoshop, increasing
+                    team efficiency by 10% and eliminating recurring manual
+                    errors.
+                  </li>
+                  <li>
+                    Partnered with Engineering and CX teams to establish the
+                    technical "North Star" for asset guidelines, ensuring
+                    high-performance rendering across all customer-facing mobile
+                    and web platforms.
+                  </li>
+                </ul>
+              </div>
+              <div class="journey-media">
+                <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+              </div>
+            </div>
+
+            <div class="journey-entry">
+              <div class="journey-info">
+                <h3>2D & Video Content Creator</h3>
+                <ul class="journey-details">
+                  <li>
+                    Recognized as a top performer, I moved beyond content
+                    creation to focus on the scalability of Amazon’s global
+                    product detail pages.
+                  </li>
+                  <li>
+                    <b>Automation Engineering:</b> Developed and implemented
+                    Adobe After Effects (AE scripts) and Photoshop action
+                    scripts, achieving a 2x increase in workflow efficiency.
+                  </li>
+                  <li>
+                    <b>Global Standardization:</b> Built and standardized
+                    production pipelines for teams in India, Romania, and China,
+                    ensuring that creative output remained consistent and
+                    scalable across diverse international marketplaces.
+                  </li>
+                </ul>
+              </div>
+              <div class="journey-media">
+                <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+              </div>
+            </div>
+
+            <div class="journey-entry">
+              <div class="journey-info">
+                <h3>Independent Designer</h3>
+                <ul class="journey-details">
+                  <li>
+                    Created branding, UI/UX systems, and motion design campaigns
+                    for diverse clients in e-commerce and gaming.
+                  </li>
+                  <li>
+                    Produced and directed visually compelling advertisements and
+                    short-films, focusing on digital storytelling and user
+                    engagement.
+                  </li>
+                </ul>
+              </div>
+              <div class="journey-media">
+                <img src="images/sr-logo.png" alt="SR Logo" />
+              </div>
             </div>
           </div>
         </section>
 
         <section id="skills">
-          <h2>Expertise & Skills</h2>
+          <h2 class="reveal-trigger"><span class="heading-gradient">Expertise & Skills</span></h2>
 
           <h4>
-              Gen AI Tools:
-              <a href="https://cloud.comfy.org/" target="_blank">ComfyUI</a> -
-              <a href="https://n8n.io/" target="_blank">n8n</a> -
-              <a href="https://ollama.com/" target="_blank">Ollama</a> -
-              <a href="https://huggingface.co/models" target="_blank">Hugging Face</a> -
-              <a href="https://weavy.ai/" target="_blank">Weavy</a> -
-              <a href="https://labs.google/flow/about" target="_blank">Flow</a> -
-              <a href="https://openart.ai/home" target="_blank">Open Art</a> -
-              <a href="https://higgsfield.ai/" target="_blank">Higgsfield</a> -
-              <a href="https://fal.ai/" target="_blank">Fal</a> -
-              <a href="https://lumalabs.ai/" target="_blank">Luma</a> -
-              <a href="https://runwayml.com/" target="_blank">Runway</a>
-              <br />
-              AI Practice models: Stable diffusion, Flux, Qwen, Zimage, Wan, Ltxv, Kling, Gork, Veo, Sora
-            </h4>
-<!-- Skills Bars -->
+            Gen AI Tools:
+            <a href="https://cloud.comfy.org/" target="_blank">ComfyUI</a> -
+            <a href="https://n8n.io/" target="_blank">n8n</a> -
+            <a href="https://ollama.com/" target="_blank">Ollama</a> -
+            <a href="https://huggingface.co/models" target="_blank"
+              >Hugging Face</a
+            >
+            - <a href="https://weavy.ai/" target="_blank">Weavy</a> -
+            <a href="https://labs.google/flow/about" target="_blank">Flow</a> -
+            <a href="https://openart.ai/home" target="_blank">Open Art</a> -
+            <a href="https://higgsfield.ai/" target="_blank">Higgsfield</a> -
+            <a href="https://fal.ai/" target="_blank">Fal</a> -
+            <a href="https://lumalabs.ai/" target="_blank">Luma</a> -
+            <a href="https://runwayml.com/" target="_blank">Runway</a>
+            <br />
+            AI Practice models: Stable diffusion, Flux, Qwen, Zimage, Wan, Ltxv,
+            Kling, Gork, Veo, Sora
+          </h4>
+          <!-- Skills Bars -->
           <div class="skills-container reveal-trigger" style="margin-top: 50px">
-            
             <div class="skill-column">
               <h3>Technical Proficiency</h3>
 
               <div class="skill-items-grid">
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/comfyui.png" alt="comfyui">
+                    <img src="icons/comfyui.png" alt="comfyui" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -504,7 +1091,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/github.png" alt="github">
+                    <img src="icons/github.png" alt="github" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -519,7 +1106,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/python.png" alt="python">
+                    <img src="icons/python.png" alt="python" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -534,7 +1121,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/js.png" alt="js">
+                    <img src="icons/js.png" alt="js" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -549,7 +1136,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/html.png" alt="html">
+                    <img src="icons/html.png" alt="html" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -564,7 +1151,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/css.png" alt="css">
+                    <img src="icons/css.png" alt="css" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -579,7 +1166,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/aws.png" alt="aws">
+                    <img src="icons/aws.png" alt="aws" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -594,7 +1181,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/chatgpt.png" alt="chatgpt">
+                    <img src="icons/chatgpt.png" alt="chatgpt" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -606,9 +1193,9 @@
                     </div>
                   </div>
                 </div>
-                 <div class="skill-item">
+                <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/figma.png" alt="figma">
+                    <img src="icons/figma.png" alt="figma" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -622,7 +1209,7 @@
                 </div>
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/asana.png" alt="asana">
+                    <img src="icons/asana.png" alt="asana" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -637,7 +1224,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/tableau.png" alt="tableau">
+                    <img src="icons/tableau.png" alt="tableau" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -652,7 +1239,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/ftrack.png" alt="ftrack">
+                    <img src="icons/ftrack.png" alt="ftrack" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -667,7 +1254,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/flameshot.png" alt="flameshot">
+                    <img src="icons/flameshot.png" alt="flameshot" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -681,7 +1268,7 @@
                 </div>
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/creative-cloud.png" alt="creative-cloud">
+                    <img src="icons/creative-cloud.png" alt="creative-cloud" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -693,7 +1280,6 @@
                     </div>
                   </div>
                 </div>
-                 
               </div>
             </div>
 
@@ -703,7 +1289,7 @@
               <div class="skill-items-grid">
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/photoshop.png" alt="photoshop">
+                    <img src="icons/photoshop.png" alt="photoshop" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -718,7 +1304,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/illustrator.png" alt="illustrator">
+                    <img src="icons/illustrator.png" alt="illustrator" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -733,7 +1319,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/indesign.png" alt="indesign">
+                    <img src="icons/indesign.png" alt="indesign" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -748,7 +1334,10 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/photoshop-lightroom.png" alt="photoshop-lightroom">
+                    <img
+                      src="icons/photoshop-lightroom.png"
+                      alt="photoshop-lightroom"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -763,7 +1352,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/after-effects.png" alt="after-effects">
+                    <img src="icons/after-effects.png" alt="after-effects" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -778,7 +1367,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/premiere-pro.png" alt="premiere-pro">
+                    <img src="icons/premiere-pro.png" alt="premiere-pro" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -791,10 +1380,9 @@
                   </div>
                 </div>
 
-
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/adobe-audition.png" alt="adobe-audition">
+                    <img src="icons/adobe-audition.png" alt="adobe-audition" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -809,7 +1397,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/media-encoder.png" alt="media-encoder">
+                    <img src="icons/media-encoder.png" alt="media-encoder" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -824,7 +1412,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/maya.png" alt="maya">
+                    <img src="icons/maya.png" alt="maya" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -839,7 +1427,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/blender.png" alt="blender">
+                    <img src="icons/blender.png" alt="blender" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -851,10 +1439,10 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/unreal.png" alt="unreal">
+                    <img src="icons/unreal.png" alt="unreal" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -869,7 +1457,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/ZBrush_icon.svg" alt="zbrush">
+                    <img src="icons/ZBrush_icon.svg" alt="zbrush" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -881,10 +1469,10 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/painter.svg" alt="painter">
+                    <img src="icons/painter.svg" alt="painter" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -899,7 +1487,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/adobe-express.png" alt="adobe-express">
+                    <img src="icons/adobe-express.png" alt="adobe-express" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -916,178 +1504,59 @@
           </div>
         </section>
 
-        <section id="portfolio">
-          <h2>Design Archive</h2>
-          <h4>A curated selection of earlier work that shaped my design approach.</h4>
-
-          <div class="portfolio-wrapper">
-            <h3>2D & Web Design works</h3>
-            <h4>Tools: Adobe Creative suite applications & Figma</h4>
-            
-
-            <div class="scroller-inner">
-              <button class="arrow left">&#10094;</button>
-
-              <div class="portfolio-scroller">
-                <div class="portfolio-container">
-                  <!-- 2D & web works -->
-                  <img
-                    src="images/previous-works/photoshop-works/ps-bannerdesign.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-colortranformation.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-digitalpainting.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-digitalpainting2.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-imagecolormatch.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-imagedisplacement.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-imagemanipulation.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-posterdesign.png"
-                  />
-                  <img
-                    src="images/previous-works/photoshop-works/ps-typography.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-adposter.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-broucher-design.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-logo-design.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-meshtool.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-minimal.png"
-                  />
-                  <img
-                    src="images/previous-works/illustrator-works/ai-tri-vector-coversion.png"
-                  />
-                  <img src="images/previous-works/indesign-works/id-flyers.png" />
-                  <img
-                    src="images/previous-works/indesign-works/id-magazine.png"
-                  />
-                  <img
-                    src="images/previous-works/indesign-works/id-menucards.png"
-                  />
-                  <img
-                    src="images/previous-works/indesign-works/id-poster-design.png"
-                  />
-                  <img src="images/previous-works/web-works/app-ui-design.png" />
-                  <img src="images/previous-works/web-works/web-ui-coded.png" />
-                  <img src="images/previous-works/web-works/web-ui-design.png" />
-                
-                </div>
-                <button class="view-all-btn">View All</button>
-              </div>
-              <button class="arrow right">&#10095;</button>
-            </div>
-          </div>
-
-          <div class="portfolio-wrapper">
-            <h3>Video Production and Editing works</h3>
-            <h4>Tools: Adobe Creative suite applications & Avid Pinnacle studio</h4>
-
-            <div class="scroller-inner">
-              <button class="arrow left">&#10094;</button>
-
-              <div class="portfolio-scroller">
-                <div class="portfolio-container">
-                  <!-- Video works -->
-                  <iframe src="https://www.youtube.com/embed/FjVPsLxO1NI?si=lhxij4S0A1s9jr0u&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  <iframe src="https://www.youtube.com/embed/-9tS2CNrR6g?si=1NfHdmJytsfaxTgK&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  <iframe src="https://www.youtube.com/embed/LaTPGf0PrhY?si=ecdIMpPqi-4_el0k&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  <iframe src="https://www.youtube.com/embed/ZawZqqkNBlE?si=U3Fdn0qT-u5sxpYA&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  <iframe src="https://www.youtube.com/embed/18ofs9Gq0sY?si=AmuyG6MSCc3h93Y3&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <button class="view-all-btn">View All</button>
-              </div>
-              <button class="arrow right">&#10095;</button>
-            </div>
-          </div>
-
-          <div class="portfolio-wrapper">
-            <h3>Featured Projects</h3>
-            <div class="scroller-inner">
-              <button class="arrow left">&#10094;</button>
-              <div class="portfolio-scroller">
-                <div class="portfolio-container">
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/243953407?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                  </div>
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/57088535?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                   
-                  </div>
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/243863371?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                    
-                  </div>
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/243864495?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                    
-                  </div>
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/243863859?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                    
-                  </div>
-                  <div class="project-embed-container">
-                    <iframe src="https://www.behance.net/embed/project/243865571?ilo0=1" allowfullscreen lazyload scrolling="no" frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-                    
-                  </div>
-                </div>
-                <button class="view-all-btn">View All</button>
-              </div>
-              <button class="arrow right">&#10095;</button>
-            </div>
-          </div>
-        </section>
-
-        <section id="edu-certificates">
-          <h2>Education & Certifications</h2>
+           <section id="edu-certificates">
+          <h2><span class="heading-gradient">Education & Certifications</span></h2>
           <div class="edu-cert-container">
             <div class="education-item">
               <img src="images/jntuk-logo.png" alt="jntu-logo" />
               <h3>Jawaharlal Nehru Technological University</h3>
               <h4>Kakinada, Andhra Pradesh, India</h4>
-              <p>• Bachelor of Electronics and communication engineering <br /> • 2010 - 2014</p>
+              <p>
+                • Bachelor of Electronics and communication engineering <br />
+                • 2010 - 2014
+              </p>
             </div>
             <div class="education-item">
               <img src="images/Icat_logo.png" alt="icat-logo" />
               <h3>ICAT - Design and Media College</h3>
               <h4>Bengaluru, Karnataka, India</h4>
-              <p>• Post Graduate Diploma in Multimedia technologies <br /> • 2014 - 2015</p>
+              <p>
+                • Post Graduate Diploma in Multimedia technologies <br />
+                • 2014 - 2015
+              </p>
             </div>
             <div class="cert-card">
-              <a href="certificates/Google_UX_Design_Coursera 7BP7JEOKWLV6.pdf" target="_blank">
-                <img src="certificates/google-ux-design-professional-certificate-v-3.png" alt="Google UX" />
+              <a
+                href="certificates/Google_UX_Design_Coursera 7BP7JEOKWLV6.pdf"
+                target="_blank"
+              >
+                <img
+                  src="certificates/google-ux-design-professional-certificate-v-3.png"
+                  alt="Google UX"
+                />
                 <h3>UX Design Professional Certificate</h3>
                 <h4>View Certificate</h4>
               </a>
             </div>
             <div class="cert-card">
-              <a href="certificates/Adobe_GenAI_Content_creation_Coursera 2G0ZU16JFPR5.pdf" target="_blank">
+              <a
+                href="certificates/Adobe_GenAI_Content_creation_Coursera 2G0ZU16JFPR5.pdf"
+                target="_blank"
+              >
                 <img src="certificates/adobe-genai.png" alt="Adobe Gen AI" />
                 <h3>Generative AI in Adobe Creative Cloud</h3>
                 <h4>View Certificate</h4>
               </a>
             </div>
             <div class="cert-card">
-              <a href="certificates/Google_Project_Management_Coursera ISI5YF8CP0EE.pdf" target="_blank">
-                <img src="certificates/google-project-management-professional-certificate-.1.png" alt="Google PM" />
+              <a
+                href="certificates/Google_Project_Management_Coursera ISI5YF8CP0EE.pdf"
+                target="_blank"
+              >
+                <img
+                  src="certificates/google-project-management-professional-certificate-.1.png"
+                  alt="Google PM"
+                />
                 <h3>Project Management Professional Certificate</h3>
                 <h4>View Certificate</h4>
               </a>
@@ -1095,8 +1564,661 @@
           </div>
         </section>
 
+        <section id="portfolio">
+          <h2><span class="heading-gradient">Design Archive</span></h2>
+
+          <div class="gen-ai-sticky-tabs">
+            <div class="tab-button-group">
+              <button class="tab-btn active" data-tab="works-photoshop">
+                Photoshop
+              </button>
+              <button class="tab-btn" data-tab="works-illustrator">
+                Illustrator
+              </button>
+              <button class="tab-btn" data-tab="works-indesign">
+                Indesign
+              </button>
+              <button class="tab-btn" data-tab="works-web-design">
+                Web Design
+              </button>
+              <button class="tab-btn" data-tab="works-archive-video">
+                Video Production
+              </button>
+              <button class="tab-btn" data-tab="works-projects">Behance Projects</button>
+            </div>
+          </div>
+
+          <div class="gen-ai-works-container">
+            <div class="tab-content-container" id="portfolio-parallax-scroll">
+              <!-- Adobe Photoshop -->
+              <div id="works-photoshop" class="parallax-section">
+                <h3>Adobe Photoshop Works</h3>
+                <div class="works-gallery preview-view">
+                  <!-- Entry 1 -->
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Banner Design</h3>
+                      <p>Creative banner composition and layout design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-bannerdesign.png"
+                        alt="Banner Design"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Color Transformation</h3>
+                      <p>
+                        Advanced color grading and tonal adjustment work.
+                      </p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-colortranformation.png"
+                        alt="Color Transformation"
+                      />
+                    </div>
+                  </div>
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Digital Painting</h3>
+                      <p>Digital artistry and brushwork illustration.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-digitalpainting.png"
+                        alt="Digital Painting"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Character Art</h3>
+                      <p>Detailed character digital painting.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-digitalpainting2.png"
+                        alt="Digital Painting 2"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Color Match</h3>
+                      <p>Precise color matching and correction.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-imagecolormatch.png"
+                        alt="Color Match"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>displacement Maps</h3>
+                      <p>Texture displacement and surface mapping.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-imagedisplacement.png"
+                        alt="Displacement"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Image Manipulation</h3>
+                      <p>Creative composite and photo manipulation.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-imagemanipulation.png"
+                        alt="Image Manipulation"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Poster Design</h3>
+                      <p>Graphic design for event promotional posters.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-posterdesign.png"
+                        alt="Poster Design"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Typography Art</h3>
+                      <p>Expressive typography and text layout.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/photoshop-works/ps-typography.png"
+                        alt="Typography"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- View All Card (Always at the end) -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-photoshop"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Controls (Layout: Centered) -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-photoshop">
+                    <button id="btn-prev-photoshop" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-photoshop" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+               <!-- Adobe Illustrator -->
+              <div id="works-illustrator" class="parallax-section">
+                <h3> Adobe Illustrator Works</h3>
+                <div class="works-gallery preview-view">
+                  <!-- Illustrator Works -->
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Ad Poster</h3>
+                      <p>Vector-based advertising poster design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-adposter.png"
+                        alt="Ad Poster"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Brochure Design</h3>
+                      <p>Corporate brochure and layout design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-broucher-design.png"
+                        alt="Brochure"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Logo Design</h3>
+                      <p>Brand identity and logo creation.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-logo-design.png"
+                        alt="Logo Design"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Mesh Tool Art</h3>
+                      <p>Photorealistic vector art using mesh tool.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-meshtool.png"
+                        alt="Mesh Tool"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Minimal Art</h3>
+                      <p>Minimalist vector illustration.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-minimal.png"
+                        alt="Minimal Art"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Vector Conversion</h3>
+                      <p>Raster to vector conversion and clean-up.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/illustrator-works/ai-tri-vector-coversion.png"
+                        alt="Vector Conversion"
+                      />
+                    </div>
+                  </div>
+                  <!-- View All Card (Always at the end) -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-illustrator"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Controls (Layout: Centered) -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-illustrator">
+                    <button id="btn-prev-illustrator" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-illustrator" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+               <!-- Adobe Indesign -->
+              <div id="works-indesign" class="parallax-section">
+                <h3>Adobe Indesign Works</h3>
+                <div class="works-gallery preview-view">
+                  <!-- InDesign Works -->
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Flyer Design</h3>
+                      <p>Marketing flyer and leaflet design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/indesign-works/id-flyers.png"
+                        alt="Flyers"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Magazine Layout</h3>
+                      <p>Editorial design for print magazines.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/indesign-works/id-magazine.png"
+                        alt="Magazine"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Menu Card</h3>
+                      <p>Restaurant menu layout and typography.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/indesign-works/id-menucards.png"
+                        alt="Menu Card"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Print Poster</h3>
+                      <p>Large format print poster design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/indesign-works/id-poster-design.png"
+                        alt="Print Poster"
+                      />
+                    </div>
+                  </div>
+                  <!-- View All Card (Always at the end) -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-indesign"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Controls (Layout: Centered) -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-indesign">
+                    <button id="btn-prev-indesign" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-indesign" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+               <!-- Web Design -->
+              <div id="works-web-design" class="parallax-section">
+                <h3>Web Design Works</h3>
+                <div class="works-gallery preview-view">
+                  <!-- Web Works -->
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>App UI Design</h3>
+                      <p>Mobile application user interface design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/web-works/app-ui-design.png"
+                        alt="App UI"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Coded Web UI</h3>
+                      <p>Front-end development and UI implementation.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/web-works/web-ui-coded.png"
+                        alt="Web UI Coded"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Web UI Design</h3>
+                      <p>Website visual design and wireframing.</p>
+                    </div>
+                    <div class="entry-media">
+                      <img
+                        src="images/previous-works/web-works/web-ui-design.png"
+                        alt="Web UI"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- View All Card (Always at the end) -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-web-design"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Controls (Layout: Centered) -->
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-web-design">
+                    <button id="btn-prev-web-design" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-web-design" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Video Production Section -->
+              <div id="works-archive-video" class="parallax-section">
+                <h3>Video Works</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>YouTube Production 1</h3>
+                      <p>Video editing and post-production work.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.youtube.com/embed/FjVPsLxO1NI?si=lhxij4S0A1s9jr0u&enablejsapi=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>YouTube Production 2</h3>
+                      <p>Motion graphics and visual storytelling.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.youtube.com/embed/-9tS2CNrR6g?si=1NfHdmJytsfaxTgK&enablejsapi=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>YouTube Production 3</h3>
+                      <p>Creative direction and editing.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.youtube.com/embed/LaTPGf0PrhY?si=ecdIMpPqi-4_el0k&enablejsapi=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>YouTube Production 4</h3>
+                      <p>Advanced video composition.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.youtube.com/embed/ZawZqqkNBlE?si=U3Fdn0qT-u5sxpYA&enablejsapi=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>YouTube Production 5</h3>
+                      <p>Storytelling and visual effects.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.youtube.com/embed/18ofs9Gq0sY?si=AmuyG6MSCc3h93Y3&enablejsapi=1"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <!-- View All Card -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-archive-video"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-archive-video">
+                    <button id="btn-prev-archive-video" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-archive-video" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Featured Projects (Behance) Section -->
+              <div id="works-projects" class="parallax-section">
+                <h3>Featured Projects</h3>
+                <div class="works-gallery preview-view">
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 1</h3>
+                      <p>Comprehensive design case study.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/243953407?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 2</h3>
+                      <p>Branding and identity design.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/57088535?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 3</h3>
+                      <p>UI/UX design exploration.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/243863371?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 4</h3>
+                      <p>Visual identity system.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/243864495?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 5</h3>
+                      <p>Interaction design showcase.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/243863859?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <div class="gen-ai-entry">
+                    <div class="entry-info">
+                      <h3>Behance Project 6</h3>
+                      <p>Creative direction portfolio.</p>
+                    </div>
+                    <div class="entry-media">
+                      <iframe
+                        src="https://www.behance.net/embed/project/243865571?ilo0=1"
+                        allowfullscreen
+                        scrolling="no"
+                        frameborder="0"
+                        style="overflow: hidden"
+                      ></iframe>
+                    </div>
+                  </div>
+
+                  <!-- View All Card -->
+                  <div
+                    class="gen-ai-entry view-all-card"
+                    id="card-view-all-projects"
+                  >
+                    <div class="view-all-content">
+                      <span class="view-all-count">+</span>
+                      <h3>
+                        View All
+                        <span class="view-all-arrow">&#8594;</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-footer">
+                  <div class="gallery-controls" id="controls-projects">
+                    <button id="btn-prev-projects" class="nav-text-btn" aria-label="Previous">&#8592;</button>
+                    <button id="btn-next-projects" class="nav-text-btn" aria-label="Next">&#8594;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+     
+
         <section id="contact">
-          <h2>Get In Touch</h2>
+          <h2><span class="heading-gradient">Get In Touch</span></h2>
           <div class="social-links">
             <a href="https://www.behance.net/seetharamaswamy" target="_blank"
               ><img src="icons/social/behance.png" alt="Behance"
@@ -1136,10 +2258,7 @@
                 target="_blank"
                 class="contact-link whatsapp"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
                   />
@@ -1158,9 +2277,11 @@
         </p>
       </footer>
 
+      <button id="scrollToTopBtn" aria-label="Scroll to top">
+        ↑
+      </button>
+
       <script src="js/script.js"></script>
-      <script src="js/portfolio.js"></script>
-      <script src="js/gen-ai-tabs.js"></script>
     </div>
   </body>
 </html>

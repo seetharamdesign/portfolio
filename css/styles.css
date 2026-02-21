@@ -22,11 +22,11 @@
   --font-heading: "Outfit", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
 
-  --fs-h1: 3.5rem;
-  --fs-h2: 2.25rem;
-  --fs-h3: 1.5rem;
-  --fs-h4: 1.125rem;
-  --fs-body: 1.125rem;
+  --fs-h1: clamp(2rem, 8vw, 3.5rem);
+  --fs-h2: clamp(1.6rem, 5vw, 2.25rem);
+  --fs-h3: clamp(1.25rem, 4vw, 1.5rem);
+  --fs-h4: clamp(1rem, 3vw, 1.125rem);
+  --fs-body: clamp(1rem, 2vw, 1.125rem);
   --fs-small: 0.875rem;
 
   /* Glows & Shadows (Soft for white theme) */
@@ -118,7 +118,7 @@ h2 {
 h2::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -2px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
@@ -432,13 +432,13 @@ section.reveal-visible {
 
 .hero-section-left h1 {
   margin-bottom: 0.25rem;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: var(--fs-h1);
   line-height: 1.1;
   /* Animation handled by JS .reveal-text-mask */
 }
 
 .hero-section-left h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-size: var(--fs-h2);
   display: block;
   text-align: left;
   /* Animation handled by JS .reveal-text-mask */
@@ -511,7 +511,7 @@ section.reveal-visible {
 
 .hero-section-right img {
   width: 100%;
-  max-width: 400px;
+  max-width: clamp(280px, 40vw, 400px);
   height: auto;
   aspect-ratio: 1;
   object-fit: cover;
@@ -625,7 +625,7 @@ section.reveal-visible {
 /* .myExpertise-item:hover::before { } */
 
 .myExpertise-item h4 {
-  font-size: 1.25rem;
+  font-size: var(--fs-h4);
   color: var(--text-primary);
   font-weight: 700;
   margin-bottom: 1rem;
@@ -665,14 +665,32 @@ section.reveal-visible {
 
 #generative-ai-works h2,
 #portfolio h2 {
-  position: relative;
+  position: sticky;
+  top: 70px; /* Below the desktop navbar */
+  background: var(--bg-primary);
   z-index: 1002;
   margin-bottom: 3rem;
+  padding: 8px 0;
+  box-shadow: 0 4px 0 var(--bg-primary); /* mask scrolling content */
+}
+
+#generative-ai-works h2::before,
+#portfolio h2::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100px;
+  background: var(--bg-primary);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .gen-ai-sticky-tabs {
   position: sticky;
-  top: 70px;
+  top: 140px; /* 70px navbar + 70px h2 (2.25rem font + 16px padding + 10px shadow) */
   z-index: 1001;
   background: var(--bg-primary);
   padding: 10px 0;
@@ -683,10 +701,10 @@ section.reveal-visible {
 .gen-ai-sticky-tabs::before {
   content: "";
   position: absolute;
-  top: -70px;
+  top: -140px;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: 140px;
   background: var(--bg-primary);
   pointer-events: none;
 }
@@ -810,7 +828,7 @@ section.reveal-visible {
   text-align: left;
   padding-left: 5%;
   margin-bottom: 30px;
-  font-size: clamp(0.5rem, 1.8rem, 2rem);
+  font-size: var(--fs-h3);
   font-weight: 700;
   display: inline-block;
   background-image: linear-gradient(
@@ -827,33 +845,56 @@ section.reveal-visible {
 }
 
 .works-gallery {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  display: grid !important;
+  grid-auto-flow: column !important;
+  grid-auto-columns: calc((100% - 3 * 24px) / 4) !important;
+  overflow-x: auto !important;
+  gap: 24px;
+  padding: 30px 5%;
+  min-height: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.works-gallery:active {
+  cursor: grabbing;
+}
+
+.works-gallery::-webkit-scrollbar {
+  display: none !important;
 }
 
 .gen-ai-entry {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  min-height: 10vh;
-  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
   background: var(--bg-primary);
-  align-items: center;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
   overflow: hidden;
-  gap: 0;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s ease;
 }
 
 .gen-ai-entry:hover,
 .gen-ai-entry.is-active {
   background: var(--bg-secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .entry-info {
-  padding: 30px 60px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
+  flex-grow: 1;
 }
 
 .entry-info h3,
@@ -863,16 +904,21 @@ section.reveal-visible {
 }
 
 .entry-info h3 {
-  font-size: 1.8rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 4px;
   color: var(--text-primary);
 }
 
 .entry-info p {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .entry-media {
@@ -960,99 +1006,6 @@ section.reveal-visible {
   animation-delay: 0.4s;
 }
 
-/* Horizontal Gallery Layout */
-.works-gallery.horizontal-scroll {
-  display: grid !important;
-  grid-auto-flow: column !important;
-  grid-auto-columns: calc((100% - 3 * 24px) / 4) !important;
-  overflow-x: auto !important;
-  gap: 24px;
-  padding: 30px 5%;
-  min-height: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.works-gallery.horizontal-scroll::-webkit-scrollbar {
-  display: none !important;
-}
-
-.works-gallery.horizontal-scroll .gen-ai-entry,
-.works-gallery.preview-view .gen-ai-entry,
-.works-gallery.grid-view .gen-ai-entry {
-  display: flex !important;
-  flex-direction: column-reverse !important;
-  background: var(--bg-primary);
-  border-radius: 20px;
-  border: 1px solid var(--border-subtle);
-  height: 100% !important;
-  min-height: 0;
-  overflow: hidden;
-  width: 100% !important;
-  max-width: 100% !important;
-  transition:
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.5s ease;
-}
-
-.works-gallery.horizontal-scroll .gen-ai-entry:hover,
-.works-gallery.preview-view .gen-ai-entry:hover,
-.works-gallery.grid-view .gen-ai-entry:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-  border-color: var(--border-subtle);
-}
-
-.works-gallery.horizontal-scroll .entry-info,
-.works-gallery.preview-view .entry-info {
-  padding: 24px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start;
-  flex-grow: 1;
-}
-
-.works-gallery.horizontal-scroll .entry-info h3,
-.works-gallery.preview-view .entry-info h3 {
-  font-size: 1.1rem !important;
-}
-
-.works-gallery.horizontal-scroll .entry-info p,
-.works-gallery.preview-view .entry-info p {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-size: 0.85rem !important;
-}
-
-.works-gallery.preview-view,
-.works-gallery.grid-view {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  justify-content: center;
-  gap: 24px;
-  padding: 30px 5%;
-  min-height: auto;
-  overflow: hidden !important;
-}
-
-.works-gallery.preview-view::-webkit-scrollbar {
-  display: none;
-}
-
-/* In preview-view, show first 3 items and the view-all-card at the end: Total 4 */
-.works-gallery.preview-view > *:nth-child(-n + 3),
-.works-gallery.preview-view > .view-all-card {
-  display: flex !important;
-}
-
-.works-gallery.preview-view > *:nth-child(n + 4):not(.view-all-card) {
-  display: none !important;
-}
-
 /* View All Card specific sizing */
 .view-all-card {
   cursor: pointer !important;
@@ -1138,15 +1091,16 @@ section.reveal-visible {
 
 /* Gallery Controls */
 .gallery-footer {
-  min-height: 64px; /* Space for 44px buttons + 20px margin */
+  min-height: 36px; /* Compact vertical height */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 5%;
   width: 100%;
 }
 
 .gallery-controls {
-  display: flex !important; /* Always flex now, but opacity 0 */
+  display: flex !important;
   gap: 15px;
   opacity: 0;
   pointer-events: none;
@@ -1163,7 +1117,7 @@ section.reveal-visible {
   border: 1px solid var(--border-subtle);
   border-radius: 20px;
   color: var(--text-primary);
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   font-family: inherit;
   font-weight: 600;
   text-transform: none;
@@ -1172,12 +1126,13 @@ section.reveal-visible {
   transition: all 0.3s ease;
   cursor: pointer;
   width: 44px;
-  height: 44px;
-  padding: 0 0 4px 0; /* Slight nudge upwards for unicode arrows */
-  line-height: 1;
+  height: 22px;
+  padding: 0;
+  line-height: 22px; /* Match height exactly so glyph sits center */
   display: flex;
   align-items: center;
   justify-content: center;
+  vertical-align: middle;
 }
 
 .nav-text-btn:hover {
@@ -1200,12 +1155,12 @@ section.reveal-visible {
   top: 70px;
   background: var(--bg-secondary);
   z-index: 20;
-  padding: 10px 0;
+  padding: 8px 0;
   margin-bottom: 3rem; /* Matches global h2 margin */
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
-  /* Extend background downwards to cover the global underline spacing (-10px) */
-  box-shadow: 0 10px 0 var(--bg-secondary);
+  /* Extend background downwards to cover the global underline spacing */
+  box-shadow: 0 4px 0 var(--bg-secondary);
 }
 
 /* Mask to hide scrolling content above the sticky header */
@@ -1340,7 +1295,7 @@ section.reveal-visible {
 }
 
 .journey-info h3 {
-  font-size: 1.6rem;
+  font-size: var(--fs-h3);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 24px;
@@ -1571,7 +1526,7 @@ section.reveal-visible {
 }
 
 .experience-left h3 {
-  font-size: 1.5rem;
+  font-size: var(--fs-h3);
   text-transform: uppercase;
   color: var(--text-primary);
   font-weight: 400;
@@ -1590,7 +1545,7 @@ section.reveal-visible {
 }
 
 .experience-right h3 {
-  font-size: 1.5rem;
+  font-size: var(--fs-h3);
   text-transform: uppercase;
   color: var(--text-secondary);
   font-weight: 400;
@@ -1609,11 +1564,11 @@ section.reveal-visible {
   top: 70px;
   background: var(--bg-primary);
   z-index: 20;
-  padding: 10px 0;
+  padding: 8px 0;
   margin-bottom: 3rem;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s;
-  box-shadow: 0 10px 0 var(--bg-primary);
+  box-shadow: 0 4px 0 var(--bg-primary);
 }
 
 #skills h2::before {
@@ -1661,7 +1616,7 @@ section.reveal-visible {
   border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 10px;
   display: block;
-  font-size: 1.25rem;
+  font-size: var(--fs-h3);
   width: 100%;
 }
 
@@ -1839,8 +1794,31 @@ section.reveal-visible {
   margin: 40px 0;
 }
 
-#edu-certificates h2 {
-  margin-bottom: 50px;
+#edu-certificates h2,
+#contact h2 {
+  position: sticky;
+  top: 70px;
+  background: var(--bg-secondary);
+  z-index: 1002;
+  margin-bottom: 3rem;
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+  box-shadow: 0 4px 0 var(--bg-secondary);
+}
+
+#edu-certificates h2::before,
+#contact h2::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100px;
+  background: var(--bg-secondary);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .edu-cert-container {
@@ -2074,9 +2052,7 @@ section.reveal-visible {
 /* ===== 14. RESPONSIVE DESIGN ===== */
 /* ===== 14. RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
-  h1 {
-    font-size: 2.5rem;
-  }
+  /* Heading sizes now managed by responsive variables in :root */
   .hero-section {
     flex-direction: column;
     text-align: left;
@@ -2120,6 +2096,82 @@ section.reveal-visible {
 @media (max-width: 768px) {
   section {
     padding: 40px 15px 60px 15px;
+  }
+
+  #journey {
+    padding-top: 0;
+  }
+
+  /* Sticky headings for white sections on mobile */
+  #generative-ai-works h2,
+  #skills h2,
+  #portfolio h2 {
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    z-index: 1005;
+    padding: 6px 0;
+    box-shadow: 0 4px 0 var(--bg-primary);
+  }
+
+  /* Sticky headings for gray sections on mobile */
+  #journey h2,
+  #edu-certificates h2,
+  #contact h2 {
+    position: sticky;
+    top: 0;
+    background: var(--bg-secondary);
+    z-index: 1005;
+    padding: 6px 0;
+    box-shadow: 0 4px 0 var(--bg-secondary);
+  }
+
+  /* My Expertise heading is not sticky on mobile */
+  #myExpertise h2 {
+    position: relative;
+    top: auto;
+    z-index: 10;
+    margin-bottom: 2rem;
+  }
+
+  /* Specific background overrides already handled in sticky group above */
+  #journey h2 {
+    top: 0;
+  }
+
+  /* These h2s already inherited top:0 from group rule */
+  #generative-ai-works h2,
+  #portfolio h2,
+  #skills h2,
+  #edu-certificates h2 {
+    z-index: 1005;
+    top: 0;
+  }
+
+  /* Collapse the journey sticky mask pseudo-element on mobile */
+  #journey h2::before {
+    height: 0;
+    top: 0;
+  }
+
+  /* Force tab container to be visible so sticky parent works on mobile */
+  .tab-content-container {
+    overflow-y: visible !important;
+    min-height: auto !important;
+  }
+
+  /* Tab nav sits below the sticky h2 on mobile */
+  .gen-ai-sticky-tabs {
+    position: sticky !important;
+    top: 56px; /* Heading height (~48px) + small gap ≈ 56px */
+    z-index: 1004;
+    background: var(--bg-primary);
+  }
+
+  .gen-ai-sticky-tabs::before {
+    top: -56px;
+    height: 56px;
+    display: block;
   }
 
   .intro-logo {
@@ -2200,7 +2252,7 @@ section.reveal-visible {
     top: 68px;
   }
   .journey-info h3 {
-    font-size: 1.1rem;
+    /* Responsive heading handled by variable */
     padding-right: 25px;
   }
   .journey-details li {
@@ -2218,15 +2270,7 @@ section.reveal-visible {
     padding: 15px;
     min-height: 180px;
   }
-  .education-item h3,
-  .cert-card h3 {
-    font-size: 0.95rem;
-  }
-  .education-item h4,
-  .education-item p,
-  .cert-card h4 {
-    font-size: 0.75rem;
-  }
+
   .cert-card img {
     height: 70px;
   }
@@ -2243,37 +2287,27 @@ section.reveal-visible {
     padding: 1.2rem;
   }
 
-  .works-gallery.preview-view,
-  .works-gallery.grid-view {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important;
-    padding: 15px 5% !important;
-  }
-
-  .works-gallery.horizontal-scroll {
+  .works-gallery {
     grid-auto-columns: calc((100% - 15px) / 2) !important;
     gap: 15px !important;
     padding: 15px 5% !important;
   }
 
-  .works-gallery.preview-view .gen-ai-entry,
-  .works-gallery.grid-view .gen-ai-entry {
+  .works-gallery .gen-ai-entry {
     height: 100% !important;
     min-height: 280px !important;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.8rem;
-  }
+  /* Heading sizes now managed by responsive variables in :root */
   h2 {
-    font-size: 1.5rem;
     margin-bottom: 2rem;
   }
 
   .hero-section-right img {
-    max-width: 250px;
+    max-width: 280px; /* Consistent with clamp floor */
+    border-radius: 30px; /* Slightly smaller radius for mobile */
   }
 
   .myExpertise-container {

@@ -137,7 +137,14 @@ function initNavbar() {
       if (target) {
         if (navToggle) navToggle.classList.remove("active");
         if (navLinksList) navLinksList.classList.remove("active");
-        target.scrollIntoView({ behavior: "smooth" });
+
+        const offset = window.innerWidth > 768 ? 70 : 0;
+        const targetPosition =
+          target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
       }
     });
   });
@@ -185,64 +192,22 @@ function setupTabbedGallery(sectionId, containerId) {
   // 1. Tab Logic (Click to Scroll)
   tabBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const galleries = container.querySelectorAll(".works-gallery");
-
-      // Apply transition to all galleries
-      galleries.forEach((gallery) => {
-        gallery.classList.add("is-transitioning");
-        gallery.classList.remove("consistent-view"); // Tabs get full stagger reveal
-      });
-
       const targetId = btn.dataset.tab;
       const targetEl = document.getElementById(targetId);
 
-      setTimeout(() => {
-        // Reset and update layout for all galleries while invisible
-        galleries.forEach((gallery) => {
-          gallery.classList.add("preview-view");
-          gallery.classList.remove("horizontal-scroll");
-          gallery.scrollTo({ left: 0, behavior: "auto" });
+      // Update active tab button
+      tabBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
 
-          // Reset View All text
-          const viewAllCard = gallery.querySelector(".view-all-card");
-          if (viewAllCard) {
-            const titleEl = viewAllCard.querySelector("h3");
-            const countSpan = viewAllCard.querySelector(".view-all-count");
-            const items = gallery.querySelectorAll(
-              ".gen-ai-entry:not(.view-all-card)",
-            );
-            const totalItems = items.length;
-
-            if (countSpan && totalItems > 3) {
-              countSpan.textContent = `+${totalItems - 3}`;
-            } else if (countSpan) {
-              countSpan.textContent = "+";
-            }
-            if (titleEl) {
-              titleEl.innerHTML =
-                'View All <span class="view-all-arrow">&#8594;</span>';
-            }
-          }
-
-          // Hide controls
-          const controls = gallery
-            .closest(".parallax-section")
-            .querySelector(".gallery-controls");
-          if (controls) controls.classList.remove("is-visible");
+      if (targetEl) {
+        const offset = window.innerWidth > 768 ? 200 : 115;
+        const targetPosition =
+          targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
         });
-
-        // Scroll to target
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-
-        // Fade back in to trigger staggered reveal
-        requestAnimationFrame(() => {
-          galleries.forEach((gallery) =>
-            gallery.classList.remove("is-transitioning"),
-          );
-        });
-      }, 50); // Snappy transition for modern reveal
+      }
     });
   });
 
@@ -296,82 +261,7 @@ function setupTabbedGallery(sectionId, containerId) {
 function initGenAIWorks() {
   setupTabbedGallery("generative-ai-works", "gen-ai-parallax-scroll");
 
-  // Setup View All click functionality for all cards (including those in Portfolio)
-  // We can do this once globably in initAll or keep it in a common place
-  // But initGenAIWorks is a good place if it's called early
-  const viewAllCards = document.querySelectorAll(".view-all-card");
-  viewAllCards.forEach((card) => {
-    // Prevent double binding if this is called multiple times
-    if (card.dataset.initialized) return;
-    card.dataset.initialized = "true";
-
-    const gallery = card.closest(".works-gallery");
-    if (!gallery) return;
-
-    // Initial count state
-    const totalItems = gallery.querySelectorAll(
-      ".gen-ai-entry:not(.view-all-card)",
-    ).length;
-    const countSpan = card.querySelector(".view-all-count");
-    if (countSpan && totalItems > 3) {
-      countSpan.textContent = `+${totalItems - 3}`;
-    }
-
-    card.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const titleEl = card.querySelector("h3");
-      const isPreview = gallery.classList.contains("preview-view");
-      // Start smooth transition
-      gallery.classList.add("is-transitioning");
-      gallery.classList.add("consistent-view"); // Keep first 3 items anchored
-
-      setTimeout(() => {
-        if (isPreview) {
-          // Switching to Full Gallery (Horizontal Scroll)
-          gallery.classList.remove("preview-view");
-          gallery.classList.add("horizontal-scroll");
-          if (countSpan) countSpan.textContent = "-";
-          if (titleEl) titleEl.textContent = "View Less";
-
-          // requestAnimationFrame removed to keep initial items in a consistent position
-        } else {
-          // Switching back to Preview
-          gallery.classList.add("preview-view");
-          gallery.classList.remove("horizontal-scroll");
-          gallery.scrollTo({ left: 0, behavior: "auto" }); // Instant reset while invisible
-
-          if (countSpan && totalItems > 3) {
-            countSpan.textContent = `+${totalItems - 3}`;
-          } else if (countSpan) {
-            countSpan.textContent = "+";
-          }
-          if (titleEl) {
-            titleEl.innerHTML =
-              'View All <span class="view-all-arrow">&#8594;</span>';
-          }
-        }
-
-        // Update controls
-        const controls = gallery
-          .closest(".parallax-section")
-          .querySelector(".gallery-controls");
-        if (controls) {
-          if (gallery.classList.contains("horizontal-scroll")) {
-            controls.classList.add("is-visible");
-          } else {
-            controls.classList.remove("is-visible");
-          }
-        }
-
-        // Fade back in with the new modern stagger
-        requestAnimationFrame(() => {
-          gallery.classList.remove("is-transitioning");
-        });
-      }, 50); // Fast swap to reveal items instantly
-    });
-  });
-
-  // Setup Scroll Initial States
+  // Setup drag-to-scroll for all horizontal galleries
   setupHorizontalGallery(
     "#works-2d-content .works-gallery",
     "btn-prev-2d",
@@ -401,6 +291,15 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
 
   if (!gallery) return;
 
+  // --- Show controls only if more than 4 cards ---
+  const cardCount = gallery.querySelectorAll(".gen-ai-entry").length;
+  const section = gallery.closest(".parallax-section");
+  const controls = section ? section.querySelector(".gallery-controls") : null;
+  if (controls && cardCount > 4) {
+    controls.classList.add("is-visible");
+  }
+
+  // --- Button scroll ---
   if (btnPrev && btnNext) {
     btnPrev.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -411,6 +310,72 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
       gallery.scrollBy({ left: 420, behavior: "smooth" });
     });
   }
+
+  // --- Click-and-Drag scroll ---
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let hasDragged = false;
+
+  gallery.addEventListener("mousedown", (e) => {
+    // Ignore clicks on interactive elements
+    if (e.target.closest("button, a, video, audio, .view-all-card")) return;
+    isDragging = true;
+    hasDragged = false;
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
+    gallery.style.cursor = "grabbing";
+    e.preventDefault();
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+    isDragging = false;
+    gallery.style.cursor = "grab";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 1.5; // scroll speed multiplier
+    if (Math.abs(walk) > 5) hasDragged = true;
+    gallery.scrollLeft = scrollLeft - walk;
+  });
+
+  // Prevent clicks from firing on child elements after a drag
+  gallery.addEventListener(
+    "click",
+    (e) => {
+      if (hasDragged) {
+        e.stopPropagation();
+        e.preventDefault();
+        hasDragged = false;
+      }
+    },
+    true,
+  );
+
+  // --- Touch drag support ---
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+
+  gallery.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.touches[0].pageX;
+      touchScrollLeft = gallery.scrollLeft;
+    },
+    { passive: true },
+  );
+
+  gallery.addEventListener(
+    "touchmove",
+    (e) => {
+      const dx = touchStartX - e.touches[0].pageX;
+      gallery.scrollLeft = touchScrollLeft + dx;
+    },
+    { passive: true },
+  );
 }
 
 /* ===== 8. MY JOURNEY ===== */
@@ -458,29 +423,11 @@ function initSkills() {
 function initDesignArchive() {
   setupTabbedGallery("portfolio", "portfolio-parallax-scroll");
 
-  // Adobe Photoshop
+  // Adobe Design Works (Photoshop + Illustrator + Indesign + Web Design combined)
   setupHorizontalGallery(
-    "#works-photoshop .works-gallery",
-    "btn-prev-photoshop",
-    "btn-next-photoshop",
-  );
-  // Adobe Illustrator
-  setupHorizontalGallery(
-    "#works-illustrator .works-gallery",
-    "btn-prev-illustrator",
-    "btn-next-illustrator",
-  );
-  // Adobe Indesign
-  setupHorizontalGallery(
-    "#works-indesign .works-gallery",
-    "btn-prev-indesign",
-    "btn-next-indesign",
-  );
-  // Web Design
-  setupHorizontalGallery(
-    "#works-web-design .works-gallery",
-    "btn-prev-web-design",
-    "btn-next-web-design",
+    "#works-adobe-design .works-gallery",
+    "btn-prev-adobe-design",
+    "btn-next-adobe-design",
   );
 
   setupHorizontalGallery(

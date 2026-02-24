@@ -6,6 +6,7 @@ function initAll() {
   console.log("Initializing all components...");
   try {
     initNavbar();
+    initHeroParallax();
     initHeroAnimations();
     initRevealOnScroll();
     initGenAIWorks();
@@ -23,6 +24,34 @@ function initAll() {
 }
 
 // ... rest of initAll logic ...
+
+/* ===== HERO PARALLAX ===== */
+function initHeroParallax() {
+  const heroBg = document.querySelector(".hero-bg-image");
+  const introSection = document.getElementById("introduction");
+  if (!heroBg || !introSection) return;
+
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const sectionH = introSection.offsetHeight;
+
+        // Only apply while intro section is visible
+        if (scrollY <= sectionH) {
+          // Move bg down at 40% of scroll speed → net upward at 60% = parallax
+          heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
 
 function initHeroAnimations() {
   console.log("Initializing hero animations...");
@@ -303,11 +332,28 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
   if (btnPrev && btnNext) {
     btnPrev.addEventListener("click", (e) => {
       e.stopPropagation();
-      gallery.scrollBy({ left: -420, behavior: "smooth" });
+      const firstCard = gallery.querySelector(".gen-ai-entry");
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth;
+        const gap = parseInt(getComputedStyle(gallery).gap) || 0;
+        const scrollDistance = (cardWidth + gap) * 2; // Slide by 2 cards
+        gallery.scrollBy({ left: -scrollDistance, behavior: "smooth" });
+      } else {
+        gallery.scrollBy({ left: -800, behavior: "smooth" });
+      }
     });
+
     btnNext.addEventListener("click", (e) => {
       e.stopPropagation();
-      gallery.scrollBy({ left: 420, behavior: "smooth" });
+      const firstCard = gallery.querySelector(".gen-ai-entry");
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth;
+        const gap = parseInt(getComputedStyle(gallery).gap) || 0;
+        const scrollDistance = (cardWidth + gap) * 2; // Slide by 2 cards
+        gallery.scrollBy({ left: scrollDistance, behavior: "smooth" });
+      } else {
+        gallery.scrollBy({ left: 800, behavior: "smooth" });
+      }
     });
   }
 
@@ -320,17 +366,22 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
   gallery.addEventListener("mousedown", (e) => {
     // Ignore clicks on interactive elements
     if (e.target.closest("button, a, video, audio, .view-all-card")) return;
+
     isDragging = true;
     hasDragged = false;
     startX = e.pageX - gallery.offsetLeft;
     scrollLeft = gallery.scrollLeft;
+
+    gallery.classList.add("is-dragging");
     gallery.style.cursor = "grabbing";
+
     e.preventDefault();
   });
 
   window.addEventListener("mouseup", () => {
     if (!isDragging) return;
     isDragging = false;
+    gallery.classList.remove("is-dragging");
     gallery.style.cursor = "grab";
   });
 
@@ -383,22 +434,15 @@ function initJourney() {
   const journeyEntries = document.querySelectorAll(".journey-entry");
   if (journeyEntries.length === 0) return;
 
-  const journeyObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-active");
-          observer.unobserve(entry.target); // Unobserve so it stays open!
-        }
-      });
-    },
-    { root: null, rootMargin: "-30% 0px -30% 0px" },
-  );
-
   journeyEntries.forEach((entry) => {
-    journeyObserver.observe(entry);
-    // Allow the user to manually close/open it using the same CSS class
-    entry.addEventListener("click", () => entry.classList.toggle("is-active"));
+    // Reveal content on click
+    entry.addEventListener("click", () => {
+      // Option: Close other open entries first (exclusive accordion feel)
+      journeyEntries.forEach((other) => {
+        if (other !== entry) other.classList.remove("is-active");
+      });
+      entry.classList.toggle("is-active");
+    });
   });
 }
 

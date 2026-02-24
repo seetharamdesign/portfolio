@@ -410,24 +410,25 @@ section.reveal-visible {
   transform: scale(1.1);
 }
 .hero-section {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1400px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 0 5%;
-  gap: 100px;
-  position: relative;
+  padding: 60px 5%;
+  text-align: center;
 }
 
 .hero-section-left {
-  flex: 1.2;
-  max-width: 700px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-section-left h1 {
@@ -445,8 +446,8 @@ section.reveal-visible {
 }
 
 .hero-section-left h2::after {
-  left: 0;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hero-section-left p {
@@ -454,6 +455,7 @@ section.reveal-visible {
   margin: 0 0 2.5rem 0;
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--text-secondary);
+  text-align: center;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
@@ -500,41 +502,129 @@ section.reveal-visible {
   width: 100%;
 }
 
-.hero-section-right {
-  flex: 1;
+/* ===== HERO IMAGE — background portrait ===== */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
   display: flex;
+  align-items: flex-start; /* anchor to top — shows face */
   justify-content: center;
-  align-items: center;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.hero-section-right img {
+/* Grid stacks all 6 slice divs in the same cell */
+.hero-img-wrap {
+  display: grid;
+  grid-template: auto / 1fr;
   width: 100%;
-  max-width: clamp(280px, 40vw, 400px);
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 40px;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+  height: 100%; /* Fill the background container */
+  max-height: 90vh; /* Keep it as a mid-shot composition */
+  border-radius: 28px;
+  overflow: hidden;
+  opacity: 0.18;
+  pointer-events: auto;
+}
+
+/* All slices occupy the same grid cell — perfectly stacked */
+.hero-slice {
+  grid-area: 1 / 1;
+  /* No transform on the slice itself — clip-path stays frozen */
+  will-change: clip-path;
+  overflow: hidden;
+}
+
+.hero-slice img {
+  display: block;
+  width: 100%;
+  height: 100%; /* Occupy full wrapper height */
+  object-fit: cover; /* Ensures "mid-shot" crop without stretching */
+  object-position: center 15%; /* Keep face in the upper third */
   filter: contrast(105%);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  animation: floatHero 6s ease-in-out infinite;
+  border-radius: 28px;
+  transform-origin: 50% 20%; /* zoom toward face / upper area */
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes floatHero {
-  0%,
+/*
+  6 overlapping diagonal bands to prevent sub-pixel gaps during entry.
+  We must include -webkit-clip-path for Safari compatibility!
+*/
+.hero-slice-1 {
+  --clip: polygon(0% 0%, 100% 0%, 100% 13%, 0% 19%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromR 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+}
+.hero-slice-2 {
+  --clip: polygon(0% 18%, 100% 12%, 100% 29.5%, 0% 35.5%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromL 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.45s backwards;
+}
+.hero-slice-3 {
+  --clip: polygon(0% 34.5%, 100% 28.5%, 100% 46%, 0% 52%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromR 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s backwards;
+}
+.hero-slice-4 {
+  --clip: polygon(0% 51%, 100% 45%, 100% 62.5%, 0% 68.5%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromL 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.75s backwards;
+}
+.hero-slice-5 {
+  --clip: polygon(0% 67.5%, 100% 61.5%, 100% 79%, 0% 85%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromR 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.9s backwards;
+}
+.hero-slice-6 {
+  --clip: polygon(0% 84%, 100% 78%, 100% 100%, 0% 100%);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  animation: sliceFromL 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.05s backwards;
+}
+
+/*
+  Hover effect: Smooth zoom toward face.
+  The container and clip-path masks are completely static.
+  Only the <img> inside each slice scales up.
+*/
+.hero-img-wrap {
+  position: relative;
+}
+
+.hero-img-wrap:hover .hero-slice img {
+  transform: scale(1.09);
+}
+
+/* 
+  Entry keyframes 
+  Using 'backwards' fill-mode ensures that when the animation completes, 
+  control of the 'transform' property is returned to the CSS hover mechanics.
+*/
+@keyframes sliceFromR {
+  0% {
+    opacity: 0;
+    transform: translate(30px, -15px);
+  }
   100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
-.hero-section-right img:hover {
-  transform: scale(1.02) rotate(1deg);
-  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.2);
+@keyframes sliceFromL {
+  0% {
+    opacity: 0;
+    transform: translate(-30px, 15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 .recent-works-container {
@@ -556,6 +646,8 @@ section.reveal-visible {
 #myExpertise {
   padding-top: 40px;
   padding-bottom: 80px; /* Increased bottom spacing */
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .myExpertise-container {
@@ -826,7 +918,7 @@ section.reveal-visible {
 
 .parallax-section > h3 {
   text-align: left;
-  padding-left: 5%;
+  padding-left: 10%; /* Increased for better left-side alignment */
   margin-bottom: 30px;
   font-size: var(--fs-h3);
   font-weight: 700;
@@ -850,16 +942,30 @@ section.reveal-visible {
   grid-auto-columns: calc((100% - 3 * 24px) / 4) !important;
   overflow-x: auto !important;
   gap: 24px;
-  padding: 30px 5%;
+  padding: 30px 10%; /* Increased gap from the edge */
   min-height: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
   user-select: none;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 10%; /* Ensures snapping respects the side space */
+  scroll-behavior: smooth;
 }
 
 .works-gallery:active {
   cursor: grabbing;
+}
+
+/* Optimize child elements for dragging */
+.works-gallery.is-dragging {
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+}
+
+.works-gallery.is-dragging .gen-ai-entry {
+  pointer-events: none; /* Prevents images from being "picked up" by browser */
+  user-select: none;
 }
 
 .works-gallery::-webkit-scrollbar {
@@ -876,6 +982,7 @@ section.reveal-visible {
   width: 100%;
   min-height: 0;
   height: 100%;
+  scroll-snap-align: start; /* Snap to card edges */
   transition:
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1113,10 +1220,10 @@ section.reveal-visible {
 }
 
 .nav-text-btn {
-  background: var(--bg-primary);
+  background: var(--bg-primary); /* Base color for hover state */
   border: 1px solid var(--border-subtle);
   border-radius: 20px;
-  color: var(--text-primary);
+  color: #ffffff; /* Text color for normal state */
   font-size: 0.75rem;
   font-family: inherit;
   font-weight: 600;
@@ -1128,19 +1235,34 @@ section.reveal-visible {
   width: 44px;
   height: 22px;
   padding: 0;
-  line-height: 22px; /* Match height exactly so glyph sits center */
+  line-height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+  overflow: hidden; /* Important for ::before */
+  z-index: 1;
+}
+
+.nav-text-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 .nav-text-btn:hover {
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-  color: #ffffff;
-  border-color: transparent;
-  /* transform: translateY(-2px); */
+  color: var(--text-primary); /* Smooth text color transition */
+  transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.nav-text-btn:hover::before {
+  opacity: 0; /* Smooth fade from gradient to solid bg-primary */
 }
 
 /* ===== 8. MY JOURNEY ===== */
@@ -1239,6 +1361,12 @@ section.reveal-visible {
   border-radius: 16px; /* Rounded corners for card feel */
   border-left: 1px solid transparent; /* Prepare for border transition */
   cursor: pointer;
+  transform: translateZ(0); /* Hardware acceleration */
+}
+
+.journey-entry:hover {
+  transform: scale(1.02);
+  z-index: 10;
 }
 
 /* "Spotlight" Active State */
@@ -1309,8 +1437,9 @@ section.reveal-visible {
   background-size: 200% auto;
 }
 
-/* Gradient Text on Active */
-.journey-entry.is-active .journey-info h3 {
+/* Gradient Text on Active & Hover */
+.journey-entry.is-active .journey-info h3,
+.journey-entry:hover .journey-info h3 {
   background-image: linear-gradient(
     to right,
     var(--accent-blue) 0%,
@@ -1321,6 +1450,31 @@ section.reveal-visible {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s ease infinite;
+}
+
+/* "Click to view more" hint on hover */
+.journey-entry:not(.is-active):hover .journey-info::after {
+  content: "Click to view more";
+  display: block;
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+  opacity: 0.8;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
 }
 
 @keyframes gradient-shift {
@@ -1365,7 +1519,7 @@ section.reveal-visible {
 }
 
 .journey-entry.is-active .journey-details {
-  max-height: 500px;
+  max-height: 800px; /* Increased to avoid clipping large content */
   opacity: 1;
   padding-top: 1.5rem;
   transition-delay: 0.1s;
@@ -2054,32 +2208,23 @@ section.reveal-visible {
 @media (max-width: 1024px) {
   /* Heading sizes now managed by responsive variables in :root */
   .hero-section {
-    flex-direction: column;
-    text-align: left;
     width: 95%;
-    padding: 30px 10px;
-    gap: 40px;
-    align-items: flex-start;
+    padding: 40px 10px;
   }
-  .hero-section-left,
-  .hero-section-right {
+  .hero-section-left {
     width: 100%;
     max-width: 100%;
   }
   .hero-section-left h1,
   .hero-section-left h2,
   .hero-section-left p {
-    text-align: left;
+    text-align: center;
   }
   .hero-section-left {
-    align-items: flex-start;
-  }
-  .hero-section-left p {
-    margin-left: 0;
-    margin-right: 0;
+    align-items: center;
   }
   .hero-links {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .skills-container {
@@ -2305,9 +2450,9 @@ section.reveal-visible {
     margin-bottom: 2rem;
   }
 
-  .hero-section-right img {
-    max-width: 280px; /* Consistent with clamp floor */
-    border-radius: 30px; /* Slightly smaller radius for mobile */
+  .hero-img-wrap {
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .myExpertise-container {
@@ -2565,10 +2710,10 @@ video:-ms-fullscreen {
 
 #lightbox .close,
 #lightbox .l-arrow {
-  background: var(--bg-primary);
+  background: var(--bg-primary); /* Base color for hover state */
   border: 1px solid var(--border-subtle);
   border-radius: 20px;
-  color: var(--text-primary);
+  color: #ffffff; /* Normal state text color */
   font-size: 1.2rem;
   font-family: inherit;
   font-weight: 600;
@@ -2582,6 +2727,20 @@ video:-ms-fullscreen {
   transition: all 0.3s ease;
   padding: 0 0 4px 0;
   line-height: 1;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#lightbox .close::before,
+#lightbox .l-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 #lightbox .close {
@@ -2594,10 +2753,14 @@ video:-ms-fullscreen {
 
 #lightbox .close:hover,
 #lightbox .l-arrow:hover {
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-  color: #ffffff;
-  border-color: transparent;
+  color: var(--text-primary);
   box-shadow: var(--shadow-md);
+  transform: scale(1.05);
+}
+
+#lightbox .close:hover::before,
+#lightbox .l-arrow:hover::before {
+  opacity: 0; /* Smooth fade from gradient to solid base */
 }
 
 #lightbox video::-webkit-media-controls {

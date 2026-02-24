@@ -17,6 +17,7 @@ function initAll() {
     initContact();
     initScrollToTop();
     initYouTubeAPI();
+    initReadMore();
     console.log("All components initialized successfully.");
   } catch (error) {
     console.error("Initialization failed:", error);
@@ -125,25 +126,29 @@ function initNavbar() {
 
   // Main Nav Scroll Spy
   const handleMainNavScrollSpy = () => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("main > section[id]");
     const navLinks = document.querySelectorAll(".nav-links a");
     let current = "";
-    const triggerPoint = window.scrollY + window.innerHeight * 0.3;
+
+    // The point in the viewport where a section is considered "active"
+    // Usually about 30-40% from the top
+    const triggerPoint = window.innerHeight * 0.35;
 
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (
-        triggerPoint >= sectionTop &&
-        triggerPoint < sectionTop + sectionHeight
-      ) {
+      const rect = section.getBoundingClientRect();
+
+      // If the top of the section is above the trigger point
+      // AND the bottom of the section is below the trigger point
+      if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
         current = section.getAttribute("id");
       }
     });
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
+      const href = link.getAttribute("href");
+      // Match exactly the hash (e.g. #portfolio)
+      if (current && href === `#${current}`) {
         link.classList.add("active");
       }
     });
@@ -357,7 +362,7 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
     });
   }
 
-  // --- Click-and-Drag scroll ---
+  // --- Mouse Drag scroll ---
   let isDragging = false;
   let startX = 0;
   let scrollLeft = 0;
@@ -404,28 +409,6 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
       }
     },
     true,
-  );
-
-  // --- Touch drag support ---
-  let touchStartX = 0;
-  let touchScrollLeft = 0;
-
-  gallery.addEventListener(
-    "touchstart",
-    (e) => {
-      touchStartX = e.touches[0].pageX;
-      touchScrollLeft = gallery.scrollLeft;
-    },
-    { passive: true },
-  );
-
-  gallery.addEventListener(
-    "touchmove",
-    (e) => {
-      const dx = touchStartX - e.touches[0].pageX;
-      gallery.scrollLeft = touchScrollLeft + dx;
-    },
-    { passive: true },
   );
 }
 
@@ -788,3 +771,59 @@ function onPlayerStateChange(event) {
     }
   }
 }
+
+/* ===== READ MORE TOGGLE ===== */
+function initReadMore() {
+  const entries = document.querySelectorAll(".entry-info");
+
+  entries.forEach((info) => {
+    const p = info.querySelector("p");
+    if (!p) return;
+
+    // Apply the clamp class if not already present
+    if (!p.classList.contains("description-clamp")) {
+      p.classList.add("description-clamp");
+    }
+
+    // Function to check if text is truncated
+    const isTruncated = (el) => {
+      return el.scrollHeight > el.clientHeight;
+    };
+
+    // Use a small timeout to ensure styles are applied and layout is rendered
+    setTimeout(() => {
+      if (isTruncated(p)) {
+        // Find or create the button
+        let btn = info.querySelector(".see-more-btn");
+        if (!btn) {
+          btn = document.createElement("button");
+          btn.className = "see-more-btn";
+          btn.textContent = "See more";
+          info.appendChild(btn);
+        }
+        btn.style.display = "inline-block";
+
+        btn.onclick = () => {
+          if (p.classList.contains("description-clamp")) {
+            p.classList.remove("description-clamp");
+            btn.textContent = "See less";
+          } else {
+            p.classList.add("description-clamp");
+            btn.textContent = "See more";
+          }
+        };
+      } else {
+        // If not truncated, hide the button if it exists
+        const btn = info.querySelector(".see-more-btn");
+        if (btn) btn.style.display = "none";
+      }
+    }, 100);
+  });
+}
+
+// Re-check on resize
+window.addEventListener("resize", () => {
+  // Use a debounce or simple timeout to avoid excessive calls
+  clearTimeout(window.readMoreTimeout);
+  window.readMoreTimeout = setTimeout(initReadMore, 200);
+});

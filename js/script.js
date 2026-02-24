@@ -369,18 +369,28 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
   let hasDragged = false;
 
   gallery.addEventListener("mousedown", (e) => {
-    // Ignore clicks on interactive elements
-    if (e.target.closest("button, a, video, audio, .view-all-card")) return;
+    // Ignore clicks on buttons/links so they function normally
+    if (e.target.closest("button, a, .view-all-card")) return;
 
     isDragging = true;
     hasDragged = false;
     startX = e.pageX - gallery.offsetLeft;
     scrollLeft = gallery.scrollLeft;
 
-    gallery.classList.add("is-dragging");
     gallery.style.cursor = "grabbing";
 
-    e.preventDefault();
+    // Only preventDefault if it's NOT a media element.
+    // This allows the 'click' event to reach our lightbox delegate.
+    if (!e.target.closest("img, video, audio")) {
+      e.preventDefault();
+    }
+  });
+
+  // Prevent browser's native ghost image drag
+  gallery.addEventListener("dragstart", (e) => {
+    if (e.target.closest("img, video")) {
+      e.preventDefault();
+    }
   });
 
   window.addEventListener("mouseup", () => {
@@ -394,7 +404,10 @@ function setupHorizontalGallery(gallerySelector, btnPrevId, btnNextId) {
     if (!isDragging) return;
     const x = e.pageX - gallery.offsetLeft;
     const walk = (x - startX) * 1.5; // scroll speed multiplier
-    if (Math.abs(walk) > 5) hasDragged = true;
+    if (Math.abs(walk) > 5) {
+      hasDragged = true;
+      gallery.classList.add("is-dragging");
+    }
     gallery.scrollLeft = scrollLeft - walk;
   });
 

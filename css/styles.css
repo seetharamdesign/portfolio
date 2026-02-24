@@ -155,8 +155,13 @@ p {
 
 a {
   text-decoration: none;
-  color: var(--white);
+  color: var(--accent-blue);
   transition: all 0.3s ease;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+  color: var(--accent-purple);
 }
 
 section {
@@ -942,7 +947,7 @@ section.reveal-visible {
   grid-auto-columns: calc((100% - 3 * 24px) / 4) !important;
   overflow-x: auto !important;
   gap: 24px;
-  padding: 30px 10%; /* Increased gap from the edge */
+  padding: 50px 10%; /* Increased vertical padding to prevent shadow clipping */
   min-height: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -983,13 +988,17 @@ section.reveal-visible {
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.5s ease;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.04); /* Permanent elevation for all cards */
+  will-change: transform, box-shadow;
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden;
 }
 
 .gen-ai-entry:hover,
 .gen-ai-entry.is-active {
   background: var(--bg-secondary);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px); /* Reduced lift by half */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06); /* More subtle shadow */
 }
 
 .entry-info {
@@ -998,6 +1007,8 @@ section.reveal-visible {
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
+  position: relative; /* For absolutely positioned button */
+  padding-bottom: 48px; /* Extra padding to accommodate the 1.4em button space */
 }
 
 .entry-info h3,
@@ -1017,27 +1028,34 @@ section.reveal-visible {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.4;
+  min-height: 2.8em; /* Exactly 2 lines of space */
+  margin-bottom: 0;
 }
 
 .description-clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Changed from 3 to 2 lines */
+  -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-height: 2.8em;
 }
 
 .see-more-btn {
-  display: none; /* Hidden by default, JS will show if text overflows */
+  display: none;
   background: none;
   border: none;
   color: var(--accent-blue);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  padding: 4px 0;
-  margin-top: 4px;
-  display: inline-block;
+  padding: 0;
+  margin-top: 0;
+  height: 1.4em;
+  line-height: 1.4;
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
   transition: color 0.3s ease;
 }
 
@@ -1387,7 +1405,6 @@ section.reveal-visible {
   z-index: 10;
 }
 
-/* "Spotlight" Active State */
 .journey-entry.is-active {
   background: linear-gradient(
     90deg,

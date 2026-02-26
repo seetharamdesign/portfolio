@@ -426,6 +426,9 @@ section.reveal-visible {
   margin: 0 auto;
   padding: 60px 5%;
   text-align: center;
+  padding-right: 08%;
+  margin-right: 30%;
+  /* background-color: red; */
 }
 
 .hero-section-left {
@@ -516,6 +519,7 @@ section.reveal-visible {
   justify-content: center;
   z-index: 0;
   pointer-events: none;
+  padding-left: clamp(0px, calc((100vw - 768px) * 2), 50%);
 }
 
 /* Grid stacks all 6 slice divs in the same cell */
@@ -525,10 +529,22 @@ section.reveal-visible {
   width: 100%;
   height: 100%; /* Fill the background container */
   max-height: 90vh; /* Keep it as a mid-shot composition */
-  border-radius: 28px;
+  /* border-radius: 28px; */
   overflow: hidden;
-  opacity: 0.18;
+  opacity: 0.75;
   pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  .hero-img-wrap {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img-wrap {
+    opacity: 0.18;
+  }
 }
 
 /* All slices occupy the same grid cell — perfectly stacked */
@@ -546,7 +562,7 @@ section.reveal-visible {
   object-fit: cover; /* Ensures "mid-shot" crop without stretching */
   object-position: center 15%; /* Keep face in the upper third */
   filter: contrast(105%);
-  border-radius: 28px;
+  /* border-radius: 28px; */
   transform-origin: 50% 20%; /* zoom toward face / upper area */
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -769,6 +785,12 @@ section.reveal-visible {
   margin-bottom: 3rem;
   padding: 8px 0;
   box-shadow: 0 4px 0 var(--bg-primary); /* mask scrolling content */
+}
+
+#generative-ai-works h2 {
+  white-space: nowrap;
+  font-size: clamp(1rem, 4.5vw, 2.25rem);
+  overflow: hidden;
 }
 
 #generative-ai-works h2::before,
@@ -2379,6 +2401,7 @@ section.reveal-visible {
   .nav-toggle {
     display: flex;
     margin-left: auto;
+    width: 20px;
   }
 
   .nav-links {

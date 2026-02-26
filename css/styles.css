@@ -412,7 +412,7 @@ section.reveal-visible {
 }
 
 .intro-logo:hover img {
-  transform: scale(1.1);
+  transform: scale(1);
 }
 .hero-section {
   position: relative;
@@ -427,7 +427,7 @@ section.reveal-visible {
   padding: 60px 5%;
   text-align: center;
   padding-right: 08%;
-  margin-right: 30%;
+  margin-right: 35%;
   /* background-color: red; */
 }
 
@@ -435,8 +435,8 @@ section.reveal-visible {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .hero-section-left h1 {
@@ -454,8 +454,8 @@ section.reveal-visible {
 }
 
 .hero-section-left h2::after {
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  transform: none;
 }
 
 .hero-section-left p {
@@ -463,7 +463,7 @@ section.reveal-visible {
   margin: 0 0 2.5rem 0;
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
@@ -2267,6 +2267,7 @@ section.reveal-visible {
   .hero-section {
     width: 95%;
     padding: 40px 10px;
+    margin: 0 auto;
   }
   .hero-section-left {
     width: 100%;
@@ -2275,13 +2276,13 @@ section.reveal-visible {
   .hero-section-left h1,
   .hero-section-left h2,
   .hero-section-left p {
-    text-align: center;
+    text-align: left;
   }
   .hero-section-left {
-    align-items: center;
+    align-items: flex-start;
   }
   .hero-links {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .skills-container {

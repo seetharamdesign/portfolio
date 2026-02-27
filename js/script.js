@@ -29,8 +29,9 @@ function initAll() {
 /* ===== HERO PARALLAX ===== */
 function initHeroParallax() {
   const heroBg = document.querySelector(".hero-bg-image");
+  const introLogo = document.querySelector(".intro-logo");
   const introSection = document.getElementById("introduction");
-  if (!heroBg || !introSection) return;
+  if (!introSection) return;
 
   let ticking = false;
 
@@ -40,11 +41,11 @@ function initHeroParallax() {
         const scrollY = window.scrollY;
         const sectionH = introSection.offsetHeight;
 
-        // Only apply while intro section is visible
-        if (scrollY <= sectionH) {
-          // Move bg down at 40% of scroll speed → net upward at 60% = parallax
+        // 1. Hero Parallax
+        if (heroBg && scrollY <= sectionH + 100) {
           heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
         }
+
         ticking = false;
       });
       ticking = true;
@@ -839,4 +840,83 @@ window.addEventListener("resize", () => {
   // Use a debounce or simple timeout to avoid excessive calls
   clearTimeout(window.readMoreTimeout);
   window.readMoreTimeout = setTimeout(initReadMore, 200);
+});
+
+/* ===============================
+   VIEW ALL MODAL LOGIC
+================================ */
+function openViewAllModal(title, sectionId) {
+  const modal = document.getElementById("view-all-modal");
+  const modalTitle = document.getElementById("view-all-title");
+  const modalGrid = document.getElementById("view-all-grid");
+  const section = document.getElementById(sectionId);
+
+  if (!modal || !section) return;
+
+  // Set title
+  modalTitle.textContent = title;
+
+  // Clear existing items in the modal grid
+  modalGrid.innerHTML = "";
+
+  // Get original cards (not clones from the infinite scroll)
+  // The items might be wrapped in .gallery-track, so we select securely
+  const items = section.querySelectorAll(".gen-ai-entry:not(.clone)");
+
+  items.forEach((item) => {
+    // Clone the item
+    const clonedItem = item.cloneNode(true);
+    // Remove inline styles safely (assigning string to .style can throw TypeErrors)
+    clonedItem.removeAttribute("style");
+
+    // If the card has a "See more" button inside, we might want to re-initReadMore
+    // or just let it be fully expanded in the grid
+    const desc = clonedItem.querySelector("p.description-clamp");
+    if (desc) {
+      desc.classList.remove("description-clamp");
+    }
+    const seeMoreBtn = clonedItem.querySelector(".see-more-btn");
+    if (seeMoreBtn) {
+      seeMoreBtn.style.display = "none";
+    }
+
+    modalGrid.appendChild(clonedItem);
+  });
+
+  // Re-initialize lightbox listeners for the cloned grid items if they have images/videos
+  // This lets users click on a media item in the pop-up and still view it in the lightbox
+  modalGrid.addEventListener("click", (e) => {
+    const media = e.target.closest("img, video");
+    if (media) {
+      if (typeof openLightbox === "function") {
+        openLightbox(media, modalGrid);
+      }
+    }
+  });
+
+  // Pause background videos if any
+  globalPaused = true;
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+  modal.classList.add("show");
+}
+
+function closeViewAllModal() {
+  const modal = document.getElementById("view-all-modal");
+  if (!modal) return;
+
+  // Pause any playing videos inside the modal before closing
+  const videos = modal.querySelectorAll("video");
+  videos.forEach((v) => v.pause());
+
+  globalPaused = false;
+  document.body.style.overflow = ""; // Restore scrolling
+  modal.classList.remove("show");
+}
+
+// Close modal if clicking outside the content area
+document.addEventListener("click", (e) => {
+  const modal = document.getElementById("view-all-modal");
+  if (modal && modal.classList.contains("show") && e.target === modal) {
+    closeViewAllModal();
+  }
 });

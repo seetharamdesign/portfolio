@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
     <title>Seetha Ram | Multimedia Specialist & SME</title>
     <meta
       name="description"
-      content="Portfolio of Seetha Rama Swamy - Multimedia Specialist and Subject Matter Expert at Amazon, leading creative teams and Generative AI workflows."
+      content="Portfolio of Seetha Rama Swamy - Generative AI Multimedia Specialist and Subject Matter Expert"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,16 +16,21 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <!-- 3D Model Viewer Support -->
+    <!-- 3D Model Viewer Support (deferred to not block render) -->
     <script
       type="module"
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+      defer
     ></script>
   </head>
   <body>
     <!-- Brand Logo -->
     <a href="#introduction" class="intro-logo">
-      <img src="images/sr-logo.png" alt="Seetha Ram Logo" />
+      <img
+        src="images/sr-logo.png"
+        alt="Seetha Ram Logo"
+        fetchpriority="high"
+      />
     </a>
 
     <!-- Navigation menu-->
@@ -58,6 +63,7 @@
                 src="images/SR_Portfolio_pic.png"
                 alt="Profile photo"
                 class="hero-main-img"
+                fetchpriority="high"
               />
             </div>
           </div>
@@ -178,6 +184,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Flux-image-edit.png"
                         alt="Flux-image-edit"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -194,6 +201,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Flux1 - inpaint.png"
                         alt="Flux1 - inpaint"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -211,6 +219,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/flux2 klien - texture transfer.png"
                         alt="flux2 klien - texture transfer"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -226,6 +235,7 @@
                       <img
                         src="images/comfyui-outputs/Flux_klien.png"
                         alt="Flux_klien"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -243,6 +253,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/qwen - cloud.png"
                         alt="qwen - cloud"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -258,6 +269,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Qwen-image edit workflow.png"
                         alt="qwen-image-edit-workflow"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -274,6 +286,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Qwen-imageEdit.png"
                         alt="qwen-image-edit"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -290,6 +303,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Z-image-text-to-image.png"
                         alt="Z-image-text-to-image"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -306,6 +320,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Z-image-text-to-image-fashion1.png"
                         alt="Z-image-text-to-image-fashion1"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -322,6 +337,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/Z-image-Lora-only-model-text-to-image-fashion1.png"
                         alt="Z-image-Lora-only-model-text-to-image-fashion1"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -337,6 +353,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/SD15-Controlnet-Canny.png"
                         alt="SD15-Controlnet-Canny"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -353,6 +370,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/SD15-Controlnet-Depth.png"
                         alt="SD15-Controlnet-Depth"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -369,6 +387,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/SD15-Controlnet-Pose.png"
                         alt="SD15-Controlnet-Pose"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -385,6 +404,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/SD15-CSV text-input-textimg-to-img.png"
                         alt="SD15-CSV text-input-textimg-to-img"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -401,6 +421,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/SD15-inpainting-basic.png"
                         alt="SD15-inpainting-basic"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -417,6 +438,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/general-workflows/background-removal-basic.png"
                         alt="background-removal-basic"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -433,6 +455,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/general-workflows/Live potrait - expression editor.png"
                         alt="Live potrait - expression editor"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -449,6 +472,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/general-workflows/Pose-control-comfydoc.png"
                         alt="pose-control"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -465,6 +489,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/general-workflows/subject-multiple-angles.png"
                         alt="subject multiple angles"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -481,6 +506,7 @@
                       <img
                         src="images/comfyui-workflow-snaps/general-workflows/Upscale-basic-workflow.png"
                         alt="Upscale-basic-workflow"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -496,6 +522,7 @@
                       <img
                         src="images/comfyui-outputs/Apparel-transfer.png"
                         alt="Apparel-transfer"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -534,14 +561,14 @@
                         >
                         <br />
                         Watch Product image to elegant editorial video using Wan
-                        2.2. Generated locally throiugh ConfyUI.
+                        2.2. Generated locally throiugh ComfyUI.
                       </p>
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -570,9 +597,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -601,9 +628,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -632,9 +659,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -664,9 +691,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -688,9 +715,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -712,9 +739,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -737,9 +764,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -762,9 +789,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -784,9 +811,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -808,9 +835,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -833,9 +860,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -858,9 +885,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -883,9 +910,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -908,9 +935,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -956,9 +983,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -1001,9 +1028,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -1049,9 +1076,9 @@
                     </div>
                     <div class="entry-media">
                       <video
+                        preload="metadata"
                         width="auto"
                         controls
-                        autoplay
                         muted
                         playsinline
                         loop
@@ -1281,7 +1308,11 @@
                 <div class="journey-header">
                   <h3>Subject Matter Expert | Global Quality & Automation</h3>
                   <div class="journey-media">
-                    <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+                    <img
+                      src="images/amazon-logo-black.png"
+                      alt="Amazon Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1310,7 +1341,11 @@
                 <div class="journey-header">
                   <h3>Quality Assurance Lead | Global Operations</h3>
                   <div class="journey-media">
-                    <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+                    <img
+                      src="images/amazon-logo-black.png"
+                      alt="Amazon Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1335,7 +1370,11 @@
                 <div class="journey-header">
                   <h3>3D Content Creator</h3>
                   <div class="journey-media">
-                    <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+                    <img
+                      src="images/amazon-logo-black.png"
+                      alt="Amazon Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1362,7 +1401,11 @@
                 <div class="journey-header">
                   <h3>Video Editor</h3>
                   <div class="journey-media">
-                    <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+                    <img
+                      src="images/amazon-logo-black.png"
+                      alt="Amazon Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1389,7 +1432,11 @@
                 <div class="journey-header">
                   <h3>2D Content Creator</h3>
                   <div class="journey-media">
-                    <img src="images/amazon-logo-black.png" alt="Amazon Logo" />
+                    <img
+                      src="images/amazon-logo-black.png"
+                      alt="Amazon Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1419,7 +1466,11 @@
                 <div class="journey-header">
                   <h3>Independent Designer</h3>
                   <div class="journey-media">
-                    <img src="images/sr-logo.png" alt="SR Logo" />
+                    <img
+                      src="images/sr-logo.png"
+                      alt="SR Logo"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <ul class="journey-details">
@@ -1481,7 +1532,7 @@
               <div class="skill-items-grid">
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/comfyui.png" alt="comfyui" />
+                    <img src="icons/comfyui.png" alt="comfyui" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1496,7 +1547,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/github.png" alt="github" />
+                    <img src="icons/github.png" alt="github" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1511,7 +1562,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/python.png" alt="python" />
+                    <img src="icons/python.png" alt="python" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1526,7 +1577,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/js.png" alt="js" />
+                    <img src="icons/js.png" alt="js" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1541,7 +1592,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/html.png" alt="html" />
+                    <img src="icons/html.png" alt="html" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1556,7 +1607,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/css.png" alt="css" />
+                    <img src="icons/css.png" alt="css" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1571,7 +1622,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/aws.png" alt="aws" />
+                    <img src="icons/aws.png" alt="aws" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1586,7 +1637,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/chatgpt.png" alt="chatgpt" />
+                    <img src="icons/chatgpt.png" alt="chatgpt" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1600,7 +1651,7 @@
                 </div>
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/figma.png" alt="figma" />
+                    <img src="icons/figma.png" alt="figma" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1614,7 +1665,7 @@
                 </div>
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/asana.png" alt="asana" />
+                    <img src="icons/asana.png" alt="asana" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1629,7 +1680,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/tableau.png" alt="tableau" />
+                    <img src="icons/tableau.png" alt="tableau" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1644,7 +1695,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/ftrack.png" alt="ftrack" />
+                    <img src="icons/ftrack.png" alt="ftrack" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1659,7 +1710,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/flameshot.png" alt="flameshot" />
+                    <img
+                      src="icons/flameshot.png"
+                      alt="flameshot"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1673,7 +1728,11 @@
                 </div>
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/creative-cloud.png" alt="creative-cloud" />
+                    <img
+                      src="icons/creative-cloud.png"
+                      alt="creative-cloud"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1694,7 +1753,11 @@
               <div class="skill-items-grid">
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/photoshop.png" alt="photoshop" />
+                    <img
+                      src="icons/photoshop.png"
+                      alt="photoshop"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1709,7 +1772,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/illustrator.png" alt="illustrator" />
+                    <img
+                      src="icons/illustrator.png"
+                      alt="illustrator"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1724,7 +1791,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/indesign.png" alt="indesign" />
+                    <img
+                      src="icons/indesign.png"
+                      alt="indesign"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1742,6 +1813,7 @@
                     <img
                       src="icons/photoshop-lightroom.png"
                       alt="photoshop-lightroom"
+                      loading="lazy"
                     />
                   </div>
                   <div class="skill-content">
@@ -1757,7 +1829,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/after-effects.png" alt="after-effects" />
+                    <img
+                      src="icons/after-effects.png"
+                      alt="after-effects"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1772,7 +1848,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/premiere-pro.png" alt="premiere-pro" />
+                    <img
+                      src="icons/premiere-pro.png"
+                      alt="premiere-pro"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1787,7 +1867,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/adobe-audition.png" alt="adobe-audition" />
+                    <img
+                      src="icons/adobe-audition.png"
+                      alt="adobe-audition"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1802,7 +1886,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/media-encoder.png" alt="media-encoder" />
+                    <img
+                      src="icons/media-encoder.png"
+                      alt="media-encoder"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1817,7 +1905,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/maya.png" alt="maya" />
+                    <img src="icons/maya.png" alt="maya" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1832,7 +1920,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/blender.png" alt="blender" />
+                    <img src="icons/blender.png" alt="blender" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1847,7 +1935,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/unreal.png" alt="unreal" />
+                    <img src="icons/unreal.png" alt="unreal" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1862,7 +1950,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/ZBrush_icon.svg" alt="zbrush" />
+                    <img
+                      src="icons/ZBrush_icon.svg"
+                      alt="zbrush"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1877,7 +1969,7 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/painter.svg" alt="painter" />
+                    <img src="icons/painter.svg" alt="painter" loading="lazy" />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1892,7 +1984,11 @@
 
                 <div class="skill-item">
                   <div class="skill-icon">
-                    <img src="icons/adobe-express.png" alt="adobe-express" />
+                    <img
+                      src="icons/adobe-express.png"
+                      alt="adobe-express"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="skill-content">
                     <div class="skill-info">
@@ -1946,6 +2042,7 @@
                       <img
                         src="images/previous-works/indesign-works/Omega_brand_watch.png"
                         alt="Omega Brand Watch"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -1961,6 +2058,7 @@
                       <img
                         src="images/previous-works/indesign-works/id-magazine.png"
                         alt="Magazine"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -1976,6 +2074,7 @@
                       <img
                         src="images/previous-works/indesign-works/gym.jpg"
                         alt="GYM Print Poster"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -1991,6 +2090,7 @@
                       <img
                         src="images/previous-works/indesign-works/nandini.jpg"
                         alt="Nandini Palace"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2004,6 +2104,7 @@
                       <img
                         src="images/previous-works/indesign-works/med plus design.jpg"
                         alt="Med Plus"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2020,6 +2121,7 @@
                       <img
                         src="images/previous-works/indesign-works/maxebiz.jpg"
                         alt="Maxebiz"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2034,6 +2136,7 @@
                       <img
                         src="images/previous-works/indesign-works/brocher design.jpg"
                         alt="Build your brand"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2048,6 +2151,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-bannerdesign.png"
                         alt="Banner Design"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2060,6 +2164,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-colortranformation.png"
                         alt="Color Transformation"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2072,6 +2177,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-digitalpainting.png"
                         alt="Digital Painting"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2084,6 +2190,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-digitalpainting2.png"
                         alt="Digital Painting 2"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2096,6 +2203,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-imagecolormatch.png"
                         alt="Color Match"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2108,6 +2216,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-imagedisplacement.png"
                         alt="Displacement"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2120,6 +2229,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-imagemanipulation.png"
                         alt="Image Manipulation"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2132,6 +2242,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-posterdesign.png"
                         alt="Poster Design"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2144,6 +2255,7 @@
                       <img
                         src="images/previous-works/photoshop-works/ps-typography.png"
                         alt="Typography"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2158,6 +2270,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-adposter.png"
                         alt="Ad Poster"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2170,6 +2283,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-broucher-design.png"
                         alt="Brochure"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2182,6 +2296,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-logo-design.png"
                         alt="Logo Design"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2194,6 +2309,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-meshtool.png"
                         alt="Mesh Tool"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2206,6 +2322,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-minimal.png"
                         alt="Minimal Art"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2218,6 +2335,7 @@
                       <img
                         src="images/previous-works/illustrator-works/ai-tri-vector-coversion.png"
                         alt="Vector Conversion"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2232,6 +2350,7 @@
                       <img
                         src="images/previous-works/web-works/app-ui-design.png"
                         alt="App UI"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2244,6 +2363,7 @@
                       <img
                         src="images/previous-works/web-works/web-ui-coded.png"
                         alt="Web UI Coded"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2256,6 +2376,7 @@
                       <img
                         src="images/previous-works/web-works/web-ui-design.png"
                         alt="Web UI"
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -2501,7 +2622,11 @@
                 href="certificates/Adobe_GenAI_Content_creation_Coursera 2G0ZU16JFPR5.pdf"
                 target="_blank"
               >
-                <img src="certificates/adobe-genai.png" alt="Adobe Gen AI" />
+                <img
+                  src="certificates/adobe-genai.png"
+                  alt="Adobe Gen AI"
+                  loading="lazy"
+                />
                 <h3>
                   Generative AI in Adobe Creative Cloud <br />
                   Credential ID:
@@ -2519,6 +2644,7 @@
                 <img
                   src="certificates/aws.png"
                   alt="aws-essential-of-promt-engineering"
+                  loading="lazy"
                 />
                 <h3>
                   Essentials of Prompt Engineering<br />
@@ -2529,7 +2655,11 @@
             </div>
             <div class="cert-card">
               <a href="certificates/Gen AI Foundations.pdf" target="_blank">
-                <img src="certificates/aws.png" alt="aws-gen-ai-foundations" />
+                <img
+                  src="certificates/aws.png"
+                  alt="aws-gen-ai-foundations"
+                  loading="lazy"
+                />
                 <h3>
                   Generative AI Foundations<br />
                   <b>AWS Certified</b>
@@ -2546,6 +2676,7 @@
                 <img
                   src="certificates/google-ux-design-professional-certificate-v-3.png"
                   alt="Google UX"
+                  loading="lazy"
                 />
                 <h3>
                   Google UX Design Professional Certificate <br />
@@ -2555,7 +2686,7 @@
               </a>
             </div>
             <div class="education-item">
-              <img src="images/Icat_logo.png" alt="icat-logo" />
+              <img src="images/Icat_logo.png" alt="icat-logo" loading="lazy" />
               <h3>ICAT - Design and Media College</h3>
               <h4>Bengaluru, Karnataka, India</h4>
               <p>
@@ -2565,7 +2696,7 @@
             </div>
 
             <div class="education-item">
-              <img src="images/jntuk-logo.png" alt="jntu-logo" />
+              <img src="images/jntuk-logo.png" alt="jntu-logo" loading="lazy" />
               <h3>Jawaharlal Nehru Technological University</h3>
               <h4>Kakinada, Andhra Pradesh, India</h4>
               <p>
@@ -2581,6 +2712,7 @@
                 <img
                   src="certificates/google-project-management-professional-certificate-.1.png"
                   alt="Google PM"
+                  loading="lazy"
                 />
                 <h3>
                   Google Project Management Professional Certificate<br />
@@ -2597,6 +2729,7 @@
                 <img
                   src="certificates/python_bootcamp_zero_to_hero.png"
                   alt="Python boot camp for Programmers"
+                  loading="lazy"
                 />
                 <h3>
                   Python boot camp for Programmers<br />
@@ -2612,34 +2745,43 @@
           <h2><span class="heading-gradient">Get In Touch</span></h2>
           <div class="social-links">
             <a href="https://www.behance.net/seetharamaswamy" target="_blank"
-              ><img src="icons/social/behance.png" alt="Behance"
+              ><img src="icons/social/behance.png" alt="Behance" loading="lazy"
             /></a>
             <a href="https://github.com/seetharamdesign" target="_blank"
-              ><img src="icons/social/github.png" alt="GitHub"
+              ><img src="icons/social/github.png" alt="GitHub" loading="lazy"
             /></a>
             <a
               href="https://www.linkedin.com/in/seetha-rama-swamy-thota-3bbbb385"
               target="_blank"
-              ><img src="icons/social/linkedin.png" alt="LinkedIn"
+              ><img
+                src="icons/social/linkedin.png"
+                alt="LinkedIn"
+                loading="lazy"
             /></a>
             <a href="https://x.com/tsrs8777" target="_blank"
-              ><img src="icons/social/twitter.png" alt="Twitter"
+              ><img src="icons/social/twitter.png" alt="Twitter" loading="lazy"
             /></a>
             <a href="https://www.instagram.com/sr_complicated/" target="_blank"
-              ><img src="icons/social/instagram.png" alt="Instagram"
+              ><img
+                src="icons/social/instagram.png"
+                alt="Instagram"
+                loading="lazy"
             /></a>
             <a href="https://www.facebook.com/seetharam8777/" target="_blank"
-              ><img src="icons/social/facebook.png" alt="Facebook"
+              ><img
+                src="icons/social/facebook.png"
+                alt="Facebook"
+                loading="lazy"
             /></a>
             <a
               href="https://www.youtube.com/@SeethaRamaSwamyThota"
               target="_blank"
-              ><img src="icons/social/youtube.png" alt="Youtube"
+              ><img src="icons/social/youtube.png" alt="Youtube" loading="lazy"
             /></a>
             <a
               href="https://discord.com/users/698506764110528555"
               target="_blank"
-              ><img src="icons/social/discord.png" alt="discord"
+              ><img src="icons/social/discord.png" alt="discord" loading="lazy"
             /></a>
           </div>
           <div class="contact-container">
@@ -2679,8 +2821,8 @@
         </div>
       </div>
 
-      <script src="js/script.js"></script>
-      <script src="js/animations.js"></script>
+      <script src="js/script.js" defer></script>
+      <script src="js/animations.js" defer></script>
     </div>
   </body>
 </html>

@@ -28,10 +28,13 @@ function initAll() {
 
 /* ===== HERO PARALLAX ===== */
 function initHeroParallax() {
+  // Skip parallax on mobile — CSS already disables it via transform:none !important
+  // Running it on mobile would still cause rAF calls and layout work
+  if (window.innerWidth <= 768) return;
+
   const heroBg = document.querySelector(".hero-bg-image");
-  const introLogo = document.querySelector(".intro-logo");
   const introSection = document.getElementById("introduction");
-  if (!introSection) return;
+  if (!heroBg || !introSection) return;
 
   let ticking = false;
 
@@ -41,8 +44,7 @@ function initHeroParallax() {
         const scrollY = window.scrollY;
         const sectionH = introSection.offsetHeight;
 
-        // 1. Hero Parallax
-        if (heroBg && scrollY <= sectionH + 100) {
+        if (scrollY <= sectionH + 100) {
           heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
         }
 
@@ -86,13 +88,17 @@ function initScrollToTop() {
   const btn = document.getElementById("scrollToTopBtn");
   if (!btn) return;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      btn.classList.add("show");
-    } else {
-      btn.classList.remove("show");
-    }
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 300) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    },
+    { passive: true },
+  );
 
   btn.addEventListener("click", () => {
     window.scrollTo({
@@ -122,24 +128,19 @@ function initNavbar() {
       }
     }
   };
-  window.addEventListener("scroll", handleNavScroll);
+  window.addEventListener("scroll", handleNavScroll, { passive: true });
   handleNavScroll();
 
-  // Main Nav Scroll Spy
-  const handleMainNavScrollSpy = () => {
-    const sections = document.querySelectorAll("main > section[id]");
-    const navLinks = document.querySelectorAll(".nav-links a");
-    let current = "";
+  // Main Nav Scroll Spy — cache elements outside handler to avoid repeated DOM queries
+  const sections = Array.from(document.querySelectorAll("main > section[id]"));
+  const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
 
-    // The point in the viewport where a section is considered "active"
-    // Usually about 30-40% from the top
+  const handleMainNavScrollSpy = () => {
+    let current = "";
     const triggerPoint = window.innerHeight * 0.35;
 
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-
-      // If the top of the section is above the trigger point
-      // AND the bottom of the section is below the trigger point
       if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
         current = section.getAttribute("id");
       }
@@ -148,13 +149,12 @@ function initNavbar() {
     navLinks.forEach((link) => {
       link.classList.remove("active");
       const href = link.getAttribute("href");
-      // Match exactly the hash (e.g. #portfolio)
       if (current && href === `#${current}`) {
         link.classList.add("active");
       }
     });
   };
-  window.addEventListener("scroll", handleMainNavScrollSpy);
+  window.addEventListener("scroll", handleMainNavScrollSpy, { passive: true });
   handleMainNavScrollSpy();
 
   // Smooth Scroll & Hamburger Logic
@@ -187,24 +187,40 @@ function initNavbar() {
 
 /* ===== 3. GLOBAL REVEAL ON SCROLL ===== */
 function initRevealOnScroll() {
-  const revealOnScroll = () => {
-    // Specifically target sections and generic reveal triggers
-    const elements = document.querySelectorAll(
-      "section, .myExpertise-item, .reveal-trigger",
+  // Use IntersectionObserver when available — far more efficient than scroll events
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            // Once revealed, stop observing to free up resources
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" },
     );
-    const windowHeight = window.innerHeight;
 
-    elements.forEach((el) => {
-      const elementTop = el.getBoundingClientRect().top;
-      // Use index.html:L51-like visibility logic
-      if (elementTop < windowHeight - 100) {
-        el.classList.add("reveal-visible");
-      }
-    });
-  };
-
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Initial check
+    document
+      .querySelectorAll("section, .myExpertise-item, .reveal-trigger")
+      .forEach((el) => revealObserver.observe(el));
+  } else {
+    // Fallback for older browsers
+    const revealOnScroll = () => {
+      const elements = document.querySelectorAll(
+        "section, .myExpertise-item, .reveal-trigger",
+      );
+      const windowHeight = window.innerHeight;
+      elements.forEach((el) => {
+        if (el.getBoundingClientRect().top < windowHeight - 100) {
+          el.classList.add("reveal-visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll, { passive: true });
+    revealOnScroll();
+  }
 }
 
 /* ===== 6. MY EXPERTISE ===== */
@@ -264,7 +280,7 @@ function setupTabbedGallery(sectionId, containerId) {
       });
     }
   };
-  window.addEventListener("scroll", handleScrollSpy);
+  window.addEventListener("scroll", handleScrollSpy, { passive: true });
   handleScrollSpy();
 
   // 3. Entry Reveal Observer
@@ -432,12 +448,8 @@ function initJourney() {
   if (journeyEntries.length === 0) return;
 
   journeyEntries.forEach((entry) => {
-    // Reveal content on click
     entry.addEventListener("click", () => {
-      // Option: Close other open entries first (exclusive accordion feel)
-      journeyEntries.forEach((other) => {
-        if (other !== entry) other.classList.remove("is-active");
-      });
+      // Toggle only this entry — others stay open/closed as they are
       entry.classList.toggle("is-active");
     });
   });
@@ -752,39 +764,8 @@ function updateTransform() {
   lightboxImg.style.transform = `translate(${lx}px, ${ly}px) scale(${scale})`;
 }
 
-/* ===== YOUTUBE API ===== */
-function initYouTubeAPI() {
-  if (!window.YT) {
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  }
-}
-
-window.onYouTubeIframeAPIReady = function () {
-  const iframes = document.querySelectorAll("iframe[src*='youtube']");
-  iframes.forEach((iframe, index) => {
-    if (!iframe.id) iframe.id = "yt-player-" + index;
-    new YT.Player(iframe.id, {
-      events: {
-        onStateChange: onPlayerStateChange,
-      },
-    });
-  });
-};
-
-function onPlayerStateChange(event) {
-  if (event.data === 1 || event.data === 3) {
-    activePlayers.add(event.target);
-    globalPaused = true;
-  } else {
-    activePlayers.delete(event.target);
-    if (activePlayers.size === 0) {
-      globalPaused = false;
-    }
-  }
-}
+/* ===== YOUTUBE API (single declaration) ===== */
+// Note: initYouTubeAPI is defined only once earlier in the file — this section is intentionally empty.
 
 /* ===== READ MORE TOGGLE ===== */
 function initReadMore() {

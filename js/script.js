@@ -15,6 +15,7 @@ function initAll() {
     initDesignArchive();
     initEducation();
     initContact();
+    initRecentWorks();
     initScrollToTop();
     initYouTubeAPI();
     initReadMore();
@@ -505,6 +506,22 @@ function initEducation() {
 /* ===== 12. CONTACT ===== */
 function initContact() {
   // Currently no specific JS for contact form validation listed
+}
+
+/* ===== 13. RECENT WORKS LIGHTBOX ===== */
+function initRecentWorks() {
+  const container = document.querySelector(".Recent-works-container");
+  if (!container) return;
+
+  container.addEventListener("click", (e) => {
+    // Check if clicked element is an image or video
+    const media = e.target.closest("img, video");
+    
+    // Ensure it's not a link or other interactive element that's being clicked
+    if (media && !e.target.closest("a")) {
+      openLightbox(media, container);
+    }
+  });
 }
 
 function initCarouselGallery() {
